@@ -222,12 +222,15 @@ create table "Word(Analysis)"
 
 create table "Word(dayAnalysis)"
 (
-    "Date(Now)"      VARCHAR2(255),
-    "Word(Analysis)" VARCHAR2(255),
+    "Date"           VARCHAR2(255) not null,
+    "Word(Analysis)" VARCHAR2(255) not null,
     "Word(Count)"    NUMBER,
-    "Class(News)"    VARCHAR2(255)
+    "Class(News)"    VARCHAR2(255) not null,
+    constraint "Word(dayAnalysis)_pk"
+        primary key ("Word(Analysis)", "Date", "Class(News)")
 )
 /
+
 
 
 

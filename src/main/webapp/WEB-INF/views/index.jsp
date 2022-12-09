@@ -142,6 +142,7 @@
                 </form>
                 <a id="btn-research" href="javascript:void(0)" onclick="research1()" class="button button-black">다시
                     찾기</a>
+
             </section>
             <section class="et-slide" id="tab-flexbox">
                 <h1>주가 분석</h1>
@@ -222,7 +223,9 @@
 
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <ul class="social-icons">
-                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="facebook" href="#"><i class="fa fa-facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" /></svg></i></a></li>
 
                 </ul>
             </div>

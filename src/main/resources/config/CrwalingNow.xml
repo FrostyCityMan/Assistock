@@ -72,6 +72,7 @@
         SELECT (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) ) as "Date(Now)"
         FROM "Word(Analysis)"
         GROUP BY Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))
+        order by "Date(Now)" desc
     </select>
 
     <insert id="Word(dayAnalysis)Insert" parameterType="dh.assistock.wordcloud.WordCloudDTO">

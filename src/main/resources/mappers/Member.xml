@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+    <insert id="insert" parameterType="dh.assistock.member.MemberDTO">
+        INSERT INTO "Member"("Name(Register)", "Email", ID, PW, "Class(Member)", "Date(Sub)", "Name(Member)",
+                             "Date(Join)", "Tel")
+        VALUES (#{Name_Register}, #{Email}, #{ID}, #{PW}, #{Class_Member}, #{Date_Sub}, #{Name_Member}, #{Date_Join},
+                #{Tel})
+    </insert>
+    <select id="login" resultType="dh.assistock.member.MemberDTO"
+            parameterType="dh.assistock.member.MemberDTO">
+        select "Name(Register)",
+               "Email",
+               ID,
+               PW,
+               "Class(Member)",
+               "Date(Sub)",
+               "Name(Member)",
+               "Date(Join)",
+               "Tel"
+        From "Member"
+        WHERE ID = #{ID}
+          and PW = #{PW}
+    </select>
+    <select id="findAccount" parameterType="dh.assistock.member.MemberDTO"
+            resultType="dh.assistock.member.MemberDTO">
+        SELECT ID, PW, "Email"
+        FROM "Member"
+        WHERE "Email" = #{Email}
+    </select>
+    <update id="updatePW" parameterType="dh.assistock.member.MemberDTO">
+        UPDATE "Member"
+        SET PW = #{ID}
+        WHERE "Email" = #{PW}
+    </update>
+</mapper>
+
+

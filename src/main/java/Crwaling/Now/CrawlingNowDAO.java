@@ -124,65 +124,77 @@ public class CrawlingNowDAO {
             System.out.println("datelist 불러오기성공 -----------------");
             String class_News = "";
             String content = "";
+            wordloop:
             for (int e = 0; e < alldateList.size(); e++) {
                 //세계편 정리
-                List<CrwalingNowDTO> Wordlist = sql.selectList("Word.Wordlist_eco", alldateList.get(e));
-                System.out.println("wordlist_eco 불러오기성공 -----------------");
+                try {
 
-                for (int d = 0; d < Wordlist.size(); d++) {
-                    CrwalingNowDTO dto = Wordlist.get(d);
-                    allWordList.add(dto.getEntire_Now());
-                    class_News = "경제";
+                    List<CrwalingNowDTO> Wordlist = sql.selectList("Word.Wordlist_eco", alldateList.get(e));
+                    System.out.println("wordlist_eco 불러오기성공 -----------------");
+
+                    for (int d = 0; d < Wordlist.size(); d++) {
+                        CrwalingNowDTO dto = Wordlist.get(d);
+                        allWordList.add(dto.getEntire_Now());
+                        class_News = "경제";
+                    }
+                    content = allWordList.toString();
+
+                    KomoranResult analyzeResultList = komoran.analyze(content);
+                    List<String> nounList = analyzeResultList.getNouns();
+                    Set<String> set = new HashSet<String>(nounList);
+                    Map<String, Integer> map = new HashMap<>();
+
+                    for (String str : set) {
+                        map.put(str, Collections.frequency(nounList, str));
+                    }
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String strNowDate = simpleDateFormat.format(alldateList.get(e));
+                    List<String> listKeySet = new ArrayList<>(map.keySet());
+                    Collections.sort(listKeySet, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
+                    for (int d = 0; d < 80; d++) {
+                        sql.insert("Word.Word(dayAnalysis)Insert",
+                                new WordCloudDTO(strNowDate, listKeySet.get(d),
+                                        map.get(listKeySet.get(d)), class_News));
+
+
+                    }
+
+                    //----------------------------end of 세계편
+
+                    Wordlist = sql.selectList("Word.Wordlist_world", alldateList.get(e));
+                    System.out.println("wordlist_world 불러오기 성공 --------------");
+                    for (int d = 0; d < Wordlist.size(); d++) {
+                        CrwalingNowDTO dto = Wordlist.get(d);
+                        allWordList.add(dto.getEntire_Now());
+                        class_News = "세계";
+                    }
+                    content = allWordList.toString();
+                    analyzeResultList = komoran.analyze(content);
+                    nounList = analyzeResultList.getNouns();
+                    set = new HashSet<String>(nounList);
+                    Map<String, Integer> map2 = new HashMap<>();
+
+                    for (String str : set) {
+                        map2.put(str, Collections.frequency(nounList, str));
+                    }
+                    simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    strNowDate = simpleDateFormat.format(alldateList.get(e));
+                    listKeySet = new ArrayList<>(map2.keySet());
+                    Collections.sort(listKeySet, (value1, value2) -> (map2.get(value2).compareTo(map2.get(value1))));
+                    for (int d = 0; d < 80; d++) {
+                        sql.insert("Word.Word(dayAnalysis)Insert",
+                                new WordCloudDTO(strNowDate, listKeySet.get(d),
+                                        map2.get(listKeySet.get(d)), class_News));
+                    }
+
+                } catch (Exception f) {
+                    if (f.getClass().getName() == "org.apache.ibatis.exceptions.PersistenceException") {
+                        break;
+                    }
+
                 }
-                content = allWordList.toString();
-
-                KomoranResult analyzeResultList = komoran.analyze(content);
-                List<String> nounList = analyzeResultList.getNouns();
-                Set<String> set = new HashSet<String>(nounList);
-                Map<String, Integer> map = new HashMap<>();
-
-                for (String str : set) {
-                    map.put(str, Collections.frequency(nounList, str));
-                }
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String strNowDate = simpleDateFormat.format(alldateList.get(e));
-                List<String> listKeySet = new ArrayList<>(map.keySet());
-                Collections.sort(listKeySet, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
-                for (int d = 0; d < 80; d++) {
-                    sql.insert("Word.Word(dayAnalysis)Insert",
-                            new WordCloudDTO(strNowDate, listKeySet.get(d),
-                                    map.get(listKeySet.get(d)), class_News));
 
 
-                }
-
-                //----------------------------end of 세계편
-
-                Wordlist = sql.selectList("Word.Wordlist_world", alldateList.get(e));
-                System.out.println("wordlist_world 불러오기 성공 --------------");
-                for (int d = 0; d < Wordlist.size(); d++) {
-                    CrwalingNowDTO dto = Wordlist.get(d);
-                    allWordList.add(dto.getEntire_Now());
-                    class_News = "세계";
-                }
-                content = allWordList.toString();
-                analyzeResultList = komoran.analyze(content);
-                nounList = analyzeResultList.getNouns();
-                set = new HashSet<String>(nounList);
-                Map<String, Integer> map2 = new HashMap<>();
-
-                for (String str : set) {
-                    map2.put(str, Collections.frequency(nounList, str));
-                }
-                simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                strNowDate = simpleDateFormat.format(alldateList.get(e));
-                listKeySet = new ArrayList<>(map2.keySet());
-                Collections.sort(listKeySet, (value1, value2) -> (map2.get(value2).compareTo(map2.get(value1))));
-                for (int d = 0; d < 80; d++) {
-                    sql.insert("Word.Word(dayAnalysis)Insert",
-                            new WordCloudDTO(strNowDate, listKeySet.get(d),
-                                    map2.get(listKeySet.get(d)), class_News));
-                }
                 //단어 골라내기
                 List<String> removeWord = new ArrayList<>();
                 removeWord.add("말");
@@ -190,6 +202,7 @@ public class CrawlingNowDAO {
                 removeWord.add("가운데");
                 removeWord.add("사진");
                 removeWord.add("제공");
+                removeWord.add("현지");
                 removeWord.add("이번");
                 removeWord.add("후");
                 removeWord.add("연합뉴스");
@@ -198,7 +211,7 @@ public class CrawlingNowDAO {
                 removeWord.add("기자");
                 removeWord.add(".kr");
                 removeWord.add(".co");
-                for (int d= 0; d< removeWord.size(); d++){
+                for (int d = 0; d < removeWord.size(); d++) {
                     sql.delete("Word.Word(dayAnalysis)Delete", removeWord.get(d));
                 }
 
