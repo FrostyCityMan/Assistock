@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"
          pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ include file="/header.jsp" %>
-<%-- 본문시작 template.jsp--%>
+<%-- 본문시작 credit.jsp--%>
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="check" viewBox="0 0 16 16">
         <title>Check</title>
@@ -24,34 +24,37 @@
         <div class="pricing-container">
             <div class="panel pricing-table">
 
-                <div class="pricing-plan">
+                <div class="pricing-plan row">
                     <img src="https://s22.postimg.cc/8mv5gn7w1/paper-plane.png" alt="" class="pricing-img">
-                    <h2 class="pricing-header">Personal</h2>
+                    <h2 class="pricing-header">Guest</h2>
                     <ul class="pricing-features">
-                        <li class="pricing-features-item">Custom domains</li>
-                        <li class="pricing-features-item">Sleeps after 30 mins of inactivity</li>
+                        <li class="pricing-features-item">기본 키워드 분석 제공</li>
                     </ul>
                     <span class="pricing-price">Free</span>
-                    <a href="#/" class="pricing-button">Sign up</a>
+                    <a href="http://192.168.14.24:9095/" class="pricing-button">Try it</a>
                 </div>
 
-                <div class="pricing-plan">
+
+                <div class="pricing-plan row">
                     <img src="https://s28.postimg.cc/ju5bnc3x9/plane.png" alt="" class="pricing-img">
-                    <h2 class="pricing-header">Small team</h2>
+                    <h2 class="pricing-header">Member</h2>
                     <ul class="pricing-features">
-                        <li class="pricing-features-item">Never sleeps</li>
-                        <li class="pricing-features-item">Multiple workers for more powerful apps</li>
+                        <li class="pricing-features-item">기본 키워드 분석 제공</li>
+                        <li class="pricing-features-item">대시보드 제공</li>
+                        <li class="pricing-features-item">무제한 주식 종목 추천</li>
                     </ul>
                     <span class="pricing-price">$150</span>
-                    <a href="#/" class="pricing-button is-featured">Free trial</a>
+                    <a href="http://192.168.14.24:9095/credit" class="pricing-button is-featured">Sign up</a>
                 </div>
 
-                <div class="pricing-plan">
+                <div class="pricing-plan row">
                     <img src="https://s21.postimg.cc/tpm0cge4n/space-ship.png" alt="" class="pricing-img">
-                    <h2 class="pricing-header">Enterprise</h2>
+                    <h2 class="pricing-header">Super Member</h2>
                     <ul class="pricing-features">
-                        <li class="pricing-features-item">Dedicated</li>
-                        <li class="pricing-features-item">Simple horizontal scalability</li>
+                        <li class="pricing-features-item">기본 키워드 분석 제공</li>
+                        <li class="pricing-features-item">대시보드 제공</li>
+                        <li class="pricing-features-item">무제한 주식 종목 추천</li>
+                        <li class="pricing-features-item">메일 또는 문자로 종목<br> 분석 알림</li>
                     </ul>
                     <span class="pricing-price">$400</span>
                     <a href="#/" class="pricing-button">Free trial</a>
@@ -61,62 +64,6 @@
         </div>
     </div>
 
-        <h2 class="display-6 text-center mb-4">Compare plans</h2>
-
-        <div class="table-responsive">
-            <table class="table text-center">
-                <thead>
-                <tr>
-                    <th style="width: 34%;"></th>
-                    <th style="width: 22%;">Free</th>
-                    <th style="width: 22%;">Pro</th>
-                    <th style="width: 22%;">Enterprise</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row" class="text-start">Public</th>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Private</th>
-                    <td></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                </tr>
-                </tbody>
-
-                <tbody>
-                <tr>
-                    <th scope="row" class="text-start">Permissions</th>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Sharing</th>
-                    <td></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Unlimited members</th>
-                    <td></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Extra security</th>
-                    <td></td>
-                    <td></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
 
 </div>
 <%-- 본문끝--%>

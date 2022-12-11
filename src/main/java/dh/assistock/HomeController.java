@@ -30,6 +30,15 @@ import org.springframework.web.servlet.ModelAndView;
             return mav;
 
         }
+
+    @RequestMapping("/credit")
+    public ModelAndView credit() {
+        ModelAndView mav=new ModelAndView();
+        mav.setViewName("/pricing/credit");
+        System.out.println(mav.toString());
+        return mav;
+
+    }
     @RequestMapping("/dashboard")
     public ModelAndView dashborad() {
         ModelAndView mav=new ModelAndView();

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: ITWILL
@@ -22,6 +24,8 @@
 
 </head>
 <body>
+<c:set var="now" value="<%=new java.util.Date()%>"></c:set>
+<c:set var="today"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd(E)"></fmt:formatDate></c:set>
 <div class="app-container">
     <div class="app-header">
         <div class="app-header-left">
@@ -116,14 +120,13 @@
         </div>
         <div class="projects-section">
             <div class="projects-section-header">
-                <p>Projects</p>
-                <p class="time">December, 12</p>
+                <p>오늘 수집 현황</p>
             </div>
             <div class="projects-section-line">
                 <div class="projects-status">
                     <div class="item-status">
                         <span class="status-number">45</span>
-                        <span class="status-type">In Progress</span>
+                        <span class="status-type">In Score</span>
                     </div>
                     <div class="item-status">
                         <span class="status-number">24</span>
@@ -131,7 +134,7 @@
                     </div>
                     <div class="item-status">
                         <span class="status-number">62</span>
-                        <span class="status-type">Total Projects</span>
+                        <span class="status-type">Total News</span>
                     </div>
                 </div>
                 <div class="view-actions">
@@ -163,7 +166,7 @@
                 <div class="project-box-wrapper" style="width: 100%">
                     <div class="project-box" style="background-color: #fee4cb;">
                         <div class="project-box-header">
-                            <span>December 10, 20202131312</span>
+                            <span><c:out value="${today}"/></span>
                             <div class="more-wrapper">
                                 <button class="project-btn-more">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -178,7 +181,7 @@
                         </div>
                         <div class="project-box-content-header" style="position: center">
                             <p class="box-content-header">Keyword Cloud</p>
-                            <p class="box-content-subheader">Prototyping</p>
+                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
                             <div id="loader-wrapper">
                                 <div id="loader"></div>
 
@@ -199,25 +202,12 @@
                                class="button button-black">다시
                                 찾기</a>
                         </div>
-                        <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Progress</p>
-                            <div class="box-progress-bar">
-                                <span class="box-progress" style="width: 60%; background-color: #ff942e"></span>
-                            </div>
-                            <p class="box-progress-percentage">60%</p>
-                        </div>
-                        <div class="project-box-footer">
-
-                            <div class="days-left" style="color: #ff942e;">
-                                2 Days Left
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="project-box-wrapper">
                     <div class="project-box" style="background-color: #e9e7fd;">
                         <div class="project-box-header">
-                            <span>December 10, 2020</span>
+                            <span><c:out value="${today}"/></span>
                             <div class="more-wrapper">
                                 <button class="project-btn-more">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -232,10 +222,10 @@
                         </div>
                         <div class="project-box-content-header">
                             <p class="box-content-header">Testing</p>
-                            <p class="box-content-subheader">Prototyping</p>
+                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
                         </div>
                         <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Progress</p>
+                            <p class="box-progress-header">Score</p>
                             <div class="box-progress-bar">
                                 <span class="box-progress" style="width: 50%; background-color: #4f3ff0"></span>
                             </div>
@@ -251,7 +241,7 @@
                 <div class="project-box-wrapper">
                     <div class="project-box">
                         <div class="project-box-header">
-                            <span>December 10, 2020</span>
+                            <span><c:out value="${today}"/></span>
                             <div class="more-wrapper">
                                 <button class="project-btn-more">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -266,10 +256,10 @@
                         </div>
                         <div class="project-box-content-header">
                             <p class="box-content-header">Svg Animations</p>
-                            <p class="box-content-subheader">Prototyping</p>
+                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
                         </div>
                         <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Progress</p>
+                            <p class="box-progress-header">Score</p>
                             <div class="box-progress-bar">
                                 <span class="box-progress" style="width: 80%; background-color: #096c86"></span>
                             </div>
@@ -286,7 +276,7 @@
                 <div class="project-box-wrapper">
                     <div class="project-box" style="background-color: #ffd3e2;">
                         <div class="project-box-header">
-                            <span>December 10, 2020</span>
+                            <span><c:out value="${today}"/></span>
                             <div class="more-wrapper">
                                 <button class="project-btn-more">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -301,10 +291,10 @@
                         </div>
                         <div class="project-box-content-header">
                             <p class="box-content-header">UI Development</p>
-                            <p class="box-content-subheader">Prototyping</p>
+                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
                         </div>
                         <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Progress</p>
+                            <p class="box-progress-header">Score</p>
                             <div class="box-progress-bar">
                                 <span class="box-progress" style="width: 20%; background-color: #df3670"></span>
                             </div>
@@ -321,7 +311,7 @@
                 <div class="project-box-wrapper">
                     <div class="project-box" style="background-color: #c8f7dc;">
                         <div class="project-box-header">
-                            <span>December 10, 2020</span>
+                            <span><c:out value="${today}"/></span>
                             <div class="more-wrapper">
                                 <button class="project-btn-more">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -336,10 +326,10 @@
                         </div>
                         <div class="project-box-content-header">
                             <p class="box-content-header">Data Analysis</p>
-                            <p class="box-content-subheader">Prototyping</p>
+                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
                         </div>
                         <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Progress</p>
+                            <p class="box-progress-header">Score</p>
                             <div class="box-progress-bar">
                                 <span class="box-progress" style="width: 60%; background-color: #34c471"></span>
                             </div>
@@ -356,7 +346,7 @@
                 <div class="project-box-wrapper">
                     <div class="project-box" style="background-color: #d5deff;">
                         <div class="project-box-header">
-                            <span>December 10, 2020</span>
+                            <span><c:out value="${today}"/></span>
                             <div class="more-wrapper">
                                 <button class="project-btn-more">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -371,10 +361,10 @@
                         </div>
                         <div class="project-box-content-header">
                             <p class="box-content-header">Web Designing</p>
-                            <p class="box-content-subheader">Prototyping</p>
+                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
                         </div>
                         <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Progress</p>
+                            <p class="box-progress-header">Score</p>
                             <div class="box-progress-bar">
                                 <span class="box-progress" style="width: 40%; background-color: #4067f9"></span>
                             </div>
@@ -393,6 +383,7 @@
     </div>
 </div>
 <script src="../js/dashboard.js"></script>
+
 
 <%-- 워드 클라우드--%>
 <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
