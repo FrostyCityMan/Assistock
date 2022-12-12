@@ -46,7 +46,7 @@
     <div class="sign-panels">
         <div class="login">
             <div class="title">
-                <a href="http://192.168.14.24:9095/">
+                <a href="/">
                     <img src="../images/Favi2.png">
                 </a>
                 <span>Sign In</span>
@@ -87,7 +87,7 @@
 
         <div class="signup">
             <div class="title">
-                <a href="http://192.168.14.24:9095/">
+                <a href="/">
                     <img src="../images/Favi2.png">
                 </a>
                 <span>Sign Up</span>
@@ -126,7 +126,7 @@
 
         <div class="recover-password">
             <div class="title">
-                <a href="http://192.168.14.24:9095/">
+                <a href="/">
                     <img src="../images/Favi2.png">
                 </a>
                 <span>아이디 및 비밀번호 찾기</span>

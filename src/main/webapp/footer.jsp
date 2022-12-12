@@ -38,10 +38,10 @@
       <div class="col-xs-6 col-md-3">
         <h6>Quick Links</h6>
         <ul class="footer-links">
-          <li><a href="http://192.168.14.24:9095/">Home</a></li>
-          <li><a href="http://192.168.14.24:9095/Pricing">Pricing</a></li>
-          <li><a href="http://192.168.14.24:9095/about">About</a></li>
-          <li><a href="http://192.168.14.24:9095/login">Login</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/Pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/login">Login</a></li>
           <li><a href="-">Sitemap</a></li>
         </ul>
       </div>

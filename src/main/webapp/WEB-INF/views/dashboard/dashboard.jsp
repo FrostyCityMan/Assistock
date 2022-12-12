@@ -24,13 +24,19 @@
 
 </head>
 <body>
-<c:set var="now" value="<%=new java.util.Date()%>"></c:set>
-<c:set var="today"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd(E)"></fmt:formatDate></c:set>
+
+
+<c:set var="now" value="<%=new java.util.Date()%>">
+
+</c:set>
+<c:set var="today">
+    <fmt:formatDate value="${now}" pattern="yyyy-MM-dd(E)"/>
+</c:set>
 <div class="app-container">
     <div class="app-header">
         <div class="app-header-left">
             <span class="app-icon"></span>
-            <a href="http://192.168.14.24:9095/"><p class="app-name">Assistock</p></a>
+            <a href="/"><p class="app-name">Assistock</p></a>
             <div class="search-wrapper">
                 <input class="search-input" type="text" placeholder="Search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
@@ -53,7 +59,8 @@
             <button class="add-btn" title="Add New Project">
                 <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                      fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-plus">
+                >
+                    <%--                     class="feather feather-plus">--%>
                     <line x1="12" y1="5" x2="12" y2="19"/>
                     <line x1="5" y1="12" x2="19" y2="12"/>
                 </svg>
@@ -67,9 +74,9 @@
                 </svg>
             </button>
             <button class="profile-btn">
-                <span><%
-                    out.print(session.getAttribute("ID"));
-                %></span>
+             <span>
+                <c:out value="${sessionScope.ID}"/>
+            </span>
             </button>
         </div>
         <button class="messages-btn">

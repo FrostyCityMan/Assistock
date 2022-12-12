@@ -49,22 +49,22 @@
 <header>
     <div class="top-nav container">
         <div class="logo">
-            <a href="http://192.168.14.24:9095/" style="color: white">
+            <a href="/" style="color: white">
                 <img src="../images/Favi.png" style="width: 40px; padding-right: 5px; margin-right: 5px;">A S S I S T O
                 C K
             </a>
         </div>
         <ul>
-            <li><a href="http://192.168.14.24:9095/">Home</a></li>
-            <li><a href="http://192.168.14.24:9095/Pricing">Pricing</a></li>
-            <li><a href="http://192.168.14.24:9095/about">About</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Pricing">Pricing</a></li>
+            <li><a href="/about">About</a></li>
             <%
                 if (session.getAttribute("ID") == null) {
             %>
-            <li><a href="http://192.168.14.24:9095/login">Login</a></li>
+            <li><a href="/login">Login</a></li>
             <%} else {%>
-            <li><a href="http://192.168.14.24:9095/dashboard">대쉬보드</a></li>
-            <li><a class="btn-logout" href="http://192.168.14.24:9095/">Logout</a></li>
+            <li><a href="/dashboard">대쉬보드</a></li>
+            <li><a class="btn-logout" href="/">Logout</a></li>
             <% }%>
         </ul>
 
@@ -80,8 +80,8 @@
                 의사결정 지원 플랫폼, 어시스톡</h1>
 
             <div class="hero-buttons">
-                <a href="http://192.168.14.24:9095/login" class="button button-white">가입하기</a>
-                <a href="http://192.168.14.24:9095/Pricing" class="button button-white">구독하기</a>
+                <a href="/login" class="button button-white">가입하기</a>
+                <a href="/Pricing" class="button button-white">구독하기</a>
             </div>
         </div> <!-- end hero-copy -->
 
@@ -126,13 +126,10 @@
                 <h3>매일 수집된 뉴스 내 주요 키워드 (인물, 기관, 장소 등)를 분석하여 보여드려요.</h3>
                 <div id="loader-wrapper">
                     <div id="loader"></div>
-
                     <div class="loader-section section-left"></div>
                     <div class="loader-section section-right"></div>
-
                 </div>
                 <div id="wordCloud">
-
                 </div>
                 <form id="keywordFrm">
                     <input type="date" id="keywordDate" name="keywordDate"> <br><br>
@@ -203,10 +200,10 @@
             <div class="col-xs-6 col-md-3">
                 <h6>Quick Links</h6>
                 <ul class="footer-links">
-                    <li><a href="http://192.168.14.24:9095/">Home</a></li>
-                    <li><a href="http://192.168.14.24:9095/Pricing">Pricing</a></li>
-                    <li><a href="http://192.168.14.24:9095/about">About</a></li>
-                    <li><a href="http://192.168.14.24:9095/login">Login</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Pricing">Pricing</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/login">Login</a></li>
                     <li><a href="-">Sitemap</a></li>
                 </ul>
             </div>
@@ -223,9 +220,14 @@
 
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <ul class="social-icons">
-                    <li><a class="facebook" href="#"><i class="fa fa-facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                        <polyline points="9 22 9 12 15 12 15 22" /></svg></i></a></li>
+                    <li><a class="facebook" href="#"><i class="fa fa-facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-home">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </i></a></li>
 
                 </ul>
             </div>

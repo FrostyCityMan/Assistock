@@ -31,7 +31,7 @@
                         <li class="pricing-features-item">기본 키워드 분석 제공</li>
                     </ul>
                     <span class="pricing-price">Free</span>
-                    <a href="http://192.168.14.24:9095/" class="pricing-button">Try it</a>
+                    <a href="/" class="pricing-button">Try it</a>
                 </div>
 
 
@@ -44,7 +44,14 @@
                         <li class="pricing-features-item">무제한 주식 종목 추천</li>
                     </ul>
                     <span class="pricing-price">$150</span>
-                    <a href="http://192.168.14.24:9095/credit" class="pricing-button is-featured">Sign up</a>
+                    <%
+                        if (session.getAttribute("ID") == null) {
+                    %>
+                    <a href="/login" class="pricing-button is-featured">Sign up</a>
+                    <%} else {%>
+                    <a href="/credit" class="pricing-button is-featured">Sign up</a>
+                    <% }%>
+
                 </div>
 
                 <div class="pricing-plan row">
@@ -57,7 +64,13 @@
                         <li class="pricing-features-item">메일 또는 문자로 종목<br> 분석 알림</li>
                     </ul>
                     <span class="pricing-price">$400</span>
-                    <a href="#/" class="pricing-button">Free trial</a>
+                    <%
+                        if (session.getAttribute("ID") == null) {
+                    %>
+                    <a href="/login" class="pricing-button">Free trial</a>
+                    <%} else {%>
+                    <a href="/credit" class="pricing-button">Free trial</a>
+                    <% }%>
                 </div>
 
             </div>

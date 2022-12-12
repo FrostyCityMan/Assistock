@@ -49,21 +49,21 @@
 <div style="background-color: #5271ff;">
     <div class="top-nav container">
         <div class="logo" >
-            <a href="http://192.168.14.24:9095/" style="color: white">
+            <a href="/" style="color: white">
                 <img src="../images/Favi.png" style="width: 40px; padding-right: 5px; margin-right: 5px;">A S S I S T O C K
             </a>
         </div>
         <ul id="header">
-            <li><a href="http://192.168.14.24:9095/">Home</a></li>
-            <li><a href="http://192.168.14.24:9095/Pricing">Pricing</a></li>
-            <li><a href="http://192.168.14.24:9095/about">About</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Pricing">Pricing</a></li>
+            <li><a href="/about">About</a></li>
             <%
                 if (session.getAttribute("ID") == null) {
             %>
-            <li><a href="http://192.168.14.24:9095/login">Login</a></li>
+            <li><a href="/login">Login</a></li>
             <%} else {%>
-            <li><a href="http://192.168.14.24:9095/dashboard">대쉬보드</a></li>
-            <li><a class="btn-logout" href="http://192.168.14.24:9095/">Logout</a></li>
+            <li><a href="/dashboard">대쉬보드</a></li>
+            <li><a class="btn-logout" href="/">Logout</a></li>
             <% }%>
         </ul>
     </div>

@@ -36,6 +36,8 @@ observer.observe(document.getElementById('tab-react'))
 observer.observe(document.getElementById('tab-angular'))
 observer.observe(document.getElementById('tab-other'))
 
+
+
 $("#wordCloud").hide()
 $("#loader-wrapper").hide()
 $("#btn-research").hide()
@@ -46,6 +48,9 @@ function search1() {
     console.log(insetData);
     $("#loader-wrapper").fadeIn(150)
 
+    //발표
+    $("#speech").hide()
+    //발표
     $('#keywordFrm').hide();
     $('#wordCloud')
         .empty()

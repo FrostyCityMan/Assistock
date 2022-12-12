@@ -87,3 +87,6 @@ function research1() {
     $("#loader-wrapper").hide()
     $('.project-box-content-header').removeClass('loaded');
 }
+
+//대시보드 서버 데이터 -----------------------------
+
