@@ -66,9 +66,9 @@ public class CrawlingNowDAO {
                     System.out.println(e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
                 }// end of Scoring try-catch
                 String stock = " ";
-                String item = "";
+                String item = null;
                 String Country = " ";
-                System.out.println(dto.getClass_News()+"==================================");
+                System.out.println(dto.getClass_News() + "==================================");
 //               단어 걸러내기
                 try {
                     for (int c = 0; c < nounList.size(); c++) {
@@ -94,11 +94,8 @@ public class CrawlingNowDAO {
                             break;
                         }
                     }//end of stock search for
-                    System.out.println(stock);
-                    System.out.println(stock);
-                    System.out.println(Country);
-                    System.out.println(Country);
-//                  뉴스점수 기록
+                    try {
+                        // 뉴스점수 기록
                         CrwalingNowDTO Word = CrwalingNowDTO.builder()
                                 .name_News(dto.getName_News())
                                 .name_Stock(stock)
@@ -111,7 +108,9 @@ public class CrawlingNowDAO {
                                 .score(score)
                                 .build();
                         sql.insert("Word.Word(Analysis)Insert", Word);
-
+                    } catch (Exception e) {
+                        System.out.println(e.getClass().getName() + " 예외가"+ e.getMessage());
+                    }
 
 
                 } catch (Exception e) {
