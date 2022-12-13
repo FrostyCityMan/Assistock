@@ -22,8 +22,9 @@ $('.reginoti').hide();
 
 //signin
 
-function loginInsert(){
-    let insertData=$('#Loginfrm').serialize();
+
+function loginInsert() {
+    let insertData = $('#Loginfrm').serialize();
     console.log(insertData);
     $.ajax({
         type: "POST",
@@ -47,6 +48,13 @@ function loginInsert(){
         }
     });
 }
+document.onkeypress = runlogin;
+
+function runlogin(e){
+    if(e.keyCode == 13){
+        loginInsert();
+    }
+}
 
 // register
 
@@ -69,7 +77,7 @@ function memberInsert() {
                 $('.regist-name').text($('#Name_Member').val());
             }// end of if
         },
-        error:function(error){
+        error: function (error) {
             $('.error').text('회원가입에 실패하였습니다.');
 
         }// end of success
@@ -85,7 +93,6 @@ $('.btn-login').click(function () {
 });
 
 $('.notification').hide();
-
 
 
 function findInsert() {
@@ -111,7 +118,6 @@ function findInsert() {
         }
     });
 }
-
 
 
 // 네이버 로그인

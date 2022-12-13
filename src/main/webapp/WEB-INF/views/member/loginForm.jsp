@@ -71,8 +71,10 @@
                 <input type="checkbox" id="remember">
                 <label for="remember">로그인 유지하기</label>
                 <%--                <a href="javascript:void(0)" class="btn-signin">로그인</a>--%>
-                <%--                <button class="btn-signin">로그인</button>--%>
-                <a href="javascript:void(0)" class="btn-signin" onclick="loginInsert()">로그인</a>
+<%--                                <button class="btn-signin" onclick="loginInsert()">로그인</button>--%>
+                <input value="로그인" id="btn-login" onkeydown="runlogin(e)">
+<%--                <a href="javascript:void(0)" class="btn-signin" onclick="loginInsert()"--%>
+<%--                   tabindex="0">로그인</a>--%>
                 <a href="javascript:void(0)" class="btn-reset btn-fade">아이디 및 비밀번호 찾기 <i
                         class="fa fa-long-arrow-right"
                         aria-hidden="true"></i></a>
@@ -103,7 +105,7 @@
             <div class="or"><span>OR</span></div>
 
             <form name="registerMember" id="registerMember" METHOD="post" onclick="">
-                <span class="error" ></span>
+                <span class="error"></span>
                 <input type="hidden" name="Name_Register" value="어시스톡">
                 <input type="hidden" name="Class_Member" value="회원">
                 <input type="text" name="Regi_Id" id="Regi_Id" placeholder="아이디를 입력해주세요.">
@@ -113,7 +115,7 @@
                 <input type="text" name="Email" id="Email" placeholder="이메일 주소를 입력해주세요.">
                 <input type="text" name="Tel" id="Tel" placeholder="연락처를 입력해주세요.">
 
-                <a  class="btn-register" onclick="memberInsert()">회원가입</a>
+                <a class="btn-register" onclick="memberInsert()">회원가입</a>
                 <a href="javascript:void(0)" class="btn-login btn-fade">Already have an account, Sign In <i
                         class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
             </form>

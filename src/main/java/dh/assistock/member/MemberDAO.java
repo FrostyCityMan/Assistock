@@ -25,4 +25,7 @@ SqlSession sqlSession;
     public int updatePW(MemberDTO dto){
         return sqlSession.update("Member.updatePW",dto);
     }
+
+
+
 } //end of MemberDAO class

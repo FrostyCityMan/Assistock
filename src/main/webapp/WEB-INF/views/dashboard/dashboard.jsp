@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%--
   Created by IntelliJ IDEA.
   User: ITWILL
@@ -24,6 +25,9 @@
 
 </head>
 <body>
+
+
+
 
 
 <c:set var="now" value="<%=new java.util.Date()%>">
@@ -97,8 +101,9 @@
                     <polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
             </a>
+<%--            class="link-icon"--%>
             <a href="" class="app-sidebar-link">
-                <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                      stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                      class="feather feather-pie-chart" viewBox="0 0 24 24">
                     <defs/>
@@ -115,8 +120,9 @@
                     <line x1="3" y1="10" x2="21" y2="10"/>
                 </svg>
             </a>
+<%--            class="link-icon"--%>
             <a href="" class="app-sidebar-link">
-                <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                      stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                      class="feather feather-settings" viewBox="0 0 24 24">
                     <defs/>
@@ -139,8 +145,9 @@
                         <span class="status-number">24</span>
                         <span class="status-type">Upcoming</span>
                     </div>
+                    <%--                    TODO 금일 뉴스 갯수 자바에서 끌어오기--%>
                     <div class="item-status">
-                        <span class="status-number">62</span>
+                        <span class="status-number" id="todayNewsCount"></span>
                         <span class="status-type">Total News</span>
                     </div>
                 </div>

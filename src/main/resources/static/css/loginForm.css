@@ -168,22 +168,39 @@ body {
 }
 
 .btn-signin {
-    display: inline-block;
+    display: inline-block; !important;
     width: 50%;
     margin-top: 10px;
     height: 50px;
-    background: #5271ff;
+    background: #5271ff; !important;
     border-radius: 50px;
     padding: 11px;
     font-size: 20px;
-    color: #fff;
+    color: #fff; !important;
     text-decoration: none;
     font-weight: 500;
     border: none;
     box-shadow: none;
     cursor: pointer;
+    font-family: 'Dosis', AppleGothic;
 }
-
+#btn-login{
+    display: inline-block; !important;
+    width: 50%;
+    margin-top: 10px;
+    height: 50px;
+    background: #5271ff; !important;
+    border-radius: 50px;
+    padding: 11px;
+    font-size: 20px;
+    color: #fff; !important;
+    text-decoration: none;
+    font-weight: 500;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    font-family: 'Dosis', AppleGothic;
+}
 .btn-register {
     display: inline-block;
     width: 50%;

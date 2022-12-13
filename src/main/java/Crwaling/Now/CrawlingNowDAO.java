@@ -10,13 +10,15 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class CrawlingNowDAO {
 
-    public static void main(String[] args) {
+    public void main() {
+        System.out.println("CrwalingNow Start ---------------");
         Komoran komoran = new Komoran(DEFAULT_MODEL.FULL);
 
         try {
@@ -46,6 +48,7 @@ public class CrawlingNowDAO {
                 CrwalingNowDTO dto = list_Material.get(c);
                 map_Material.put(dto.getName_Country(), dto.getClass_Item());
             }
+            outerloop:
             for (int i = 0; i < list.size(); i++) {
                 CrwalingCacheDTO dto = list.get(i);
                 KomoranResult analyzeResultList = komoran.analyze(dto.getEntire_Now());
@@ -109,6 +112,9 @@ public class CrawlingNowDAO {
                                 .build();
                         sql.insert("Word.Word(Analysis)Insert", Word);
                     } catch (Exception e) {
+                        if (e.getClass().getName() == "org.apache.ibatis.exceptions.PersistenceException") {
+                            break outerloop;
+                        }
                         System.out.println(e.getClass().getName() + " 예외가"+ e.getMessage());
                     }
 
@@ -130,9 +136,7 @@ public class CrawlingNowDAO {
             String content = "";
             wordloop:
             for (int e = 0; e < alldateList.size(); e++) {
-                //세계편 정리
-
-
+                //경제편 정리
                 List<CrwalingNowDTO> Wordlist = sql.selectList("Word.Wordlist_eco", alldateList.get(e));
                 System.out.println("wordlist_eco 불러오기성공 -----------------");
 
@@ -159,12 +163,10 @@ public class CrawlingNowDAO {
                     sql.insert("Word.Word(dayAnalysis)Insert",
                             new WordCloudDTO(strNowDate, listKeySet.get(d),
                                     map.get(listKeySet.get(d)), class_News));
-
-
                 }
 
-                //----------------------------end of 세계편
-
+                //----------------------------end of 경제
+                //세계편 정리
                 Wordlist = sql.selectList("Word.Wordlist_world", alldateList.get(e));
                 System.out.println("wordlist_world 불러오기 성공 --------------");
                 for (int d = 0; d < Wordlist.size(); d++) {
@@ -190,6 +192,7 @@ public class CrawlingNowDAO {
                             new WordCloudDTO(strNowDate, listKeySet.get(d),
                                     map2.get(listKeySet.get(d)), class_News));
                 }
+                //----------------------------end of 세계
 
 
                 //단어 골라내기
@@ -215,6 +218,108 @@ public class CrawlingNowDAO {
             }//end of 단어개수세기----------------
         } catch (Exception e) {
             System.out.println(e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
+            if(e.getClass().getName() == "org.apache.ibatis.exceptions.PersistenceException") {
+                String resource = "config/CrwalingNowConfig.xml";
+                InputStream is = null;
+                try {
+                    is = Resources.getResourceAsStream(resource);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(is);
+                System.out.println("-------DB연결 성공");
+                SqlSession sql = ssf.openSession(true);
+                List<String> allWordList = new ArrayList<>();
+                List<Date> alldateList = sql.selectList("Word.datelist");
+                System.out.println("datelist 불러오기성공 -----------------");
+                String class_News = "";
+                String content = "";
+                wordloop:
+                for (int f = 0; f < 1; f++) {
+                    //경제편 정리
+                    List<CrwalingNowDTO> Wordlist = sql.selectList("Word.Wordlist_eco", alldateList.get(f));
+                    System.out.println("wordlist_eco 불러오기성공 -----------------");
+
+                    for (int d = 0; d < Wordlist.size(); d++) {
+                        CrwalingNowDTO dto = Wordlist.get(d);
+                        allWordList.add(dto.getEntire_Now());
+                        class_News = "경제";
+                    }
+                    content = allWordList.toString();
+
+                    KomoranResult analyzeResultList = komoran.analyze(content);
+                    List<String> nounList = analyzeResultList.getNouns();
+                    Set<String> set = new HashSet<String>(nounList);
+                    Map<String, Integer> map = new HashMap<>();
+
+                    for (String str : set) {
+                        map.put(str, Collections.frequency(nounList, str));
+                    }
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String strNowDate = simpleDateFormat.format(alldateList.get(f));
+                    List<String> listKeySet = new ArrayList<>(map.keySet());
+                    Collections.sort(listKeySet, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
+                    for (int d = 0; d < 80; d++) {
+                        sql.update("Word.Word(dayAnalysis)Update",
+                                new WordCloudDTO(strNowDate,listKeySet.get(d),
+                                        map.get(listKeySet.get(d)),class_News));
+
+                    }
+
+                    //----------------------------end of 경제
+                    //세계편 정리
+                    Wordlist = sql.selectList("Word.Wordlist_world", alldateList.get(f));
+                    System.out.println("wordlist_world 불러오기 성공 --------------");
+                    for (int d = 0; d < Wordlist.size(); d++) {
+                        CrwalingNowDTO dto = Wordlist.get(d);
+                        allWordList.add(dto.getEntire_Now());
+                        class_News = "세계";
+                    }
+                    content = allWordList.toString();
+                    analyzeResultList = komoran.analyze(content);
+                    nounList = analyzeResultList.getNouns();
+                    set = new HashSet<String>(nounList);
+                    Map<String, Integer> map2 = new HashMap<>();
+
+                    for (String str : set) {
+                        map2.put(str, Collections.frequency(nounList, str));
+                    }
+                    simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    strNowDate = simpleDateFormat.format(alldateList.get(f));
+                    listKeySet = new ArrayList<>(map2.keySet());
+                    Collections.sort(listKeySet, (value1, value2) -> (map2.get(value2).compareTo(map2.get(value1))));
+                    for (int d = 0; d < 80; d++) {
+                        sql.update("Word.Word(dayAnalysis)Update",
+                                new WordCloudDTO(strNowDate,listKeySet.get(d),
+                                        map2.get(listKeySet.get(d)),class_News));
+
+                    }
+                    //----------------------------end of 세계
+
+
+                    //단어 골라내기
+                    List<String> removeWord = new ArrayList<>();
+                    removeWord.add("말");
+                    removeWord.add("이날");
+                    removeWord.add("가운데");
+                    removeWord.add("사진");
+                    removeWord.add("제공");
+                    removeWord.add("현지");
+                    removeWord.add("이번");
+                    removeWord.add("후");
+                    removeWord.add("연합뉴스");
+                    removeWord.add("이후");
+                    removeWord.add("관련");
+                    removeWord.add("기자");
+                    removeWord.add(".kr");
+                    removeWord.add(".co");
+                    for (int d = 0; d < removeWord.size(); d++) {
+                        sql.delete("Word.Word(dayAnalysis)Delete", removeWord.get(d));
+                    }
+                    //end of 단어 개수 세기
+                }
+            }
+
         } //end of try-catch
 
 

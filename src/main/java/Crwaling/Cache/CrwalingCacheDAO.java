@@ -25,7 +25,9 @@ public class CrwalingCacheDAO {
     }
 
 
-    public static void main(String[] args) {
+
+    public void main() {
+
         Komoran komoran = new Komoran(DEFAULT_MODEL.FULL);
         try {
             String resource = "config/CrwalingCacheConfig.xml";
@@ -65,10 +67,9 @@ public class CrwalingCacheDAO {
                         Elements photoElements = element.getElementsByAttributeValue("class", "photo");
                         Elements Paging = doc.getElementsByAttributeValue("class", "next nclicks(fls.page)");
 
-                        for (int i = 0; i < photoElements.size(); i++) {
+                        for (Element photoElement : photoElements) {
                             try {
-                                Element articleElement = photoElements.get(i);
-                                Elements aElements = articleElement.select("a");
+                                Elements aElements = photoElement.select("a");
                                 Element aElement = aElements.get(0);
 
                                 String articleUrl = aElement.attr("href");        // 기사링크
@@ -81,7 +82,7 @@ public class CrwalingCacheDAO {
                                 Element comElement = bElement.select("img").get(0);
                                 String comTitle = comElement.attr("alt");            // 신문사
                                 Element contentElement = subDoc.getElementById("dic_area");
-                                String content = contentElement.text();            // 기사내용
+                                String content = contentElement != null ? contentElement.text() : null;            // 기사내용
                                 Elements dateElement = subDoc.getElementsByAttributeValue("class", "media_end_head_info_datestamp_time _ARTICLE_DATE_TIME");
                                 String date = dateElement.attr("data-date-time");
                                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -113,7 +114,7 @@ public class CrwalingCacheDAO {
 
                                 } catch (Exception e) {
 
-                                    if (e.getClass().getName() == "org.apache.ibatis.exceptions.PersistenceException" && Paging.size() == 0) {
+                                    if (e.getClass().getName() == "org.apache.ibatis.exceptions.PersistenceException") {
                                         break outerLoop;
                                     }
                                     System.out.println(e.getClass().getName() + "형태소 예외가" + e.getMessage() + " 때문에 발생");
@@ -129,7 +130,6 @@ public class CrwalingCacheDAO {
             }
         } catch (Exception e) {
             System.out.println(e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
-            // TODO: handle exception
         } // end try-catch
     }//end of main
 } //end of CrwalingDAO class

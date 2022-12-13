@@ -7,6 +7,7 @@
         SELECT "Date", "Word(Analysis)", "Word(Count)", "Class(News)"
         FROM "Word(dayAnalysis)"
         WHERE #{Date} = "Date" AND #{Class_News} = "Class(News)"
+        order by "Word(Count)" desc
     </select>
 
 </mapper>

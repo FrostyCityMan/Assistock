@@ -77,7 +77,7 @@
 
     <insert id="Word(dayAnalysis)Insert" parameterType="dh.assistock.wordcloud.WordCloudDTO">
         Insert Into "Word(dayAnalysis)"("Date", "Word(Analysis)", "Word(Count)", "Class(News)")
-        VALUES (TO_Date(#{Date},'YYYY-MM-DD HH24:MI:SS'), #{Word_Analysis}, #{Word_Count},
+        VALUES (TO_Date(#{date},'YYYY-MM-DD HH24:MI:SS'), #{Word_Analysis}, #{Word_Count},
                 #{Class_News})
 
     </insert>
@@ -85,5 +85,15 @@
         DELETE from "Word(dayAnalysis)"
         WHERE "Word(Analysis)" = #{Word_Analysis}
     </delete>
+    <update id="Word(dayAnalysis)Update" parameterType="dh.assistock.wordcloud.WordCloudDTO">
+        update "Word(dayAnalysis)"
+        set "Word(Count)" = #{Word_Count}
+        WHERE "Date" = #{date} And
+              "Word(Analysis)"=#{Word_Analysis} And
+              "Class(News)"=#{Class_News}
+
+
+
+    </update>
 </mapper>
 

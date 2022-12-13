@@ -90,3 +90,15 @@ function research1() {
 
 //대시보드 서버 데이터 -----------------------------
 
+$(document).ready(function dashboard1() {
+    $.ajax({
+        type: "post",
+        url: "/dashboard/count",
+        dataType: "json",
+        success: function (result) {
+            if (result != null) {
+                $('#todayNewsCount').text(result).val();
+            }
+        }
+    })
+})

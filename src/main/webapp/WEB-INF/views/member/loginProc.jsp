@@ -62,7 +62,7 @@
         //첫페이지 이동
         //﻿http://localhost:9090/myweb/index.jsp
         String root = Utility.getRoot();   //myweb 반환
-        response.sendRedirect("http://192.168.14.24:9095/login");
+        response.sendRedirect("/login");
 
     }//if end
 %>
