@@ -9,5 +9,12 @@
         WHERE #{Date} = "Date" AND #{Class_News} = "Class(News)"
         order by "Word(Count)" desc
     </select>
+    <select id="datelist" resultType="Date">
+        SELECT (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) ) as "Date(Now)"
+        FROM "Word(Analysis)"
+        GROUP BY Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))
+        order by "Date(Now)" desc
+    </select>
+
 
 </mapper>

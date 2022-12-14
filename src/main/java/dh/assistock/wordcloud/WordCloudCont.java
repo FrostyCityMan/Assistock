@@ -31,8 +31,8 @@ public class WordCloudCont {
         try {
             Komoran komoran = new Komoran(DEFAULT_MODEL.FULL);
 
-            String date = request.getParameter("keywordDate");
-            System.out.println(request.getParameter("keywordDate"));
+            String date = request.getParameter("datelist");
+            System.out.println(request.getParameter("datelist"));
 
             SimpleDateFormat convert = new SimpleDateFormat("yyyy-MM-dd");
             SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");

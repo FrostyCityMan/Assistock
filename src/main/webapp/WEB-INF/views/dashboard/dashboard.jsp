@@ -138,14 +138,14 @@
             <div class="projects-section-line">
                 <div class="projects-status">
                     <div class="item-status">
-                        <span class="status-number">45</span>
-                        <span class="status-type">In Score</span>
+                        <span class="status-number"><c:out value="${today}"/></span>
+                        <span class="status-type">Today</span>
                     </div>
+                    <%--                    TODO 금일 뉴스 평균 자바에서 끌어오기--%>
                     <div class="item-status">
-                        <span class="status-number">24</span>
-                        <span class="status-type">Upcoming</span>
+                        <span class="status-number" >45</span>
+                        <span class="status-type">Score Avg</span>
                     </div>
-                    <%--                    TODO 금일 뉴스 갯수 자바에서 끌어오기--%>
                     <div class="item-status">
                         <span class="status-number" id="todayNewsCount"></span>
                         <span class="status-type">Total News</span>

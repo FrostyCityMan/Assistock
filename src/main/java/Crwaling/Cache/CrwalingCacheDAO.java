@@ -47,7 +47,7 @@ public class CrwalingCacheDAO {
                     Class_News = "세계";
                 }
 //                for (int A = 0; A < 22; A++) {
-                for (int A = 0; A < 2; A++) {
+                for (int A = 0; A < 3; A++) {
                     Date now = new Date();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                     Calendar cal = Calendar.getInstance();     //날짜 계산을 위해 Calendar 추상클래스 선언 getInstance()메소드 사용
@@ -129,7 +129,7 @@ public class CrwalingCacheDAO {
                 System.out.println(Class_News + "편 완료");
             }
         } catch (Exception e) {
-            System.out.println(e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
+            System.out.println("크롤링 실패"+e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
         } // end try-catch
     }//end of main
 } //end of CrwalingDAO class

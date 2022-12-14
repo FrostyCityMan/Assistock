@@ -10,6 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -39,7 +40,19 @@
 
 </head>
 <body>
-
+<sql:setDataSource
+        var="DS"
+        driver="oracle.jdbc.OracleDriver"
+        url="jdbc:oracle:thin:@localhost:1521/xe"
+        user="system"
+        password="1234"
+/>
+<sql:query var="rs" dataSource="${DS}">
+    SELECT (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) ) as "Date(Now)"
+    FROM "Word(Analysis)"
+    GROUP BY Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))
+    order by "Date(Now)" desc
+</sql:query>
 <%----%>
 
 <%----%>
@@ -90,6 +103,13 @@
 
 </header>
 
+<c:forEach var="datelist" items="${rs.rows}" varStatus="status">
+    <c:forEach items="${datelist}" var="map">
+
+        <li> ${status.index}</li>
+    </c:forEach>
+</c:forEach>
+
 
 <!-- Page content-->
 <div class="featured-section">
@@ -123,6 +143,7 @@
         <main class="et-main">
             <section class="et-slide" id="tab-es6">
                 <h1>오늘의 키워드</h1>
+
                 <h3>매일 수집된 뉴스 내 주요 키워드 (인물, 기관, 장소 등)를 분석하여 보여드려요.</h3>
                 <div id="loader-wrapper">
                     <div id="loader"></div>
@@ -131,9 +152,60 @@
                 </div>
                 <div id="wordCloud">
                 </div>
+                <%--                time picker--%>
+
+                <div class="container-fluid timeline-container">
+                    <div class="row">
+                        <div class="col-sm-1 d-none d-sm-block">
+                            <div class="row">
+                                <div class="col-12 prev-btn">
+                                    <span class="fa fa-angle-left"><</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-10">
+                            <div>
+                                <div class="row timeline-list">
+                                    <c:forEach var="datelist" items="${rs.rows}">
+                                        <c:forEach items="${datelist}" var="map" varStatus="status">
+                                            <%--                                            실제 반복할 div--%>
+                                            <div class="col-3 col-sm-2 col-lg-1 timeline-item"
+                                                 id="datenum+${map.value}">
+
+                                                <a href="javascript:void(0)" class="datebutton"
+                                                   onclick="document.getElementById('datelist').value='<fmt:formatDate
+                                                           value='${map.value}' pattern='yyyy-MM-dd'/>'">
+
+                                                    <span class="d-block"><strong><fmt:formatDate value="${map.value}"
+                                                                                                  pattern="E"/></strong></span>
+                                                    <span class="d-block"><fmt:formatDate value="${map.value}"
+                                                                                          pattern="MM-dd"/></span>
+                                                </a>
+                                            </div>
+                                            <%--                                            <li> <fmt:formatDate value="${map.value}" pattern="yyyy-MM-dd(E)"/></li>--%>
+
+                                        </c:forEach>
+                                    </c:forEach>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 d-none d-sm-block">
+                            <div class="row">
+                                <div class="col-12 next-btn">
+                                    <span class="fa fa-angle-right">></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <%--                time picker end------------------------------%>
                 <form id="keywordFrm">
-                    <input type="date" id="keywordDate" name="keywordDate"> <br><br>
-                    <input type="radio" id="keyword_eco" value="경제" name="select_class"/>경제
+                    <input type="hidden" id="datelist" name="datelist">
+                    <input type="radio" id="keyword_eco" value="경제" name="select_class"/>
+                    경제
                     <input type="radio" id="keyword_world" value="세계" name="select_class"/>세계 <br><br>
                     <a id="btn-search" href="javascript:void(0)" onclick="search1()" class="button button-black">찾기</a>
                 </form>

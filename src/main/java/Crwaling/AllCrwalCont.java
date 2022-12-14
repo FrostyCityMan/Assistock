@@ -1,6 +1,5 @@
 package Crwaling;
 
-import Crwaling.Cache.CrwalingCacheDAO;
 import Crwaling.Now.CrawlingNowDAO;
 
 import java.util.Timer;
@@ -13,15 +12,15 @@ public class AllCrwalCont {
             @Override
             public void run() {
                 System.out.println("All Crwal Cont start --------------");
-                CrwalingCacheDAO crwalingCacheDAO = new CrwalingCacheDAO();
-                crwalingCacheDAO.main();
+//                CrwalingCacheDAO crwalingCacheDAO = new CrwalingCacheDAO();
+//                crwalingCacheDAO.main();
 
                 CrawlingNowDAO crawlingNowDAO = new CrawlingNowDAO();
                 crawlingNowDAO.main();
                 System.out.println("All Crwal Cont end --------------");
             }
         };
-        m_timer.scheduleAtFixedRate(m_task, 0, 1000*60*3);
+        m_timer.scheduleAtFixedRate(m_task, 0, 1000*60*10);
 
     }
 } //end of AllCrwalCont class

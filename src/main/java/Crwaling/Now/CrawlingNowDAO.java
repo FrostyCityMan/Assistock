@@ -50,6 +50,7 @@ public class CrawlingNowDAO {
             }
             outerloop:
             for (int i = 0; i < list.size(); i++) {
+                System.out.println(list.size()+"작업개수");
                 CrwalingCacheDTO dto = list.get(i);
                 KomoranResult analyzeResultList = komoran.analyze(dto.getEntire_Now());
                 List<String> nounList = analyzeResultList.getNouns(); //전체분석
@@ -69,7 +70,7 @@ public class CrawlingNowDAO {
                     System.out.println(e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
                 }// end of Scoring try-catch
                 String stock = " ";
-                String item = null;
+                String item = " ";
                 String Country = " ";
                 System.out.println(dto.getClass_News() + "==================================");
 //               단어 걸러내기
@@ -112,10 +113,10 @@ public class CrawlingNowDAO {
                                 .build();
                         sql.insert("Word.Word(Analysis)Insert", Word);
                     } catch (Exception e) {
+                        System.out.println("INSERT 실패"+e.getClass().getName() + " 예외가"+ e.getMessage());
                         if (e.getClass().getName() == "org.apache.ibatis.exceptions.PersistenceException") {
                             break outerloop;
                         }
-                        System.out.println(e.getClass().getName() + " 예외가"+ e.getMessage());
                     }
 
 

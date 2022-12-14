@@ -72,7 +72,7 @@
                 <label for="remember">로그인 유지하기</label>
                 <%--                <a href="javascript:void(0)" class="btn-signin">로그인</a>--%>
 <%--                                <button class="btn-signin" onclick="loginInsert()">로그인</button>--%>
-                <input value="로그인" id="btn-login" onkeydown="runlogin(e)">
+                <input type="button" value="로그인" id="btn-login" onkeydown="runlogin(e)" onclick="loginInsert()">
 <%--                <a href="javascript:void(0)" class="btn-signin" onclick="loginInsert()"--%>
 <%--                   tabindex="0">로그인</a>--%>
                 <a href="javascript:void(0)" class="btn-reset btn-fade">아이디 및 비밀번호 찾기 <i

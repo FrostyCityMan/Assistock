@@ -41,7 +41,7 @@ observer.observe(document.getElementById('tab-other'))
 $("#wordCloud").hide()
 $("#loader-wrapper").hide()
 $("#btn-research").hide()
-keywordDate.max = new Date().toISOString().split("T")[0];
+// keywordDate.max = new Date().toISOString().split("T")[0];
 
 function search1() {
     let insetData = $('#keywordFrm').serialize();
@@ -51,6 +51,7 @@ function search1() {
     //발표
     $("#speech").hide()
     //발표
+    $(".timeline-container").hide();
     $('#keywordFrm').hide();
     $('#wordCloud')
         .empty()
@@ -96,6 +97,8 @@ function research1() {
     $("#btn-research").hide();
     $('#keywordFrm').fadeIn(300);
     $("#loader-wrapper").hide()
+    $(".timeline-container").fadeIn(300);
+
     $('#tab-es6').removeClass('loaded');
 }
 
@@ -461,5 +464,51 @@ class StickyNavigation {
 new StickyNavigation();
 
 
-// 로더
+// /*time picker ---------------------------------*/
+// BBC/Sport/football/Scores&Fixtures
+$(document).ready(function() {
+    // Timeline date picker slider scroller
+    var move = "255px";
+    var activeLeftPosition =
+        $("div.active").val() !== undefined
+            ? (activeLeftPosition = $("div.active").position().left)
+            : (activeLeftPosition = 0);
+    var activeWidth = $("div.active").width();
+    var listWidth = $(".timeline-list").width();
+    var center = activeLeftPosition + activeWidth / 2 - listWidth / 2;
 
+    // on page load, center active div
+    $(".timeline-list").animate({ scrollLeft: "+=" + center }, "slow");
+
+    $("div.active")
+        .next("div.timeline-item")
+        .css("border-left-width", "0");
+
+    $(".prev-btn").click(function() {
+        $(".timeline-list").animate({ scrollLeft: "-=" + move });
+    });
+
+    $(".next-btn").click(function() {
+        $(".timeline-list").animate({ scrollLeft: "+=" + move });
+    });
+});
+
+
+$("body").on("click", "[id^=datenum]", function(event) {
+
+    console.log(this.id);
+    var vId = this.id;
+    let A = document.getElementById(vId);
+    if(A.style.backgroundColor==='rgb(226, 227, 229)'){
+        // console.log(A.style.backgroundColor);
+        $(".timeline-item").css('backgroundColor','#fff');
+       document.getElementById('datelist').value=null;
+        // A.style.backgroundColor='#fff';
+    }else{
+        // console.log(A.style.backgroundColor);
+        $(".timeline-item").css('backgroundColor','#fff');
+        A.style.backgroundColor='#e2e3e5';
+    }
+
+
+});

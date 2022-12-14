@@ -51,6 +51,7 @@ public class MemberCont {
                 new Date(),
                 request.getParameter("Tel")
         );
+
         System.out.println(dto);
         return memberDAO.register(dto);
     }
