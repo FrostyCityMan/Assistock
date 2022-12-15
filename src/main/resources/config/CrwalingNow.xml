@@ -22,6 +22,7 @@
              , "Entire(Now_number)"
              , "Class(News)"
         FROM "Crwaling(Now)"
+        order by "Date(Now)" desc
     </select>
 
     <insert id="Word(Analysis)Insert" parameterType="CrwalingNowDTO">

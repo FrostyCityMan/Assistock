@@ -24,6 +24,7 @@
     <link rel="stylesheet" as="style"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-dynamic-subset.css">
     <link rel="stylesheet" href="../css/Index.css">
+    <link rel="stylesheet" href="../css/navbar.css">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -60,28 +61,34 @@
 
 <!-- Page header with logo and tagline-->
 <header>
-    <div class="top-nav container">
-        <div class="logo">
-            <a href="/" style="color: white">
-                <img src="../images/Favi.png" style="width: 40px; padding-right: 5px; margin-right: 5px;">A S S I S T O
-                C K
-            </a>
-        </div>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/Pricing">Pricing</a></li>
-            <li><a href="/about">About</a></li>
-            <%
-                if (session.getAttribute("ID") == null) {
-            %>
-            <li><a href="/login">Login</a></li>
-            <%} else {%>
-            <li><a href="/dashboard">대쉬보드</a></li>
-            <li><a class="btn-logout" href="/">Logout</a></li>
-            <% }%>
-        </ul>
+        <div class="top-nav container">
+            <div class="logo">
+                <a href="/" style="color: white">
+                    <img src="../images/Favi.png" style="width: 40px; padding-right: 5px; margin-right: 5px;">A S S I S T O
+                    C K
+                </a>
+            </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Pricing">Pricing</a></li>
+                <li><a href="/about">About</a></li>
+                <%
+                    if (session.getAttribute("ID") == null) {
+                %>
+                <li><a href="/login">Login</a></li>
+                <%} else {%>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a class="btn-logout" href="/">Logout</a></li>
+                <% }%>
+            </ul>
 
-    </div> <!-- end top-nav -->
+        </div>
+
+
+
+
+    <!-- end top-nav -->
+
 
     <div class="hero container" id="top-nv">
         <div class="hero-image">
@@ -102,13 +109,6 @@
     </div> <!-- end hero -->
 
 </header>
-
-<c:forEach var="datelist" items="${rs.rows}" varStatus="status">
-    <c:forEach items="${datelist}" var="map">
-
-        <li> ${status.index}</li>
-    </c:forEach>
-</c:forEach>
 
 
 <!-- Page content-->
@@ -315,5 +315,7 @@
 
 <!-- Core theme JS-->
 <script src="../js/scripts.js"></script>
+<%--Navbar--%>
+<script src="../js/navbar.js"></script>
 </body>
 </html>

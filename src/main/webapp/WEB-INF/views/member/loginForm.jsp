@@ -113,7 +113,7 @@
                 <input type="password" name="RePW" id="RePW" placeholder="비밀번호를 다시 입력해주세요.">
                 <input type="text" name="Name_Member" id="Name_Member" placeholder="이름을 입력해주세요.">
                 <input type="text" name="Email" id="Email" placeholder="이메일 주소를 입력해주세요.">
-                <input type="text" name="Tel" id="Tel" placeholder="연락처를 입력해주세요.">
+                <input type="text" name="Tel" id="Tel" placeholder="연락처를 '-'를 제외하고 입력해주세요">
 
                 <a class="btn-register" onclick="memberInsert()">회원가입</a>
                 <a href="javascript:void(0)" class="btn-login btn-fade">Already have an account, Sign In <i

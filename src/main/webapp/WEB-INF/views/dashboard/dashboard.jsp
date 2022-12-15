@@ -77,11 +77,11 @@
                     <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                 </svg>
             </button>
-            <button class="profile-btn">
+            <a class="profile-btn" href="/dashboard/profile">
              <span>
                 <c:out value="${sessionScope.ID}"/>
             </span>
-            </button>
+            </a>
         </div>
         <button class="messages-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"

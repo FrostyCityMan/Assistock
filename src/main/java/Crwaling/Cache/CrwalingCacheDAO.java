@@ -47,7 +47,7 @@ public class CrwalingCacheDAO {
                     Class_News = "세계";
                 }
 //                for (int A = 0; A < 22; A++) {
-                for (int A = 0; A < 3; A++) {
+                for (int A = 0; A < 30; A++) {
                     Date now = new Date();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                     Calendar cal = Calendar.getInstance();     //날짜 계산을 위해 Calendar 추상클래스 선언 getInstance()메소드 사용

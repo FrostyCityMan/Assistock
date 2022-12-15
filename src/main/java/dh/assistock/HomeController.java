@@ -47,6 +47,15 @@ import org.springframework.web.servlet.ModelAndView;
         return mav;
 
     }
+    @RequestMapping("/dashboard/profile")
+    public ModelAndView profile() {
+        ModelAndView mav=new ModelAndView();
+        mav.setViewName("dashboard/profile");
+        System.out.println(mav.toString());
+        return mav;
+
+    }
+
         @RequestMapping("/login/findAccountFailed")
         public ModelAndView loginFailed() {
             ModelAndView mav=new ModelAndView();
