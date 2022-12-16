@@ -26,9 +26,10 @@ public class DashboardCont {
     public int todayNewsCount(HttpServletRequest request,
                               HttpServletResponse response)
             throws Exception {
-
+        System.out.println(dashboardDAO.todayNewsCount());
         return dashboardDAO.todayNewsCount();
     }
+
 
 
 } //end of DashboardCont class

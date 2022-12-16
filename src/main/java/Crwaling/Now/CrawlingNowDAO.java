@@ -210,6 +210,12 @@ public class CrawlingNowDAO {
                 removeWord.add("이후");
                 removeWord.add("관련");
                 removeWord.add("기자");
+                removeWord.add("월드컵");
+                removeWord.add("축구");
+                removeWord.add("경기");
+                removeWord.add("카타르");
+                removeWord.add("감독");
+                removeWord.add("선수");
                 removeWord.add(".kr");
                 removeWord.add(".co");
                 for (int d = 0; d < removeWord.size(); d++) {
@@ -312,6 +318,12 @@ public class CrawlingNowDAO {
                     removeWord.add("이후");
                     removeWord.add("관련");
                     removeWord.add("기자");
+                    removeWord.add("월드컵");
+                    removeWord.add("축구");
+                    removeWord.add("경기");
+                    removeWord.add("카타르");
+                    removeWord.add("감독");
+                    removeWord.add("선수");
                     removeWord.add(".kr");
                     removeWord.add(".co");
                     for (int d = 0; d < removeWord.size(); d++) {

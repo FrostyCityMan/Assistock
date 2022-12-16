@@ -24,7 +24,6 @@
     <link rel="stylesheet" as="style"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-dynamic-subset.css">
     <link rel="stylesheet" href="../css/Index.css">
-    <link rel="stylesheet" href="../css/navbar.css">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -77,7 +76,7 @@
                 %>
                 <li><a href="/login">Login</a></li>
                 <%} else {%>
-                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/dashboard"> <c:out value="${sessionScope.ID}"/></a></li>
                 <li><a class="btn-logout" href="/">Logout</a></li>
                 <% }%>
             </ul>
@@ -315,7 +314,6 @@
 
 <!-- Core theme JS-->
 <script src="../js/scripts.js"></script>
-<%--Navbar--%>
-<script src="../js/navbar.js"></script>
+
 </body>
 </html>

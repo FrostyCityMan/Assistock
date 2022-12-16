@@ -231,7 +231,15 @@ create table "Word(dayAnalysis)"
 )
 /
 
-
+create table "CustumKeywords"
+(
+    ID         varchar2(255)
+        constraint "CustumKeywords_pk"
+            primary key,
+    "Keywords" varchar2(255),
+    "Class"    varchar2(255)
+)
+/
 
 
 

@@ -62,7 +62,7 @@
             %>
             <li><a href="/login">Login</a></li>
             <%} else {%>
-            <li><a href="/dashboard">대쉬보드</a></li>
+            <li><a href="/dashboard"> <c:out value="${sessionScope.ID}"/></a></li>
             <li><a class="btn-logout" href="/">Logout</a></li>
             <% }%>
         </ul>

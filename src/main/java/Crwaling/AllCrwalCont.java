@@ -21,7 +21,7 @@ public class AllCrwalCont {
                 System.out.println("All Crwal Cont end --------------");
             }
         };
-        m_timer.scheduleAtFixedRate(m_task, 0, 1000*60*10);
+        m_timer.scheduleAtFixedRate(m_task, 0, 1000*60*15);
 
     }
 } //end of AllCrwalCont class

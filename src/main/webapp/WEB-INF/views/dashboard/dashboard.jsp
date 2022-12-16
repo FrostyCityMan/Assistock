@@ -26,8 +26,30 @@
 </head>
 <body>
 
+<sql:setDataSource
+        var="DS"
+        driver="oracle.jdbc.OracleDriver"
+        url="jdbc:oracle:thin:@localhost:1521/xe"
+        user="system"
+        password="1234"
+/>
+<sql:query var="rs" dataSource="${DS}">
+    SELECT (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) ) as "Date(Now)"
+    FROM "Word(Analysis)"
+    GROUP BY Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))
+    order by "Date(Now)" desc
+</sql:query>
 
+<sql:query dataSource="${DS}" var="result">
+    SELECT TO_CHAR(avg("Score"),'0.000') AS avg_score
+    FROM "Word(Analysis)"
+    WHERE (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) = TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
+</sql:query>
 
+<sql:query var="class_item" dataSource="${DS}">
+    SELECT "Class(Item)" AS Class_Item
+    FROM "Class(Item)"
+</sql:query>
 
 
 <c:set var="now" value="<%=new java.util.Date()%>">
@@ -36,6 +58,50 @@
 <c:set var="today">
     <fmt:formatDate value="${now}" pattern="yyyy-MM-dd(E)"/>
 </c:set>
+
+<%--Modal--%>
+<div id="my_modal">
+    <div class="modal-header">
+        <p>관심 키워드 관리</p>
+        <a class="modal_close_btn">X</a>
+    </div>
+    <div class="modal-body">
+        <div class="modal-info">
+            <p>
+                알림 설정을 하시면 관심키워드가 포함된 뉴스가 등록될 때 회원가입시 입력하신 메일주소로 알림을 보내드립니다. <br>
+                관심 키워드는 최대 10개까지 등록 가능합니다. <br>
+                메일은 평일 8시, 장 시작전에 발송됩니다. </p>
+        </div>
+        <div class="modal-mail">
+            <p>메일 알람 설정</p>
+            <li class="tg-list-item">
+                <input class="tgl tgl-flat" id="cb4" type="checkbox"/>
+                <label class="tgl-btn" for="cb4"></label>
+            </li>
+
+        </div>
+<%--        TODO 업종검색 마무리, 종목검색 추가--%>
+        <div class="modal-search">
+            <form>
+                <p>업종 검색</p>
+                <label for="search">키워드 등록</label><br>
+                <div class="search-wrapper">
+                    <input class="search-input" type="text" placeholder="검색어를 입력하세요" id="search" name="search">
+                <a class="btn-search">+ 키워드 추가</a>
+                </div>
+            </form>
+
+
+            <div id="suggestions">
+                <ul class="suggestions">
+                    <!-- The list of suggestions will go here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="app-container">
     <div class="app-header">
         <div class="app-header-left">
@@ -60,15 +126,15 @@
                     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
                 </svg>
             </button>
-            <button class="add-btn" title="Add New Project">
-                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                     fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-                >
-                    <%--                     class="feather feather-plus">--%>
-                    <line x1="12" y1="5" x2="12" y2="19"/>
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                </svg>
-            </button>
+            <%--            <button class="add-btn" title="Add New Project">--%>
+            <%--                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"--%>
+            <%--                     fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"--%>
+            <%--                >--%>
+            <%--                    &lt;%&ndash;                     class="feather feather-plus">&ndash;%&gt;--%>
+            <%--                    <line x1="12" y1="5" x2="12" y2="19"/>--%>
+            <%--                    <line x1="5" y1="12" x2="19" y2="12"/>--%>
+            <%--                </svg>--%>
+            <%--            </button>--%>
             <button class="notification-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -77,11 +143,11 @@
                     <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                 </svg>
             </button>
-            <a class="profile-btn" href="/dashboard/profile">
+            <button class="profile-btn" id="popup_open_btn">
              <span>
                 <c:out value="${sessionScope.ID}"/>
             </span>
-            </a>
+            </button>
         </div>
         <button class="messages-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -101,28 +167,28 @@
                     <polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
             </a>
-<%--            class="link-icon"--%>
+            <%--            class="link-icon"--%>
+            <%--            <a href="" class="app-sidebar-link">--%>
+            <%--                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"--%>
+            <%--                     stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"--%>
+            <%--                     class="feather feather-pie-chart" viewBox="0 0 24 24">--%>
+            <%--                    <defs/>--%>
+            <%--                    <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z"/>--%>
+            <%--                </svg>--%>
+            <%--            </a>--%>
+            <%--            <a href="" class="app-sidebar-link">--%>
+            <%--                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"--%>
+            <%--                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"--%>
+            <%--                     class="feather feather-calendar">--%>
+            <%--                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>--%>
+            <%--                    <line x1="16" y1="2" x2="16" y2="6"/>--%>
+            <%--                    <line x1="8" y1="2" x2="8" y2="6"/>--%>
+            <%--                    <line x1="3" y1="10" x2="21" y2="10"/>--%>
+            <%--                </svg>--%>
+            <%--            </a>--%>
+            <%--            class="link-icon"--%>
             <a href="" class="app-sidebar-link">
-                <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                     stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                     class="feather feather-pie-chart" viewBox="0 0 24 24">
-                    <defs/>
-                    <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z"/>
-                </svg>
-            </a>
-            <a href="" class="app-sidebar-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="feather feather-calendar">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-            </a>
-<%--            class="link-icon"--%>
-            <a href="" class="app-sidebar-link">
-                <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                      stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                      class="feather feather-settings" viewBox="0 0 24 24">
                     <defs/>
@@ -141,9 +207,12 @@
                         <span class="status-number"><c:out value="${today}"/></span>
                         <span class="status-type">Today</span>
                     </div>
-                    <%--                    TODO 금일 뉴스 평균 자바에서 끌어오기--%>
                     <div class="item-status">
-                        <span class="status-number" >45</span>
+                        <span class="status-number">
+                            <c:forEach var="row" items="${result.rows}">
+                                <c:out value="${row.avg_score}"/>점
+                            </c:forEach>
+                        </span>
                         <span class="status-type">Score Avg</span>
                     </div>
                     <div class="item-status">
@@ -194,8 +263,7 @@
                             </div>
                         </div>
                         <div class="project-box-content-header" style="position: center">
-                            <p class="box-content-header">Keyword Cloud</p>
-                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
+                            <p class="box-content-header">오늘의 키워드</p>
                             <div id="loader-wrapper">
                                 <div id="loader"></div>
 
@@ -205,13 +273,67 @@
                             </div>
                             <div id="wordCloud">
                             </div>
+
+                            <%--                time picker--%>
+
+                            <div class="container-fluid timeline-container">
+                                <div class="row">
+                                    <div class="col-sm-1 d-none d-sm-block">
+                                        <div class="row">
+                                            <div class="col-12 prev-btn">
+                                                <span class="fa fa-angle-left"><</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-10">
+                                        <div>
+                                            <div class="row timeline-list">
+                                                <c:forEach var="datelist" items="${rs.rows}">
+                                                    <c:forEach items="${datelist}" var="map" varStatus="status">
+                                                        <%--                                            실제 반복할 div--%>
+                                                        <div class="col-3 col-sm-2 col-lg-1 timeline-item"
+                                                             id="datenum+${map.value}">
+
+                                                            <a href="javascript:void(0)" class="datebutton"
+                                                               onclick="document.getElementById('datelist').value=
+                                                                       '<fmt:formatDate value='${map.value}'
+                                                                                        pattern='yyyy-MM-dd'/>'">
+
+                                                                <span class="d-block"><strong><fmt:formatDate
+                                                                        value="${map.value}"
+                                                                        pattern="E"/></strong></span>
+                                                                <span class="d-block"><fmt:formatDate
+                                                                        value="${map.value}"
+                                                                        pattern="MM-dd"/></span>
+                                                            </a>
+                                                        </div>
+                                                        <%--                                            <li> <fmt:formatDate value="${map.value}" pattern="yyyy-MM-dd(E)"/></li>--%>
+
+                                                    </c:forEach>
+                                                </c:forEach>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1 d-none d-sm-block">
+                                        <div class="row">
+                                            <div class="col-12 next-btn">
+                                                <span class="fa fa-angle-right">></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <form id="keywordFrm">
-                                <input type="date" id="keywordDate" name="keywordDate"> <br><br>
+                                <input type="hidden" id="datelist" name="datelist">
                                 <input type="radio" id="keyword_eco" value="경제" name="select_class"/>경제
                                 <input type="radio" id="keyword_world" value="세계" name="select_class"/>세계 <br><br>
                                 <a id="btn-search" href="javascript:void(0)" onclick="search1()"
                                    class="button button-black">찾기</a>
                             </form>
+                            <br>
                             <a id="btn-research" href="javascript:void(0)" onclick="research1()"
                                class="button button-black">다시
                                 찾기</a>
@@ -396,9 +518,9 @@
         </div>
     </div>
 </div>
+
+
 <script src="../js/dashboard.js"></script>
-
-
 <%-- 워드 클라우드--%>
 <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
 <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-tag-cloud.min.js"></script>

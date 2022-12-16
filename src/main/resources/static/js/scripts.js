@@ -48,9 +48,8 @@ function search1() {
     console.log(insetData);
     $("#loader-wrapper").fadeIn(150)
 
-    //발표
-    $("#speech").hide()
-    //발표
+
+
     $(".timeline-container").hide();
     $('#keywordFrm').hide();
     $('#wordCloud')

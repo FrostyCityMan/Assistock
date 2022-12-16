@@ -12,5 +12,9 @@ public class DashboardDAO2 {
         return sqlSession.selectOne("Dashboard.todayNewsCount");
     }
 
+    public double todayNewsAvg(){
+        return sqlSession.selectOne("Dashboard.todayNewsAvg");
+    }
+
 
 } //end of DashboardDAO2 class

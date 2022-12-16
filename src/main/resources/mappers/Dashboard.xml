@@ -8,6 +8,12 @@
         FROM "Crwaling(Now)"
         WHERE (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) = TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
     </select>
+
+    <select id="todayNewsAvg" resultType="double">
+        SELECT TO_CHAR(AVG("Score"),'0.000')
+        FROM "Word(Analysis)"
+        WHERE (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) = TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
+    </select>
 </mapper>
 
 
