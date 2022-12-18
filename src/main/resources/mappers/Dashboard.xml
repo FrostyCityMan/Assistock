@@ -14,6 +14,16 @@
         FROM "Word(Analysis)"
         WHERE (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) = TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
     </select>
+
+    <select id="class(item)" resultType="string">
+        SELECT "Class(Item)"
+        FROM "Class(Item)"
+    </select>
+
+    <select id="name(stock)" resultType="string">
+        SELECT "Name(Stock)"
+        FROM "Stock"
+    </select>
 </mapper>
 
 

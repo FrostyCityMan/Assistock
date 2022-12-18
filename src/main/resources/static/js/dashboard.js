@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 $("#wordCloud").hide()
 $("#loader-wrapper").hide()
 $("#btn-research").hide()
+
 // keywordDate.max = new Date().toISOString().split("T")[0];
 
 function search1() {
@@ -109,7 +110,7 @@ $(document).ready(function dashboard1() {
 
 // /*time picker ---------------------------------*/
 // BBC/Sport/football/Scores&Fixtures
-$(document).ready(function() {
+$(document).ready(function () {
     // Timeline date picker slider scroller
     var move = "255px";
     var activeLeftPosition =
@@ -121,42 +122,42 @@ $(document).ready(function() {
     var center = activeLeftPosition + activeWidth / 2 - listWidth / 2;
 
     // on page load, center active div
-    $(".timeline-list").animate({ scrollLeft: "+=" + center }, "slow");
+    $(".timeline-list").animate({scrollLeft: "+=" + center}, "slow");
 
     $("div.active")
         .next("div.timeline-item")
         .css("border-left-width", "0");
 
-    $(".prev-btn").click(function() {
-        $(".timeline-list").animate({ scrollLeft: "-=" + move });
+    $(".prev-btn").click(function () {
+        $(".timeline-list").animate({scrollLeft: "-=" + move});
     });
 
-    $(".next-btn").click(function() {
-        $(".timeline-list").animate({ scrollLeft: "+=" + move });
+    $(".next-btn").click(function () {
+        $(".timeline-list").animate({scrollLeft: "+=" + move});
     });
 });
 
 
-$("body").on("click", "[id^=datenum]", function(event) {
+$("body").on("click", "[id^=datenum]", function (event) {
 
     console.log(this.id);
     var vId = this.id;
     let A = document.getElementById(vId);
-    if(A.style.backgroundColor==='rgb(226, 227, 229)'){
+    if (A.style.backgroundColor === 'rgb(226, 227, 229)') {
         // console.log(A.style.backgroundColor);
-        $(".timeline-item").css('backgroundColor','#fff');
-        document.getElementById('datelist').value=null;
+        $(".timeline-item").css('backgroundColor', '#fff');
+        document.getElementById('datelist').value = null;
         // A.style.backgroundColor='#fff';
-    }else{
+    } else {
         // console.log(A.style.backgroundColor);
-        $(".timeline-item").css('backgroundColor','#fff');
-        A.style.backgroundColor='#e2e3e5';
+        $(".timeline-item").css('backgroundColor', '#fff');
+        A.style.backgroundColor = '#e2e3e5';
     }
 
 
 });
 
-//Modal
+//Modal--------------------------------------------------------
 
 function modal(id) {
     var zIndex = 9999;
@@ -195,51 +196,247 @@ function modal(id) {
         .show()
         // 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
         .find('.modal_close_btn')
-        .on('click', function() {
+        .on('click', function () {
             bg.remove();
             modal.hide();
         });
 }
 
-$('#popup_open_btn').on('click', function() {
+$('#popup_open_btn').on('click', function () {
     // 모달창 띄우기
     modal('my_modal');
 });
-//TODO 이거 검색어 search로 바꾸기
+
+// 모달 검색 1----------------------------------------------
+let words = "";
 $(document).ready(function dashboard1() {
     $.ajax({
         type: "post",
-        url: "/dashboard/count",
+        url: "/dashboard/search",
         dataType: "json",
         success: function (result) {
             if (result != null) {
-                $('#todayNewsCount').text(result).val();
+                words = result;
             }
         }
     })
 })
 
 
-const words = ['apple', 'banana', 'orange', 'grape', 'strawberry'];
-
-// Get the search input field and the suggestions list
 const search = document.getElementById('search');
 const suggestionsList = document.querySelector('.suggestions');
 
-// Add an event listener to the search input field
-search.addEventListener('input', function() {
+// Add an event listener to the search input field that listens for click events
+search.addEventListener('click', function() {
     // Clear the suggestions list
     suggestionsList.innerHTML = '';
 
+    // Display the suggestions list
+    suggestionsList.style.display = 'block';
+
+    // Add all the words in the words array to the suggestions list
+    for (const word of words) {
+        const li = document.createElement('li');
+        li.textContent = word;
+
+        // Add a click event listener to the li element that fills the search field with the selected word
+        li.addEventListener('click', function() {
+            search.value = word;
+            suggestionsList.style.display = 'none';
+        });
+
+        suggestionsList.appendChild(li);
+    }
+});
+
+// Add an event listener to the search input field
+search.addEventListener('input', function () {
     // Get the value of the search field
     const searchValue = this.value.toLowerCase();
 
+    // Clear the suggestions list
+    suggestionsList.innerHTML = '';
+
+    // Hide the suggestions list if the search field is empty
+    if (searchValue === '') {
+        suggestionsList.style.display = 'none';
+        return;
+    } else {
+        suggestionsList.style.display = 'block';
+    }
+
     // Add the matching search words to the suggestions list
     for (const word of words) {
-        if (word.toLowerCase().startsWith(searchValue)) {
+        if (word.toLowerCase().includes(searchValue)) {
             const li = document.createElement('li');
-            li.textContent = word;
+
+            // Highlight the matching part of the search word
+            const highlightedWord = word.replace(
+                new RegExp(searchValue, 'i'),
+                `<span class="highlight">${searchValue}</span>`
+            );
+            li.innerHTML = highlightedWord;
+
+            // Add a click event listener to the li element that fills the search field with the selected word
+            li.addEventListener('click', function () {
+                search.value = word;
+                suggestionsList.style.display = 'none';
+            });
+
             suggestionsList.appendChild(li);
+        }
+    }
+});
+
+// Add a keydown event listener to the search field that allows the user to navigate the suggestions using the arrow keys
+search.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+
+        // Get the currently selected suggestion
+        const selected = document.querySelector('.selected');
+        if (selected) {
+            selected.classList.remove('selected');
+        }
+
+        // Get the list of suggestions
+        const suggestions = document.querySelectorAll('.suggestions li');
+        if (suggestions.length === 0) {
+            return;
+        }
+
+        // Select the next or previous suggestion
+        let newSelected;
+        if (event.key === 'ArrowDown') {
+            newSelected = selected ? selected.nextSibling : suggestions[0];
+        } else {
+            newSelected = selected ? selected.previousSibling : suggestions[suggestions.length - 1];
+        }
+        if (newSelected) {
+            newSelected.classList.add('selected');
+        }
+    } else if (event.key === 'Enter') {
+        // Get the currently selected suggestion
+        const selected = document.querySelector('.selected');
+        if (selected) {
+            search.value = selected.textContent;
+            suggestionsList.style.display = 'none';
+        }
+    }
+});
+// 모달 검색 2-------------------------------------------------------------
+let words2='';
+$(document).ready(function dashboard2() {
+    $.ajax({
+        type: "post",
+        url: "/dashboard/search2",
+        dataType: "json",
+        success: function (result) {
+            if (result != null) {
+                words2 = result;
+            }
+        }
+    })
+})
+
+const search2 = document.getElementById('search2');
+const suggestionsList2 = document.querySelector('.suggestions2');
+
+// Add an event listener to the search input field that listens for click events
+search2.addEventListener('click', function() {
+    // Clear the suggestions list
+    suggestionsList2.innerHTML = '';
+
+    // Display the suggestions list
+    suggestionsList2.style.display = 'block';
+
+    // Add all the words2 in the words2 array to the suggestions list
+    for (const word of words2) {
+        const li = document.createElement('li');
+        li.textContent = word;
+
+        // Add a click event listener to the li element that fills the search field with the selected word
+        li.addEventListener('click', function() {
+            search2.value = word;
+            suggestionsList2.style.display = 'none';
+        });
+
+        suggestionsList2.appendChild(li);
+    }
+});
+
+// Add an event listener to the search input field
+search2.addEventListener('input', function () {
+    // Get the value of the search field
+    const searchValue = this.value.toLowerCase();
+
+    // Clear the suggestions list
+    suggestionsList2.innerHTML = '';
+
+    // Hide the suggestions list if the search field is empty
+    if (searchValue === '') {
+        suggestionsList2.style.display = 'none';
+        return;
+    } else {
+        suggestionsList2.style.display = 'block';
+    }
+
+    // Add the matching search words2 to the suggestions list
+    for (const word of words2) {
+        if (word.toLowerCase().includes(searchValue)) {
+            const li = document.createElement('li');
+
+            // Highlight the matching part of the search word
+            const highlightedWord = word.replace(
+                new RegExp(searchValue, 'i'),
+                `<span class="highlight">${searchValue}</span>`
+            );
+            li.innerHTML = highlightedWord;
+
+            // Add a click event listener to the li element that fills the search field with the selected word
+            li.addEventListener('click', function () {
+                search2.value = word;
+                suggestionsList2.style.display = 'none';
+            });
+
+            suggestionsList2.appendChild(li);
+        }
+    }
+});
+
+// Add a keydown event listener to the search field that allows the user to navigate the suggestions using the arrow keys
+search2.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+
+        // Get the currently selected suggestion
+        const selected = document.querySelector('.selected');
+        if (selected) {
+            selected.classList.remove('selected');
+        }
+
+        // Get the list of suggestions
+        const suggestions = document.querySelectorAll('.suggestions li');
+        if (suggestions.length === 0) {
+            return;
+        }
+
+        // Select the next or previous suggestion
+        let newSelected;
+        if (event.key === 'ArrowDown') {
+            newSelected = selected ? selected.nextSibling : suggestions[0];
+        } else {
+            newSelected = selected ? selected.previousSibling : suggestions[suggestions.length - 1];
+        }
+        if (newSelected) {
+            newSelected.classList.add('selected');
+        }
+    } else if (event.key === 'Enter') {
+        // Get the currently selected suggestion
+        const selected = document.querySelector('.selected');
+        if (selected) {
+            search2.value = selected.textContent;
+            suggestionsList2.style.display = 'none';
         }
     }
 });

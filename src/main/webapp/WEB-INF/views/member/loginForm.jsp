@@ -46,6 +46,8 @@
     <div class="sign-panels">
         <div class="login">
             <div class="title">
+
+<%--                TODO 로그인 시 dashboard링크로 바꿔두기--%>
                 <a href="/">
                     <img src="../images/Favi2.png">
                 </a>
@@ -71,10 +73,10 @@
                 <input type="checkbox" id="remember">
                 <label for="remember">로그인 유지하기</label>
                 <%--                <a href="javascript:void(0)" class="btn-signin">로그인</a>--%>
-<%--                                <button class="btn-signin" onclick="loginInsert()">로그인</button>--%>
+                <%--                                <button class="btn-signin" onclick="loginInsert()">로그인</button>--%>
                 <input type="button" value="로그인" id="btn-login" onkeydown="runlogin(e)" onclick="loginInsert()">
-<%--                <a href="javascript:void(0)" class="btn-signin" onclick="loginInsert()"--%>
-<%--                   tabindex="0">로그인</a>--%>
+                <%--                <a href="javascript:void(0)" class="btn-signin" onclick="loginInsert()"--%>
+                <%--                   tabindex="0">로그인</a>--%>
                 <a href="javascript:void(0)" class="btn-reset btn-fade">아이디 및 비밀번호 찾기 <i
                         class="fa fa-long-arrow-right"
                         aria-hidden="true"></i></a>
@@ -83,7 +85,7 @@
                         aria-hidden="true"></i></a>
             </form>
             <div class="loginoti">
-                <p>환영해요! <span class="login-name"></span> 로그인이 완료되었어요. </p>
+                <p>환영해요! <span class="login-name"></span> 님로그인이 완료되었어요. </p>
             </div>
         </div>
 

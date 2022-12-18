@@ -120,6 +120,6 @@ function findInsert() {
 }
 
 
-// 네이버 로그인
+// TODO 로그인, 회원가입 제약조건 만들기
 
 

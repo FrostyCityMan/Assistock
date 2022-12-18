@@ -47,7 +47,6 @@
 
             <div class="or"><span>OR</span></div>
 <%--TODO 회원 테이블에 최종 비밀번호 변경일 추가.--%>
-<%--            TODO 관심 컨텐츠 테이블 만들기--%>
             <form name="Loginfrm"
                   id="Loginfrm" METHOD="POST" action="/login/proc">
                 <input type="text" name="Id" id="Id" placeholder="아이디를 입력해주세요">

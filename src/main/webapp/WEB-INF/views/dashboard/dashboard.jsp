@@ -58,7 +58,6 @@
 <c:set var="today">
     <fmt:formatDate value="${now}" pattern="yyyy-MM-dd(E)"/>
 </c:set>
-
 <%--Modal--%>
 <div id="my_modal">
     <div class="modal-header">
@@ -80,7 +79,7 @@
             </li>
 
         </div>
-<%--        TODO 업종검색 마무리, 종목검색 추가--%>
+<%--        TODO 키워드추가 ajax 만들기 나라 검색창도 만들기--%>
         <div class="modal-search">
             <form>
                 <p>업종 검색</p>
@@ -97,6 +96,24 @@
                     <!-- The list of suggestions will go here -->
                 </ul>
             </div>
+
+            <form>
+                <p>종목 검색</p>
+                <label for="search">키워드 등록</label><br>
+                <div class="search-wrapper">
+                    <input class="search-input" type="text" placeholder="검색어를 입력하세요" id="search2" name="search">
+                    <a class="btn-search">+ 키워드 추가</a>
+                </div>
+            </form>
+
+            <div id="suggestions2">
+                <ul class="suggestions2">
+                    <!-- The list of suggestions will go here -->
+                </ul>
+            </div>
+
+
+
         </div>
     </div>
 </div>

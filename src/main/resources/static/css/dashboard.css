@@ -1209,7 +1209,7 @@ a {
     font-size: 15px;
     width: 125px;
     border-left: 1px solid #e0e3e5;
-    padding-left: 29px;
+    padding-left: 20px;
     font-weight: 700;
     text-align: center;
     display: inline-block;
@@ -1217,7 +1217,28 @@ a {
     min-width: 101px;
 }
 
-
+.suggestions{
+    cursor: pointer;
+    margin-top: 1px;
+    position: absolute;
+    background: white;
+    padding: 0 10px;
+    border: 1px solid #e0e3e5;
+    overflow-y: auto; /* Enable vertical scrolling only */
+    max-height: 200px;
+    z-index: 999;
+}
+.suggestions2{
+    cursor: pointer;
+    margin-top: 1px;
+    position: absolute;
+    background: white;
+    padding: 0 10px;
+    border: 1px solid #e0e3e5;
+    overflow-y: auto; /* Enable vertical scrolling only */
+    max-height: 200px;
+    z-index: 999;
+}
 
 
 /*Radio buttons*/
