@@ -1,3 +1,6 @@
+<%@ page import="org.apache.ibatis.javassist.compiler.ast.Keyword" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
@@ -25,6 +28,15 @@
 
 </head>
 <body>
+<%--ID=null이면 login페이지로 이동--%>
+<c:if test="${empty sessionScope.ID}">
+    <script>
+        if (window.confirm("로그인이 되어있지 않습니다. 로그인을 먼저 해주세요.")) {
+            window.location.href = '/login';
+        }
+    </script>
+    <!-- code to execute if sessionScope.ID is null -->
+</c:if>
 
 <sql:setDataSource
         var="DS"
@@ -50,7 +62,12 @@
     SELECT "Class(Item)" AS Class_Item
     FROM "Class(Item)"
 </sql:query>
-
+<sql:query var="CustumKeywords" dataSource="${DS}">
+    Select "Keywords","Class"
+    from "CustumKeywords"
+    where "ID" = ?
+    <sql:param value="${sessionScope.ID}"/>
+</sql:query>
 
 <c:set var="now" value="<%=new java.util.Date()%>">
 
@@ -71,51 +88,110 @@
                 관심 키워드는 최대 10개까지 등록 가능합니다. <br>
                 메일은 평일 8시, 장 시작전에 발송됩니다. </p>
         </div>
-        <div class="modal-mail">
-            <p>메일 알람 설정</p>
-            <li class="tg-list-item">
-                <input class="tgl tgl-flat" id="cb4" type="checkbox"/>
-                <label class="tgl-btn" for="cb4"></label>
-            </li>
+        <form>
+            <input type="hidden" value="${sessionScope.ID}">
+            <div class="modal-mail">
+                <p>메일 알람 설정</p>
+                <li class="tg-list-item">
+                    <input class="tgl tgl-flat" id="cb4" type="checkbox"/>
+                    <label class="tgl-btn" for="cb4"></label>
+                </li>
 
-        </div>
-<%--        TODO 키워드추가 ajax 만들기 나라 검색창도 만들기--%>
-        <div class="modal-search">
-            <form>
-                <p>업종 검색</p>
-                <label for="search">키워드 등록</label><br>
+            </div>
+            <%--        TODO 키워드추가 ajax 만들기 나라 검색창도 만들기--%>
+            <div class="modal-search">
+                <p>키워드 등록</p>
+
+
+
+                <label for="search">업종 검색</label><br>
                 <div class="search-wrapper">
+                    <input class="input-class" type="hidden" id="item_class" value="업종">
                     <input class="search-input" type="text" placeholder="검색어를 입력하세요" id="search" name="search">
-                <a class="btn-search">+ 키워드 추가</a>
+                    <a class="btn-search" id="btn-item_class">+ 키워드 추가</a>
                 </div>
-            </form>
 
 
-            <div id="suggestions">
-                <ul class="suggestions">
-                    <!-- The list of suggestions will go here -->
-                </ul>
-            </div>
-
-            <form>
-                <p>종목 검색</p>
-                <label for="search">키워드 등록</label><br>
+                <div id="suggestions">
+                    <ul class="suggestions">
+                        <!-- The list of suggestions will go here -->
+                    </ul>
+                </div>
+                <%--end of 업종검색--%>
+                <label for="search">종목 검색</label><br>
                 <div class="search-wrapper">
+                    <input class="input-class" type="hidden" id="stock_class" value="종목">
                     <input class="search-input" type="text" placeholder="검색어를 입력하세요" id="search2" name="search">
-                    <a class="btn-search">+ 키워드 추가</a>
+                    <a class="btn-search" id="btn-stock_class">+ 키워드 추가</a>
                 </div>
-            </form>
 
-            <div id="suggestions2">
-                <ul class="suggestions2">
-                    <!-- The list of suggestions will go here -->
-                </ul>
+                <div id="suggestions2">
+                    <ul class="suggestions2">
+                        <!-- The list of suggestions will go here -->
+                    </ul>
+                </div>
+                <%--end of 종목 검색--%>
+                <label for="search">국가 검색</label><br>
+                <div class="search-wrapper">
+                    <input class="input-class" type="hidden" id="country_class" value="국가">
+                    <input class="search-input" type="text" placeholder="검색어를 입력하세요" id="search3" name="search">
+                    <a class="btn-search" id="btn-country_class">+ 키워드 추가</a>
+                </div>
+
+                <div id="suggestions3">
+                    <ul class="suggestions3">
+                        <!-- The list of suggestions will go here -->
+                    </ul>
+                </div>
+                <%--end of 나라검색--%>
+
             </div>
+            <%--end of 키워드--%>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="keyword-table">
+            <table class="table table-borderless" style="margin-bottom: 0;" id="keyword-table">
+                <tr>
+                    <th></th>
+                    <th>
+                        <span>구분</span>
+                    </th>
+                    <th>
+                        <span>키워드</span>
+                    </th>
+                </tr>
 
 
+                    <c:forEach var="row" items="${CustumKeywords.rows}">
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="cb">
+                            </td>
+                        <input type="hidden" name="class" value="${row['Class']}">
+                        <input type="hidden" name="value" value="${row['Keywords']}">
+                        <td><c:out value="${row['Class']}"/></td>
+                        <td><c:out value="${row['Keywords']}"/></td>
+                        </tr>
 
+                    </c:forEach>
+            </table>
         </div>
     </div>
+    <a class="keyword-delete">삭제</a>
+    <script>
+        document.querySelector('.btn-search').addEventListener('click', function () {
+            var searchInput = document.querySelector('.search-input').value;
+
+            // Use AJAX or some other method to send the search input value to the server
+            // and add a new row to the table with the search input value.
+        });
+    </script>
+
+<%--    TODO 저장 버튼 클릭시 삭제도 반영.--%>
+    <a class="button-search">저장</a>
+
 </div>
 
 
@@ -124,16 +200,6 @@
         <div class="app-header-left">
             <span class="app-icon"></span>
             <a href="/"><p class="app-name">Assistock</p></a>
-            <div class="search-wrapper">
-                <input class="search-input" type="text" placeholder="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-search"
-                     viewBox="0 0 24 24">
-                    <defs></defs>
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="M21 21l-4.35-4.35"></path>
-                </svg>
-            </div>
         </div>
         <div class="app-header-right">
             <button class="mode-switch" title="Switch Theme">

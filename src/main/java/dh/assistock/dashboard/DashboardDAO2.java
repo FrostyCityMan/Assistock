@@ -27,6 +27,13 @@ public class DashboardDAO2 {
         return sqlSession.selectList("Dashboard.name(stock)");
 
     }
+    public List<String> Material() {
+        return sqlSession.selectList("Dashboard.Material");
 
+    }
+
+    public void Keywords(DashboardDTO dto){
+        sqlSession.insert("Dashboard.Keywords",dto);
+    }
 
 } //end of DashboardDAO2 class

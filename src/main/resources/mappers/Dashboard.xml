@@ -23,6 +23,24 @@
     <select id="name(stock)" resultType="string">
         SELECT "Name(Stock)"
         FROM "Stock"
+        ORDER BY "Name(Stock)"
+    </select>
+
+    <select id="Material" resultType="string">
+        SELECT "Name(Country)"
+        FROM "Material"
+        ORDER BY "Name(Country)"
+    </select>
+
+    <insert id="Keywords" parameterType="dh.assistock.dashboard.DashboardDTO">
+        Insert into "CustumKeywords"(ID, "Keywords", "Class")
+            VALUES (#{ID},#{Keywords},#{Class1})
+    </insert>
+
+    <select id="userKeywords" parameterType="string" resultType="map">
+        Select "Keywords","Class"
+            from "CustumKeywords"
+        where "ID" = #{ID}
     </select>
 </mapper>
 

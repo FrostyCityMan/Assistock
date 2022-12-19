@@ -7,6 +7,7 @@
 $('.signup').hide();
 $('.recover-password').hide();
 $('.loginoti').hide();
+$('.dashlink').hide();
 
 
 $('.btn-reset').click(function () {
@@ -35,6 +36,8 @@ function loginInsert() {
             if (result != null) {
                 $('.login form').hide();
                 $('.title p').hide();
+                $('.title a').hide();
+                $('.dashlink').show();
                 $('.or').hide();
                 $('.btn-face').hide();
                 $('.btn-twitter').hide();

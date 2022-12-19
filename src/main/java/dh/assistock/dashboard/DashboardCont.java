@@ -1,13 +1,15 @@
 package dh.assistock.dashboard;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 
 @RequestMapping("/dashboard")
@@ -27,7 +29,7 @@ public class DashboardCont {
     public int todayNewsCount(HttpServletRequest request,
                               HttpServletResponse response)
             throws Exception {
-        System.out.println(dashboardDAO.todayNewsCount());
+
         return dashboardDAO.todayNewsCount();
     }
 
@@ -46,5 +48,43 @@ public class DashboardCont {
             throws Exception {
         return dashboardDAO.name_stock();
     }
+
+    @RequestMapping(value = "/search3", method = RequestMethod.POST)
+    @ResponseBody
+    public List<String> Material(HttpServletRequest request,
+                                   HttpServletResponse response)
+            throws Exception {
+        return dashboardDAO.Material();
+    }
+    @PostMapping("/save")
+    public ResponseEntity<?> save(HttpServletRequest request, @RequestBody HashMap<Object, Object> data) {
+        HttpSession session = request.getSession();
+        //Declare an empty DTO
+        System.out.println(session.getAttribute("ID"));
+        String ID = session.getAttribute("ID").toString();
+        ObjectMapper mapper = new ObjectMapper();
+        String json = "";
+        try {
+            json = mapper.writeValueAsString(data);
+            data.forEach((key,value)->{
+//            Put the key and value in the DTO.
+                DashboardDTO dto = new DashboardDTO(
+                        ID,
+                        value.toString(),
+                        key.toString()
+                );
+                System.out.println(dto);
+                dashboardDAO.Keywords(dto);
+                System.out.println("key: " + key + ", value: " + value+" ID: "+ID);
+            });
+
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            System.out.println(e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
+            return ResponseEntity.ok().build();
+        }
+    }
+
+
 
 } //end of DashboardCont class

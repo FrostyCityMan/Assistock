@@ -52,7 +52,6 @@ public class MemberCont {
                 request.getParameter("Tel")
         );
 
-        System.out.println(dto);
         return memberDAO.register(dto);
     }
 
@@ -70,7 +69,6 @@ public class MemberCont {
             session.setAttribute("PW", null);
             session.setAttribute("Class_Member", null);
             session.setAttribute("Name_Register", null);
-            System.out.println("로그인실패 " + login);
             return login.getID();
 //            loginFailed();
         } else {
@@ -78,7 +76,6 @@ public class MemberCont {
             session.setAttribute("PW", login.getPW());
             session.setAttribute("Class_Member", login.getClass_Member());
             session.setAttribute("Name_Register", login.getName_Register());
-            System.out.println("로그인성공 " + login.getID());
             return login.getID();
         }
 
