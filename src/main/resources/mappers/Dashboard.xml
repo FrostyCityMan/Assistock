@@ -10,7 +10,7 @@
     </select>
 
     <select id="todayNewsAvg" resultType="double">
-        SELECT TO_CHAR(AVG("Score"),'0.000')
+        SELECT TO_CHAR(AVG("Score"), '0.000')
         FROM "Word(Analysis)"
         WHERE (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) = TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
     </select>
@@ -34,14 +34,20 @@
 
     <insert id="Keywords" parameterType="dh.assistock.dashboard.DashboardDTO">
         Insert into "CustumKeywords"(ID, "Keywords", "Class")
-            VALUES (#{ID},#{Keywords},#{Class1})
+        VALUES (#{ID}, #{Keywords}, #{Class1})
     </insert>
 
-    <select id="userKeywords" parameterType="string" resultType="map">
-        Select "Keywords","Class"
-            from "CustumKeywords"
+    <select id="userKeywords" parameterType="string" resultType="dh.assistock.Dashboard.DashboardDTO">
+        Select "Keywords", "Class"
+        from "CustumKeywords"
         where "ID" = #{ID}
     </select>
+
+    <delete id="deleteKeywords" parameterType="dh.assistock.dashboard.DashboardDTO">
+        delete
+        from "CustumKeywords"
+        where "ID" = #{ID} AND "Keywords" = ${Keywords} AND "Class" = ${Class}
+    </delete>
 </mapper>
 
 

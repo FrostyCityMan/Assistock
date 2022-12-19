@@ -85,6 +85,14 @@ public class DashboardCont {
         }
     }
 
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<?> delete(HttpServletRequest request, @RequestBody HashMap<Object, Object> data) {
+        HttpSession session = request.getSession();
+        return ResponseEntity.ok().build();
+
+    }
+
 
 
 } //end of DashboardCont class

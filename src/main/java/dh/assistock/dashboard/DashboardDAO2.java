@@ -35,5 +35,11 @@ public class DashboardDAO2 {
     public void Keywords(DashboardDTO dto){
         sqlSession.insert("Dashboard.Keywords",dto);
     }
+    public List<DashboardDTO> userKeywords(String ID){
+        return sqlSession.selectList("Dashboard.userKeywords",ID);
+    }
+    public void deleteKeywords(DashboardDTO dto){
+        sqlSession.delete("Dashboard.Keywords",dto);
+    }
 
 } //end of DashboardDAO2 class

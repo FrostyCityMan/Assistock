@@ -675,7 +675,32 @@ document.querySelector(".keyword-delete").addEventListener("click", function () 
             count++;
         }
     }
+    let data = {};
+    $('#keyword-table tr').each(function () {
+        let classInput = $(this).find('input[name="class"]').val();
+        let valueInput = $(this).find('input[name="value"]').val();
+        data[classInput] = valueInput;
+    });
+    console.log(data)
+
+
+    $.ajax({
+        type: "POST",
+        url: "/dashboard/delete",
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function (result) {
+            console.log('Success!');
+        },
+        error: function (error) {
+            alert(error)
+            console.log('Error:', error);
+        }
+    })//end of ajax
+
+
     $("#my_modal").css("height", "-=" + count * 30 + "px");
+    location.reload();
 });
 
 
