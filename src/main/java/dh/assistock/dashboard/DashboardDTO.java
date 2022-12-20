@@ -15,6 +15,12 @@ public class DashboardDTO {
     }
 
     private String ID;
+
+    public DashboardDTO(String keywords, String class1) {
+        Keywords = keywords;
+        Class1 = class1;
+    }
+
     private String Keywords;
     private String Class1;
 

@@ -95,6 +95,7 @@ function research1() {
 
 //대시보드 서버 데이터 -----------------------------
 
+//금일 뉴스 카운트
 $(document).ready(function dashboard1() {
 
     $.ajax({
@@ -108,6 +109,88 @@ $(document).ready(function dashboard1() {
         }
     })
 })
+//금일 키워드별 뉴스 점수
+$(document).ready(function keywordNews() {
+
+
+    $.ajax({
+        type: "post",
+        url: "/dashboard/keywordNews",
+        dataType: "json",
+        success: function (response) {
+            if (response != null) {
+                var today = new Date();
+                var year = today.getFullYear();
+                var month = String(today.getMonth() + 1).padStart(2, '0');
+                var day = String(today.getDate()).padStart(2, '0');
+                for (var i = 0; i < response.length; i++) {
+                    var dto = JSON.stringify(response[i]);
+                    var dto2 = JSON.parse(dto);
+                    var per = ((30 + dto2.score) / 60) * 100
+                    var head = null;
+
+                    document.getElementById("keywordNews").innerHTML += `
+                <div class="project-box-wrapper" >
+                     <div class="project-box" style="background-color: #e9e7fd;">
+                        <div class="project-box-header">
+                            <span>${year + '-' + month + '-' + day}</span>
+                            <div class="more-wrapper">
+                                <button class="project-btn-more">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="feather feather-more-vertical">
+                                        <circle cx="12" cy="12" r="1"/>
+                                        <circle cx="12" cy="5" r="1"/>
+                                        <circle cx="12" cy="19" r="1"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="project-box-content-header">
+                            <p class="box-content-header" style="font-size:18px">${dto2.name_Country}${dto2.name_Stock}</p>
+                            <p class="box-content-subheader">${dto2.class_Item}</p>
+                            <a href="${dto2.url_Now}">
+                            <img src="${dto2.img}" style="width: 320px; border-radius: 30px;"/>
+                            <p class="box-content-subheader">${dto2.head_Now}</p>
+                            </a>
+<!--                            <a class="box-content-subheader" >${dto2.url_Now}</a>-->
+                        </div>
+                        <div class="box-progress-wrapper">
+                            <p class="box-progress-header" id="s">Score ${dto2.score}</p>
+                            <div class="box-progress-bar">
+                                <span class="box-progress" style="width: ${per}%; background-color: #4f3ff0"></span>
+                            </div>
+                            <p class="box-progress-percentage">${per.toFixed(2)}%</p>
+                        </div>
+                        <div class="project-box-footer">
+                            <div class="days-left" style="color: #4f3ff0;">
+                                ${dto2.name_News}
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    `
+                    console.log(dto2)
+                }
+            }
+        }
+    });
+});
+
+// $(document).ready(function keywordNews() {
+//
+//     $.ajax({
+//         type: "post",
+//         url: "/dashboard/keywordNews",
+//         dataType:"text",
+//         success: function (response) {
+//             if (response != null) {
+//                 alert(response.URL_Now);
+//             }
+//         }
+//     });
+// });
+
 
 //모달창 서버 전송-------------
 $('.button-search').click(function save() {
@@ -117,7 +200,7 @@ $('.button-search').click(function save() {
         let valueInput = $(this).find('input[name="value"]').val();
         data[classInput] = valueInput;
     });
-           console.log(data)
+    console.log(data)
 
 
     $.ajax({
@@ -126,7 +209,7 @@ $('.button-search').click(function save() {
         contentType: 'application/json',
         data: JSON.stringify(data),
         success: function (result) {
-            console.log('Success!');
+            alert("키워드 저장에 성공하였습니다.")
         },
         error: function (error) {
             alert(error)
@@ -593,14 +676,14 @@ search3.addEventListener('keydown', function (event) {
     }
 });
 
-
+//TODO 키워드 추가에 빈값들어오면 alert창과 함께 faile
 // 모달 키워드 추가
 let values = [];
 
 $('#btn-item_class').click(function () {
     let query = document.getElementById("search").value;
     let classfy = document.getElementById("item_class").value;
-    if (values.includes(query)) {
+    if (values.includes(query)||query==null) {
         alert("이미 있는 키워드 입니다.");
     } else {
         // code to add the value to the table goes here
@@ -622,7 +705,7 @@ $('#btn-stock_class').click(function () {
     let query = document.getElementById("search2").value;
     let classfy = document.getElementById("stock_class").value;
 
-    if (values.includes(query)) {
+    if (values.includes(query)||query==null) {
         alert("이미 있는 키워드 입니다.");
     } else {
         // code to add the value to the table goes here
@@ -644,7 +727,7 @@ $('#btn-country_class').click(function () {
     let query = document.getElementById("search3").value;
     let classfy = document.getElementById("country_class").value;
 
-    if (values.includes(query)) {
+    if (values.includes(query)||query==null) {
         alert("이미 있는 키워드 입니다.");
     } else {
         // code to add the value to the table goes here
@@ -661,6 +744,23 @@ $('#btn-country_class').click(function () {
     }
     document.getElementById("search3").value = "";
 });
+let selectedKeywords = {};
+
+// 키워드 삭제시
+
+$('.cb').click(function () {
+    // Get the classification and value of the row
+    let classValue = $(this).closest('tr').find('input[name="class"]').val();
+    let keywordValue = $(this).closest('tr').find('input[name="value"]').val();
+
+    if ($(this).prop('checked')) {
+        // Add the classification and value to the object
+        selectedKeywords[classValue] = keywordValue;
+    } else {
+        // Remove the classification and value from the object
+        delete selectedKeywords[classValue];
+    }
+});
 
 document.querySelector(".keyword-delete").addEventListener("click", function () {
     // code to handle delete button click goes here
@@ -675,32 +775,19 @@ document.querySelector(".keyword-delete").addEventListener("click", function () 
             count++;
         }
     }
-    let data = {};
-    $('#keyword-table tr').each(function () {
-        let classInput = $(this).find('input[name="class"]').val();
-        let valueInput = $(this).find('input[name="value"]').val();
-        data[classInput] = valueInput;
-    });
-    console.log(data)
-
-
     $.ajax({
-        type: "POST",
-        url: "/dashboard/delete",
+        url: '/dashboard/delete',
+        type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(data),
-        success: function (result) {
-            console.log('Success!');
-        },
-        error: function (error) {
-            alert(error)
-            console.log('Error:', error);
+        data: JSON.stringify(selectedKeywords),
+        success: function (response) {
+            alert(response + "삭제 성공")
+            // Do something with the response from the server
+        }, error: function (erorr) {
+            alert(erorr.responseText);
         }
-    })//end of ajax
-
-
+    });
     $("#my_modal").css("height", "-=" + count * 30 + "px");
-    location.reload();
 });
 
 

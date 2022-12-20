@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
+//TODO Word(ana)에 Img 추가하기
 public class CrawlingNowDAO {
 
     public void main() {
@@ -110,6 +110,7 @@ public class CrawlingNowDAO {
                                 .head_Now(dto.getHead_Now())
                                 .entire_Now(dto.getEntire_Now())
                                 .score(score)
+                                .img(dto.getImg())
                                 .build();
                         sql.insert("Word.Word(Analysis)Insert", Word);
                     } catch (Exception e) {

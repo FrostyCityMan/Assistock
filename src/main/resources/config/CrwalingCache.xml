@@ -7,11 +7,11 @@
         INSERT INTO "Crwaling(Now)"("Name(News)", "URL(Now)", "Date(Now)", "Head(Now)", "Largest1(Now)","Largest1(Now_number)",
                                     "Largest2(Now)","Largest2(Now_number)","Largest3(Now)","Largest3(Now_number)"
                                     ,"Largest4(Now)","Largest4(Now_number)","Largest5(Now)","Largest5(Now_number)","Entire(Now)"
-                                    ,"Entire(Now_number)","Class(News)")
+                                    ,"Entire(Now_number)","Class(News)","Img")
         VALUES (#{Name_News}, #{URL_Now}, #{Date_Now}, #{Head_Now},#{Largest1_Now},
                 #{Largest1_Now_number},#{Largest2_Now},#{Largest2_Now_number},#{Largest3_Now},#{Largest3_Now_number},
                 #{Largest4_Now},#{Largest4_Now_number},#{Largest5_Now},#{Largest5_Now_number},#{Entire_Now}
-        ,#{Entire_Now_number},#{Class_News})
+        ,#{Entire_Now_number},#{Class_News},#{Img})
     </insert>
 
 

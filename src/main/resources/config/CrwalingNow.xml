@@ -21,6 +21,7 @@
              , "Entire(Now)"
              , "Entire(Now_number)"
              , "Class(News)"
+             , "Img"
         FROM "Crwaling(Now)"
         order by "Date(Now)" desc
     </select>
@@ -28,10 +29,10 @@
     <insert id="Word(Analysis)Insert" parameterType="CrwalingNowDTO">
         Insert Into "Word(Analysis)"("Name(News)", "Name(Stock)", "Name(Country)", "Class(Item)", "URL(Now)",
                                      "Date(Now)", "Head(Now)",
-                                     "Entire(Now)", "Score")
+                                     "Entire(Now)", "Score", "Img")
         Values (#{Name_News}, #{Name_Stock}, #{Name_Country}, #{Class_Item}, #{URL_Now}, #{Date_Now}, #{Head_Now},
                 #{Entire_Now},
-                #{Score})
+                #{Score}, #{Img})
     </insert>
 
     <select id="Name(Stock)" resultType="CrwalingCacheDTO">
@@ -60,17 +61,19 @@
     <select id="Wordlist_eco" resultType="CrwalingNowDTO" parameterType="Date">
         Select "Date(Now)", "Entire(Now)", "Name(Stock)"
         From "Word(Analysis)"
-        WHERE Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) = #{Date} And "Name(Country)" =' '
+        WHERE Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) = #{Date}
+          And "Name(Country)" = ' '
     </select>
 
     <select id="Wordlist_world" resultType="CrwalingNowDTO" parameterType="Date">
         Select "Date(Now)", "Entire(Now)", "Name(Stock)"
         From "Word(Analysis)"
-        WHERE Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) = #{Date} And "Name(Stock)" =' '
+        WHERE Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) = #{Date}
+          And "Name(Stock)" = ' '
     </select>
 
     <select id="datelist" resultType="Date">
-        SELECT (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) ) as "Date(Now)"
+        SELECT (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) as "Date(Now)"
         FROM "Word(Analysis)"
         GROUP BY Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))
         order by "Date(Now)" desc
@@ -78,21 +81,21 @@
 
     <insert id="Word(dayAnalysis)Insert" parameterType="dh.assistock.wordcloud.WordCloudDTO">
         Insert Into "Word(dayAnalysis)"("Date", "Word(Analysis)", "Word(Count)", "Class(News)")
-        VALUES (TO_Date(#{date},'YYYY-MM-DD HH24:MI:SS'), #{Word_Analysis}, #{Word_Count},
+        VALUES (TO_Date(#{date}, 'YYYY-MM-DD HH24:MI:SS'), #{Word_Analysis}, #{Word_Count},
                 #{Class_News})
 
     </insert>
     <delete id="Word(dayAnalysis)Delete" parameterType="String">
-        DELETE from "Word(dayAnalysis)"
+        DELETE
+        from "Word(dayAnalysis)"
         WHERE "Word(Analysis)" = #{Word_Analysis}
     </delete>
     <update id="Word(dayAnalysis)Update" parameterType="dh.assistock.wordcloud.WordCloudDTO">
         update "Word(dayAnalysis)"
         set "Word(Count)" = #{Word_Count}
-        WHERE "Date" = #{date} And
-              "Word(Analysis)"=#{Word_Analysis} And
-              "Class(News)"=#{Class_News}
-
+        WHERE "Date" = #{date}
+          And "Word(Analysis)" = #{Word_Analysis}
+          And "Class(News)" = #{Class_News}
 
 
     </update>

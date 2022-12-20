@@ -25,7 +25,6 @@ public class CrwalingCacheDAO {
     }
 
 
-
     public void main() {
 
         Komoran komoran = new Komoran(DEFAULT_MODEL.FULL);
@@ -47,7 +46,7 @@ public class CrwalingCacheDAO {
                     Class_News = "세계";
                 }
 //                for (int A = 0; A < 22; A++) {
-                for (int A = 0; A < 30; A++) {
+                for (int A = 0; A < 2; A++) {
                     Date now = new Date();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                     Calendar cal = Calendar.getInstance();     //날짜 계산을 위해 Calendar 추상클래스 선언 getInstance()메소드 사용
@@ -56,7 +55,7 @@ public class CrwalingCacheDAO {
                     String datecal = sdf.format(cal.getTime());
 
                     outerLoop:
-                    for (int j = 1; j < 200; j++) {
+                    for (int j = 1; j < 5; j++) {
 
 
                         String url = urlSelect + datecal + "&page=" + j;
@@ -74,7 +73,11 @@ public class CrwalingCacheDAO {
 
                                 String articleUrl = aElement.attr("href");        // 기사링크
                                 Element imgElement = aElement.select("img").get(0);
+//                              TODO img 테이블생성
                                 String imgUrl = imgElement.attr("src");            // 사진링크
+
+
+                                System.out.println(imgUrl.substring(0,imgUrl.length()-6));
                                 String title = imgElement.attr("alt");            // 기사제목
                                 Document subDoc = Jsoup.connect(articleUrl).get();
 
@@ -110,7 +113,7 @@ public class CrwalingCacheDAO {
                                                     listKeySet.get(2), map.get(listKeySet.get(2))
                                                     , listKeySet.get(3), map.get(listKeySet.get(3)),
                                                     listKeySet.get(4), map.get(listKeySet.get(4)),
-                                                    listKeySet.toString(), listKeySet.toArray().length, Class_News));// end of sql insert
+                                                    listKeySet.toString(), listKeySet.toArray().length, Class_News, imgUrl.substring(0,imgUrl.length()-6)));// end of sql insert
 
                                 } catch (Exception e) {
 
@@ -129,7 +132,7 @@ public class CrwalingCacheDAO {
                 System.out.println(Class_News + "편 완료");
             }
         } catch (Exception e) {
-            System.out.println("크롤링 실패"+e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
+            System.out.println("크롤링 실패" + e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
         } // end try-catch
     }//end of main
 } //end of CrwalingDAO class

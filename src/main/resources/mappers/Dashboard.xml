@@ -37,8 +37,8 @@
         VALUES (#{ID}, #{Keywords}, #{Class1})
     </insert>
 
-    <select id="userKeywords" parameterType="string" resultType="dh.assistock.Dashboard.DashboardDTO">
-        Select "Keywords", "Class"
+    <select id="userKeywords" parameterType="string" resultType="dh.assistock.dashboard.DashboardDTO">
+        Select *
         from "CustumKeywords"
         where "ID" = #{ID}
     </select>
@@ -46,8 +46,28 @@
     <delete id="deleteKeywords" parameterType="dh.assistock.dashboard.DashboardDTO">
         delete
         from "CustumKeywords"
-        where "ID" = #{ID} AND "Keywords" = ${Keywords} AND "Class" = ${Class}
+        where "ID" = #{ID}
+          AND "Keywords" = #{Keywords}
+          AND "Class" = #{Class1}
     </delete>
+
+    <select id="keywordNews" resultType="Crwaling.Now.CrwalingNowDTO2" parameterType="Crwaling.Now.CrwalingNowDTO2">
+        Select "Name(News)", "Name(Stock)", "Class(Item)", "URL(Now)", "Head(Now)", "Score", "Name(Country)","Img"
+        From (Select "Name(News)", "Name(Stock)", "Class(Item)", "URL(Now)", "Head(Now)", "Score", "Name(Country)","Img"
+              from "Word(Analysis)"
+              WHERE (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) = TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
+                  and ("Name(Stock)" = #{Name_Stock}
+                 or "Class(Item)" = #{Class_Item}
+                 or "Name(Country)" = #{Name_Country})
+              order by ABS("Score") desc) A
+        where ROWNUM = 1
+    </select>
+
+    <select id="imgURL" resultType="string" parameterType="string">
+        Select "Img"
+        From "Crwaling(Now)"
+        where "URL(Now)" = #{URL_Now}
+    </select>
 </mapper>
 
 

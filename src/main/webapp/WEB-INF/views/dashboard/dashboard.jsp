@@ -1,6 +1,3 @@
-<%@ page import="org.apache.ibatis.javassist.compiler.ast.Keyword" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
@@ -13,7 +10,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
          pageEncoding="UTF-8" isELIgnored="false" %>
-<html>
+<html lang="ko">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -29,52 +26,9 @@
 </head>
 <body>
 <%--ID=null이면 login페이지로 이동--%>
-<c:if test="${empty sessionScope.ID}">
-    <script>
-        if (window.confirm("로그인이 되어있지 않습니다. 로그인을 먼저 해주세요.")) {
-            window.location.href = '/login';
-        }
-    </script>
-    <!-- code to execute if sessionScope.ID is null -->
-</c:if>
+<%@ include file="./jstlRepository.jsp" %>
 
-<sql:setDataSource
-        var="DS"
-        driver="oracle.jdbc.OracleDriver"
-        url="jdbc:oracle:thin:@localhost:1521/xe"
-        user="system"
-        password="1234"
-/>
-<sql:query var="rs" dataSource="${DS}">
-    SELECT (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) ) as "Date(Now)"
-    FROM "Word(Analysis)"
-    GROUP BY Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))
-    order by "Date(Now)" desc
-</sql:query>
 
-<sql:query dataSource="${DS}" var="result">
-    SELECT TO_CHAR(avg("Score"),'0.000') AS avg_score
-    FROM "Word(Analysis)"
-    WHERE (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) = TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
-</sql:query>
-
-<sql:query var="class_item" dataSource="${DS}">
-    SELECT "Class(Item)" AS Class_Item
-    FROM "Class(Item)"
-</sql:query>
-<sql:query var="CustumKeywords" dataSource="${DS}">
-    Select "Keywords","Class"
-    from "CustumKeywords"
-    where "ID" = ?
-    <sql:param value="${sessionScope.ID}"/>
-</sql:query>
-
-<c:set var="now" value="<%=new java.util.Date()%>">
-
-</c:set>
-<c:set var="today">
-    <fmt:formatDate value="${now}" pattern="yyyy-MM-dd(E)"/>
-</c:set>
 <%--Modal--%>
 <div id="my_modal">
     <div class="modal-header">
@@ -101,7 +55,6 @@
             <%--        TODO 키워드추가 ajax 만들기 나라 검색창도 만들기--%>
             <div class="modal-search">
                 <p>키워드 등록</p>
-
 
 
                 <label for="search">업종 검색</label><br>
@@ -164,18 +117,18 @@
                 </tr>
 
 
-                    <c:forEach var="row" items="${CustumKeywords.rows}">
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="cb">
-                            </td>
+                <c:forEach var="row" items="${CustumKeywords.rows}">
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="cb">
+                        </td>
                         <input type="hidden" name="class" value="${row['Class']}">
                         <input type="hidden" name="value" value="${row['Keywords']}">
                         <td><c:out value="${row['Class']}"/></td>
                         <td><c:out value="${row['Keywords']}"/></td>
-                        </tr>
+                    </tr>
 
-                    </c:forEach>
+                </c:forEach>
             </table>
         </div>
     </div>
@@ -189,11 +142,10 @@
         });
     </script>
 
-<%--    TODO 저장 버튼 클릭시 삭제도 반영.--%>
+    <%--    TODO 저장 버튼 클릭시 삭제도 반영.--%>
     <a class="button-search">저장</a>
 
 </div>
-
 
 <div class="app-container">
     <div class="app-header">
@@ -280,9 +232,15 @@
                 </svg>
             </a>
         </div>
-        <div class="projects-section">
+<%--        프로젝트 섹션--%>
+        <div class="projects-section" id="project-section">
             <div class="projects-section-header">
                 <p>오늘 수집 현황</p>
+                <%-- Assume that the response object is stored in a variable named "responseData" --%>
+                <c:forEach items="${response}" var="item">
+                    <%-- Access the url_Now property of the item object using the EL expression ${item.url_Now} --%>
+                    <c:out value="${item.url_Now}"/><br>
+                </c:forEach>
             </div>
             <div class="projects-section-line">
                 <div class="projects-status">
@@ -328,7 +286,7 @@
                     </button>
                 </div>
             </div>
-            <div class="project-boxes jsGridView">
+            <div class="project-boxes jsGridView" id="keywordNews">
                 <div class="project-box-wrapper" style="width: 100%">
                     <div class="project-box" style="background-color: #fee4cb;">
                         <div class="project-box-header">
@@ -423,180 +381,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-box-wrapper">
-                    <div class="project-box" style="background-color: #e9e7fd;">
-                        <div class="project-box-header">
-                            <span><c:out value="${today}"/></span>
-                            <div class="more-wrapper">
-                                <button class="project-btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="feather feather-more-vertical">
-                                        <circle cx="12" cy="12" r="1"/>
-                                        <circle cx="12" cy="5" r="1"/>
-                                        <circle cx="12" cy="19" r="1"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="project-box-content-header">
-                            <p class="box-content-header">Testing</p>
-                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
-                        </div>
-                        <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Score</p>
-                            <div class="box-progress-bar">
-                                <span class="box-progress" style="width: 50%; background-color: #4f3ff0"></span>
-                            </div>
-                            <p class="box-progress-percentage">50%</p>
-                        </div>
-                        <div class="project-box-footer">
-                            <div class="days-left" style="color: #4f3ff0;">
-                                2 Days Left
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-box-wrapper">
-                    <div class="project-box">
-                        <div class="project-box-header">
-                            <span><c:out value="${today}"/></span>
-                            <div class="more-wrapper">
-                                <button class="project-btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="feather feather-more-vertical">
-                                        <circle cx="12" cy="12" r="1"/>
-                                        <circle cx="12" cy="5" r="1"/>
-                                        <circle cx="12" cy="19" r="1"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="project-box-content-header">
-                            <p class="box-content-header">Svg Animations</p>
-                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
-                        </div>
-                        <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Score</p>
-                            <div class="box-progress-bar">
-                                <span class="box-progress" style="width: 80%; background-color: #096c86"></span>
-                            </div>
-                            <p class="box-progress-percentage">80%</p>
-                        </div>
-                        <div class="project-box-footer">
 
-                            <div class="days-left" style="color: #096c86;">
-                                2 Days Left
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-box-wrapper">
-                    <div class="project-box" style="background-color: #ffd3e2;">
-                        <div class="project-box-header">
-                            <span><c:out value="${today}"/></span>
-                            <div class="more-wrapper">
-                                <button class="project-btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="feather feather-more-vertical">
-                                        <circle cx="12" cy="12" r="1"/>
-                                        <circle cx="12" cy="5" r="1"/>
-                                        <circle cx="12" cy="19" r="1"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="project-box-content-header">
-                            <p class="box-content-header">UI Development</p>
-                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
-                        </div>
-                        <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Score</p>
-                            <div class="box-progress-bar">
-                                <span class="box-progress" style="width: 20%; background-color: #df3670"></span>
-                            </div>
-                            <p class="box-progress-percentage">20%</p>
-                        </div>
-                        <div class="project-box-footer">
 
-                            <div class="days-left" style="color: #df3670;">
-                                2 Days Left
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-box-wrapper">
-                    <div class="project-box" style="background-color: #c8f7dc;">
-                        <div class="project-box-header">
-                            <span><c:out value="${today}"/></span>
-                            <div class="more-wrapper">
-                                <button class="project-btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="feather feather-more-vertical">
-                                        <circle cx="12" cy="12" r="1"/>
-                                        <circle cx="12" cy="5" r="1"/>
-                                        <circle cx="12" cy="19" r="1"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="project-box-content-header">
-                            <p class="box-content-header">Data Analysis</p>
-                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
-                        </div>
-                        <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Score</p>
-                            <div class="box-progress-bar">
-                                <span class="box-progress" style="width: 60%; background-color: #34c471"></span>
-                            </div>
-                            <p class="box-progress-percentage">60%</p>
-                        </div>
-                        <div class="project-box-footer">
+                <%--                키워드 별 뉴스 --%>
 
-                            <div class="days-left" style="color: #34c471;">
-                                2 Days Left
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-box-wrapper">
-                    <div class="project-box" style="background-color: #d5deff;">
-                        <div class="project-box-header">
-                            <span><c:out value="${today}"/></span>
-                            <div class="more-wrapper">
-                                <button class="project-btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="feather feather-more-vertical">
-                                        <circle cx="12" cy="12" r="1"/>
-                                        <circle cx="12" cy="5" r="1"/>
-                                        <circle cx="12" cy="19" r="1"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="project-box-content-header">
-                            <p class="box-content-header">Web Designing</p>
-                            <p class="box-content-subheader">TO-DO : 여기다가 뉴스? 또는 테마? 넣기</p>
-                        </div>
-                        <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Score</p>
-                            <div class="box-progress-bar">
-                                <span class="box-progress" style="width: 40%; background-color: #4067f9"></span>
-                            </div>
-                            <p class="box-progress-percentage">40%</p>
-                        </div>
-                        <div class="project-box-footer">
-
-                            <div class="days-left" style="color: #4067f9;">
-                                2 Days Left
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
