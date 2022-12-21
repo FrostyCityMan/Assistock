@@ -27,15 +27,25 @@ $('.reginoti').hide();
 function loginInsert() {
     // Check the value of the "Remember me" checkbox
 
+    let remember = $('#remember').is(':checked');
+    if (remember) {
+        // Set a cookie to remember the user's login
+        let expires = new Date();
+        expires.setTime(expires.getTime() + (7 * 24 * 60 * 60 * 1000)); // 7 days
+        document.cookie = "c_id=" + $('#Id').val() + "; expires=" + expires.toUTCString() + "; path=/";
+    } else {
+        // Remove the cookie if the user unchecks the box
+        document.cookie = "c_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+    }
     let insertData = $('#Loginfrm').serialize();
-    console.log(insertData);
     $.ajax({
         type: "POST",
         url: "/login/proc",
         data: insertData,
         dataType: "text",
         success: function (result) {
-            if (result != null) {
+            if (result != "") {
+                // Login succeeded
                 $('.login form').hide();
                 $('.title p').hide();
                 $('.title a').hide();
@@ -46,10 +56,14 @@ function loginInsert() {
                 $('.login-name').text($('#Id').val());
 
                 $('.loginoti').fadeIn(300);
-            }// end of if
+            } else {
+                // Login failed
+                $('.error').text('아이디 또는 비밀번호가 올바르지 않습니다.');
+            }
         },
         error: function (error) {
-            $('.error').text('아이디 또는 비밀번호가 올바르지 않습니다."');
+            // There was an error in the AJAX request
+            console.error(error);
         }
     });
 }

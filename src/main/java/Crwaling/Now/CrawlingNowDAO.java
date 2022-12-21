@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.*;
-//TODO Word(ana)에 Img 추가하기
 public class CrawlingNowDAO {
 
     public void main() {

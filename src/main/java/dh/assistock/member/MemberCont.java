@@ -62,37 +62,45 @@ public class MemberCont {
         HttpSession session = request.getSession();
         String id = request.getParameter("Id");
         String pw = request.getParameter("PW");
-        boolean remember = request.getParameter("remember").equals("true");
+        String rememberParam = request.getParameter("remember");
+        boolean remember = rememberParam != null && rememberParam.equals("true");
+
+        System.out.println(remember);
 
         // Check the login credentials
         MemberDTO dto = new MemberDTO(id, pw);
         MemberDTO login = memberDAO.login(dto);
         if (login == null) {
+            // Login failed
             session.setAttribute("ID", null);
             session.setAttribute("PW", null);
             session.setAttribute("Class_Member", null);
             session.setAttribute("Name_Register", null);
-            return login.getID();
-//            loginFailed();
+            return null;
         } else {
+            // Login succeeded
             if (remember) {
                 // Create a cookie with the user's login information
                 Cookie cookie = new Cookie("c_id", id);
                 cookie.setMaxAge(604800); // Set the cookie's expiration time to 1 week
                 // Add the cookie to the response
                 response.addCookie(cookie);
+            } else {
+                // Remove the cookie if the user unchecks the box
+                Cookie cookie = new Cookie("c_id", "");
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
             }
 
+            // Set the session attributes with the user's information
             session.setAttribute("ID", login.getID());
             session.setAttribute("PW", login.getPW());
             session.setAttribute("Class_Member", login.getClass_Member());
             session.setAttribute("Name_Register", login.getName_Register());
             return login.getID();
         }
-
-
-
     }
+
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public String logout(HttpSession session) {

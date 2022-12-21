@@ -73,7 +73,6 @@ public class CrwalingCacheDAO {
 
                                 String articleUrl = aElement.attr("href");        // 기사링크
                                 Element imgElement = aElement.select("img").get(0);
-//                              TODO img 테이블생성
                                 String imgUrl = imgElement.attr("src");            // 사진링크
 
 
@@ -123,6 +122,11 @@ public class CrwalingCacheDAO {
                                     System.out.println(e.getClass().getName() + "형태소 예외가" + e.getMessage() + " 때문에 발생");
                                 }//end of 형태소 try-catch
                             } catch (Exception e) {
+
+                                if (e.getClass().getName() == "org.apache.ibatis.exceptions.PersistenceException") {
+                                    break outerLoop;
+                                }
+                                System.out.println(e.getClass().getName() + "형태소 예외가" + e.getMessage() + " 때문에 발생");
                             }//스포츠,경제 판별 try-catch
 
                         }

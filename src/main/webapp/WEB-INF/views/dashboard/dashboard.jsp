@@ -25,8 +25,14 @@
 
 </head>
 <body>
+
+
+
 <%--ID=null이면 login페이지로 이동--%>
 <%@ include file="./jstlRepository.jsp" %>
+
+
+
 
 
 <%--Modal--%>
@@ -231,7 +237,59 @@
             </a>
         </div>
         <%--        프로젝트 섹션--%>
+
+
+
         <div class="projects-section" id="project-section">
+
+            <div class="container-fluid timeline-container">
+                <div class="row">
+                    <div class="col-sm-1 d-none d-sm-block">
+                        <div class="row">
+                            <div class="col-12 prev-btn">
+                                <span class="fa fa-angle-left"><</span>
+                            </div>
+                        </div>
+                    </div>
+<%--    TODO 뉴스도 금일 뉴스만 아니라 선택한 날짜의 뉴스로 볼수 있게 하기! 크롤링다시하자.--%>
+                    <div class="col-12 col-sm-10">
+                        <div>
+                            <div class="row timeline-list">
+                                <c:forEach var="datelist" items="${rs.rows}">
+                                    <c:forEach items="${datelist}" var="map" varStatus="status">
+                                        <%--                                            실제 반복할 div--%>
+                                        <div class="col-3 col-sm-2 col-lg-1 timeline-item"
+                                             id="datenum+${map.value}">
+
+                                            <a href="javascript:void(0)" class="datebutton"
+                                               onclick="document.getElementById('datelist').value='<fmt:formatDate
+                                                       value='${map.value}' pattern='yyyy-MM-dd'/>'">
+
+                                                               <span class="d-block"><strong><fmt:formatDate value="${map.value}"
+                                                                                                             pattern="E"/></strong></span>
+                                                <span class="d-block"><fmt:formatDate value="${map.value}"
+                                                                                      pattern="MM-dd"/></span>
+                                            </a>
+                                        </div>
+                                        <%--                                            <li> <fmt:formatDate value="${map.value}" pattern="yyyy-MM-dd(E)"/></li>--%>
+
+                                    </c:forEach>
+                                </c:forEach>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 d-none d-sm-block">
+                        <div class="row">
+                            <div class="col-12 next-btn">
+                                <span class="fa fa-angle-right">></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="projects-section-header">
                 <p>오늘 수집 현황</p>
                 <%-- Assume that the response object is stored in a variable named "responseData" --%>
@@ -284,6 +342,8 @@
                     </button>
                 </div>
             </div>
+
+<%--            WordCloud--%>
             <div class="project-boxes jsGridView" id="keywordNews">
                 <div class="project-box-wrapper" style="width: 100%">
                     <div class="project-box" style="background-color: #fee4cb;">
@@ -301,6 +361,7 @@
                                 </button>
                             </div>
                         </div>
+
                         <div class="project-box-content-header" style="position: center">
                             <p class="box-content-header" style="font-size: 18px;">오늘의 키워드</p>
                             <div id="loader-wrapper">
@@ -315,55 +376,6 @@
 
                             <%--                time picker--%>
 
-                            <div class="container-fluid timeline-container">
-                                <div class="row">
-                                    <div class="col-sm-1 d-none d-sm-block">
-                                        <div class="row">
-                                            <div class="col-12 prev-btn">
-                                                <span class="fa fa-angle-left"><</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-sm-10">
-                                        <div>
-                                            <div class="row timeline-list">
-                                                <c:forEach var="datelist" items="${rs.rows}">
-                                                    <c:forEach items="${datelist}" var="map" varStatus="status">
-                                                        <%--                                            실제 반복할 div--%>
-                                                        <div class="col-3 col-sm-2 col-lg-1 timeline-item"
-                                                             id="datenum+${map.value}">
-
-                                                            <a href="javascript:void(0)" class="datebutton"
-                                                               onclick="document.getElementById('datelist').value=
-                                                                       '<fmt:formatDate value='${map.value}'
-                                                                                        pattern='yyyy-MM-dd'/>'">
-
-                                                                <span class="d-block"><strong><fmt:formatDate
-                                                                        value="${map.value}"
-                                                                        pattern="E"/></strong></span>
-                                                                <span class="d-block"><fmt:formatDate
-                                                                        value="${map.value}"
-                                                                        pattern="MM-dd"/></span>
-                                                            </a>
-                                                        </div>
-                                                        <%--                                            <li> <fmt:formatDate value="${map.value}" pattern="yyyy-MM-dd(E)"/></li>--%>
-
-                                                    </c:forEach>
-                                                </c:forEach>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-1 d-none d-sm-block">
-                                        <div class="row">
-                                            <div class="col-12 next-btn">
-                                                <span class="fa fa-angle-right">></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <form id="keywordFrm">
                                 <input type="hidden" id="datelist" name="datelist">
@@ -389,10 +401,10 @@
 </div>
 
 
-<script src="../js/dashboard.js"></script>
 <%-- 워드 클라우드--%>
 <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
 <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-tag-cloud.min.js"></script>
 
+<script src="../js/dashboard.js"></script>
 </body>
 </html>

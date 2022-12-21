@@ -124,7 +124,7 @@ $(document).ready(function keywordNews() {
 
                     document.getElementById("keywordNews").innerHTML += `
                 <div class="project-box-wrapper" >
-                     <div class="project-box" style="background-color: #e9e7fd;">
+                     <div class="project-box" style="background-color: #eee;">
                         <div class="project-box-header">
                             <span>${year + '-' + month + '-' + day}</span>
                             <div class="more-wrapper">
@@ -236,26 +236,23 @@ $(document).ready(function () {
 
     $(".prev-btn").click(function () {
         $(".timeline-list").animate({scrollLeft: "-=" + move});
+        console.log("left");
     });
 
     $(".next-btn").click(function () {
         $(".timeline-list").animate({scrollLeft: "+=" + move});
+
     });
 });
 
 
 $("body").on("click", "[id^=datenum]", function (event) {
-
-    console.log(this.id);
     var vId = this.id;
     let A = document.getElementById(vId);
     if (A.style.backgroundColor === 'rgb(226, 227, 229)') {
-        // console.log(A.style.backgroundColor);
         $(".timeline-item").css('backgroundColor', '#fff');
         document.getElementById('datelist').value = null;
-        // A.style.backgroundColor='#fff';
     } else {
-        // console.log(A.style.backgroundColor);
         $(".timeline-item").css('backgroundColor', '#fff');
         A.style.backgroundColor = '#e2e3e5';
     }

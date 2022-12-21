@@ -19,6 +19,7 @@
     <script src="../js/jquery.cookie.js"></script>
     <link rel="stylesheet" href="../css/loginForm.css">
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>당신의 투자를 위한
         의사결정 지원 플랫폼, 어시스톡</title>
     <!-- Favicon-->
@@ -156,7 +157,7 @@
     </div>
 </div>
 
-<script src="../js/loginForm.js"></script>
+<script src="../js/loginForm.js" charset="utf-8"></script>
 <%--네이버 로그인--%>
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 

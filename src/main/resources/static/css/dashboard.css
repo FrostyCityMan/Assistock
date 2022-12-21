@@ -1090,6 +1090,7 @@ Loaded styles
 
 /*time picker ---------------------------------*/
 .timeline-container {
+    box-sizing: inherit !important;
     /*
     Note 1: because overflow-x: auto; hides the active div down arrow, expand the list div height by the height of the arrow.
     Height 60px = arrow size=6px + scroller height=54px
@@ -1347,7 +1348,7 @@ a {
     font-weight: bold;
     cursor: pointer;
     margin-top: 1px;
-    position: absolute;
+    /*position: absolute;*/
     background: white;
     padding: 0 10px;
     overflow-y: auto; /* Enable vertical scrolling only */
