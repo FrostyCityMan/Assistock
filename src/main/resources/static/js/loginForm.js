@@ -25,6 +25,8 @@ $('.reginoti').hide();
 
 
 function loginInsert() {
+    // Check the value of the "Remember me" checkbox
+
     let insertData = $('#Loginfrm').serialize();
     console.log(insertData);
     $.ajax({
@@ -47,14 +49,15 @@ function loginInsert() {
             }// end of if
         },
         error: function (error) {
-            $('.error').text('아이디, 또는 비밀번호를 확인해주세요');
+            $('.error').text('아이디 또는 비밀번호가 올바르지 않습니다."');
         }
     });
 }
+
 document.onkeypress = runlogin;
 
-function runlogin(e){
-    if(e.keyCode == 13){
+function runlogin(e) {
+    if (e.keyCode == 13) {
         loginInsert();
     }
 }
@@ -123,6 +126,101 @@ function findInsert() {
 }
 
 
-// TODO 로그인, 회원가입 제약조건 만들기
+function validateForm() {
+    const form = document.querySelector('#registerMember');
+    // Get references to the form elements
+    const RegiId = form.querySelector('#Regi_Id');
+    const RegiPW = form.querySelector('#Regi_PW');
+    const RePW = form.querySelector('#RePW');
+    const NameMember = form.querySelector('#Name_Member');
+    const Email = form.querySelector('#Email');
+    const Tel = form.querySelector('#Tel');
+
+    // Get the values of the form elements
+    const id = RegiId.value;
+    const password = RegiPW.value;
+    const reEnteredPassword = RePW.value;
+    const name = NameMember.value;
+    const email = Email.value;
+    const phone = Tel.value;
+
+    // Validate the form values
+    if (id.trim().length === 0) {
+        // Display an error message if the ID is empty
+        RegiId.nextElementSibling.innerHTML = 'ID는 필수 입력사항입니다.';
+        return false;
+
+    } else if (password.trim().length === 0) {
+        // Display an error message if the password is empty
+        RegiPW.nextElementSibling.innerHTML = '비밀번호는 필수 입력사항입니다.';
+        return false;
+
+    } else if (password !== reEnteredPassword) {
+        // Display an error message if the passwords do not match
+        RePW.nextElementSibling.innerHTML = '비밀번호가 일치하지 않습니다.';
+        return false;
+
+    } else if (name.trim().length === 0) {
+        // Display an error message if the name is empty
+        NameMember.nextElementSibling.innerHTML = '이름은 필수 입력사항입니다.';
+        return false;
+
+    } else if (email.trim().length === 0) {
+        // Display an error message if the email is empty
+        Email.nextElementSibling.innerHTML = '이메일은 필수 입력사항입니다.';
+        return false;
+
+    }
+
+    if (id.value.length < 8 || id.value.length > 12) {
+        alert("아이디는 8자 이상 12자 이하여야 합니다.");
+        return false;
+    }
 
 
+    // Check that the email field contains a valid email address
+    // (replace this with your own email validation code)
+    if (!isValidEmail(email.value)) {
+        alert("유효한 이메일 주소가 아닙니다.");
+        return false;
+    }
+
+
+    // If all checks pass, return true to submit the form
+    return true;
+
+}
+
+
+function isValidEmail(email) {
+    var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return re.test(email);
+}
+
+// Display an error message if the
+
+
+// Get the phone number field
+var phone = document.getElementById("Tel");
+
+// Add an event listener for the "input" event
+phone.addEventListener("input", function(event) {
+    // Get the current value of the phone field
+    var value = this.value;
+
+    // Remove all non-numeric characters
+    value = value.replace(/\D/g, "");
+
+    // Split the value into an array of characters
+    var chars = value.split("");
+
+    // Insert a dash after the third and seventh characters
+    chars.splice(3, 0, "-");
+    chars.splice(8, 0, "-");
+
+    // Join the array of characters back into a string
+    value = chars.join("");
+
+    // Update the value of the phone field
+    this.value = value;
+});

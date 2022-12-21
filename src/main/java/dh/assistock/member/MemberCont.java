@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -57,12 +58,14 @@ public class MemberCont {
 
     @RequestMapping(value = "/proc", method = RequestMethod.POST)
     @ResponseBody
-    public String loginProc(HttpServletRequest request) throws Exception {
+    public String loginProc(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
-        MemberDTO dto = new MemberDTO(
-                request.getParameter("Id").trim(),
-                request.getParameter("PW").trim()
-        );
+        String id = request.getParameter("Id");
+        String pw = request.getParameter("PW");
+        boolean remember = request.getParameter("remember").equals("true");
+
+        // Check the login credentials
+        MemberDTO dto = new MemberDTO(id, pw);
         MemberDTO login = memberDAO.login(dto);
         if (login == null) {
             session.setAttribute("ID", null);
@@ -72,12 +75,22 @@ public class MemberCont {
             return login.getID();
 //            loginFailed();
         } else {
+            if (remember) {
+                // Create a cookie with the user's login information
+                Cookie cookie = new Cookie("c_id", id);
+                cookie.setMaxAge(604800); // Set the cookie's expiration time to 1 week
+                // Add the cookie to the response
+                response.addCookie(cookie);
+            }
+
             session.setAttribute("ID", login.getID());
             session.setAttribute("PW", login.getPW());
             session.setAttribute("Class_Member", login.getClass_Member());
             session.setAttribute("Name_Register", login.getName_Register());
             return login.getID();
         }
+
+
 
     }
 

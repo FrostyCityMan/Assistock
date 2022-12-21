@@ -601,6 +601,14 @@ a {
     line-height: 16px;
 }
 
+.newsImg {
+    border-radius: 30px;
+    width: 320px;
+    height: 180px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
 .project-box-content-header {
     text-align: center;
     margin-bottom: 16px;
@@ -619,7 +627,6 @@ a {
     padding: 0;
     height: 14px;
     width: 24px;
-    height: 24px;
     position: relative;
     background-color: transparent;
     border: none;
@@ -655,7 +662,9 @@ a {
     font-size: 14px;
     line-height: 24px;
     opacity: 0.7;
-    word-break:break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .box-progress {
@@ -1331,31 +1340,9 @@ a {
     min-width: 101px;
 }
 
-/*.keyword-class{*/
-/*    position: relative;*/
-/*    width: 20%;*/
-/*}*/
-/*.keyword-name{*/
-/*    position: relative;*/
-/*}*/
 
 
-.suggestions {
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 1px;
-    position: absolute;
-    background: white;
-    padding: 0 10px;
-    overflow-y: auto; /* Enable vertical scrolling only */
-    max-height: 200px;
-    z-index: 999;
-    width: 100%;
-    max-width: 480px;
-}
-
-.suggestions2 {
+.suggestions, .suggestions2, .suggestions3 {
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;

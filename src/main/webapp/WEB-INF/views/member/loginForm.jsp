@@ -73,13 +73,9 @@
                 <input type="text" name="Id" id="Id" placeholder="아이디를 입력해주세요">
                 <input type="password" name="PW" id="PW" placeholder="비밀번호를 입력해주세요">
                 <span class="error"></span>
-                <input type="checkbox" id="remember">
+                <input type="checkbox" id="remember" name="remember">
                 <label for="remember">로그인 유지하기</label>
-                <%--                <a href="javascript:void(0)" class="btn-signin">로그인</a>--%>
-                <%--                                <button class="btn-signin" onclick="loginInsert()">로그인</button>--%>
                 <input type="button" value="로그인" id="btn-login" onkeydown="runlogin(e)" onclick="loginInsert()">
-                <%--                <a href="javascript:void(0)" class="btn-signin" onclick="loginInsert()"--%>
-                <%--                   tabindex="0">로그인</a>--%>
                 <a href="javascript:void(0)" class="btn-reset btn-fade">아이디 및 비밀번호 찾기 <i
                         class="fa fa-long-arrow-right"
                         aria-hidden="true"></i></a>
@@ -109,7 +105,7 @@
 
             <div class="or"><span>OR</span></div>
 
-            <form name="registerMember" id="registerMember" METHOD="post" onclick="">
+            <form name="registerMember" id="registerMember" METHOD="post" onsubmit="return validateForm()">
                 <span class="error"></span>
                 <input type="hidden" name="Name_Register" value="어시스톡">
                 <input type="hidden" name="Class_Member" value="회원">

@@ -218,8 +218,9 @@
                 <h3>TO-DO : 주가 분석 사용방법 넣고 구독페이지 연결하기</h3>
             </section>
             <section class="et-slide" id="tab-react">
-                <h1>원자재 분석</h1>
+                <h1>국가 분석</h1>
                 <h3>국제 이슈를 분석하여 원자재 가격 등락을 예측해드려요.</h3>
+<%--                TODO 절대값 최고점 두개 넣기--%>
                 <h3>TO-DO : 원자재 사용방법 넣고 구독페이지 연결하기</h3>
             </section>
             <section class="et-slide" id="tab-angular">

@@ -72,5 +72,12 @@ import org.springframework.web.servlet.ModelAndView;
             System.out.println(mav.toString());
             return mav;
         }
+    @RequestMapping("/userNews")
+    public ModelAndView mail() {
+        ModelAndView mav=new ModelAndView();
+        mav.setViewName("mailContent");
+        System.out.println(mav.toString());
+        return mav;
 
+    }//end of home
 } //end of dh.assistock.HomeController class

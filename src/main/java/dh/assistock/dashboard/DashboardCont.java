@@ -3,14 +3,20 @@ package dh.assistock.dashboard;
 import Crwaling.Now.CrwalingNowDTO2;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -80,7 +86,7 @@ public class DashboardCont {
                     System.out.println(dto);
                     dashboardDAO.Keywords(dto);
                     System.out.println("key: " + key + ", value: " + value + " ID: " + ID);
-                }catch (Exception b){
+                } catch (Exception b) {
                     System.out.println(b.getClass().getName() + " 예외가" + b.getMessage() + " 때문에 발생");
 
                 }
@@ -123,11 +129,10 @@ public class DashboardCont {
     }
 
 
-
     @RequestMapping(value = "/keywordNews", method = RequestMethod.POST)
     @ResponseBody
     public List<CrwalingNowDTO2> keywordNews(HttpServletRequest request,
-                                            HttpServletResponse response){
+                                             HttpServletResponse response) {
         HttpSession session = request.getSession();
         String ID = session.getAttribute("ID").toString();
         List<CrwalingNowDTO2> list = new ArrayList<>();
@@ -157,5 +162,25 @@ public class DashboardCont {
         return list;
     }
 
+    @RequestMapping(value = "/Newstext", method = RequestMethod.POST)
+    @ResponseBody
+    public String Newstext(HttpServletRequest request,
+                           HttpServletResponse response)
+            throws ServletException, IOException {
+        String NewsText = null;
+        // Get the text sent through the AJAX request
+        String text = request.getParameter("text");
 
+
+        String url = text;
+
+        Document subDoc = Jsoup.connect(url).get();
+
+        Elements bElement = subDoc.getElementsByAttributeValue("class", "media_end_head_top");
+
+        Element contentElement = subDoc.getElementById("dic_area");
+        String content = contentElement != null ? contentElement.html() : null;
+
+        return content;
+    }
 } //end of DashboardCont class

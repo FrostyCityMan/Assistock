@@ -46,7 +46,7 @@ public class CrwalingCacheDAO {
                     Class_News = "세계";
                 }
 //                for (int A = 0; A < 22; A++) {
-                for (int A = 0; A < 2; A++) {
+                for (int A = 0; A < 1; A++) {
                     Date now = new Date();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                     Calendar cal = Calendar.getInstance();     //날짜 계산을 위해 Calendar 추상클래스 선언 getInstance()메소드 사용
@@ -55,7 +55,7 @@ public class CrwalingCacheDAO {
                     String datecal = sdf.format(cal.getTime());
 
                     outerLoop:
-                    for (int j = 1; j < 5; j++) {
+                    for (int j = 1; j < 200; j++) {
 
 
                         String url = urlSelect + datecal + "&page=" + j;

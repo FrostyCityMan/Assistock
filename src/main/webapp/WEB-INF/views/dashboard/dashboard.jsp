@@ -52,7 +52,6 @@
                 </li>
 
             </div>
-            <%--        TODO 키워드추가 ajax 만들기 나라 검색창도 만들기--%>
             <div class="modal-search">
                 <p>키워드 등록</p>
 
@@ -142,7 +141,6 @@
         });
     </script>
 
-    <%--    TODO 저장 버튼 클릭시 삭제도 반영.--%>
     <a class="button-search">저장</a>
 
 </div>
@@ -232,7 +230,7 @@
                 </svg>
             </a>
         </div>
-<%--        프로젝트 섹션--%>
+        <%--        프로젝트 섹션--%>
         <div class="projects-section" id="project-section">
             <div class="projects-section-header">
                 <p>오늘 수집 현황</p>
@@ -262,18 +260,18 @@
                     </div>
                 </div>
                 <div class="view-actions">
-                    <button class="view-btn list-view" title="List View">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-list">
-                            <line x1="8" y1="6" x2="21" y2="6"/>
-                            <line x1="8" y1="12" x2="21" y2="12"/>
-                            <line x1="8" y1="18" x2="21" y2="18"/>
-                            <line x1="3" y1="6" x2="3.01" y2="6"/>
-                            <line x1="3" y1="12" x2="3.01" y2="12"/>
-                            <line x1="3" y1="18" x2="3.01" y2="18"/>
-                        </svg>
-                    </button>
+                    <%--                    <button class="view-btn list-view" title="List View">--%>
+                    <%--                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"--%>
+                    <%--                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"--%>
+                    <%--                             class="feather feather-list">--%>
+                    <%--                            <line x1="8" y1="6" x2="21" y2="6"/>--%>
+                    <%--                            <line x1="8" y1="12" x2="21" y2="12"/>--%>
+                    <%--                            <line x1="8" y1="18" x2="21" y2="18"/>--%>
+                    <%--                            <line x1="3" y1="6" x2="3.01" y2="6"/>--%>
+                    <%--                            <line x1="3" y1="12" x2="3.01" y2="12"/>--%>
+                    <%--                            <line x1="3" y1="18" x2="3.01" y2="18"/>--%>
+                    <%--                        </svg>--%>
+                    <%--                    </button>--%>
                     <button class="view-btn grid-view active" title="Grid View">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -304,7 +302,7 @@
                             </div>
                         </div>
                         <div class="project-box-content-header" style="position: center">
-                            <p class="box-content-header">오늘의 키워드</p>
+                            <p class="box-content-header" style="font-size: 18px;">오늘의 키워드</p>
                             <div id="loader-wrapper">
                                 <div id="loader"></div>
 

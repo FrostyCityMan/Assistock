@@ -10,13 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var gridView = document.querySelector('.grid-view');
     var projectsList = document.querySelector('.project-boxes');
 
-    listView.addEventListener('click', function () {
-        gridView.classList.remove('active');
-        listView.classList.add('active');
-        projectsList.classList.remove('jsGridView');
-        projectsList.classList.add('jsListView');
-    });
-
     gridView.addEventListener('click', function () {
         gridView.classList.add('active');
         listView.classList.remove('active');
@@ -149,8 +142,9 @@ $(document).ready(function keywordNews() {
                         <div class="project-box-content-header">
                             <p class="box-content-header" style="font-size:18px">${dto2.name_Country}${dto2.name_Stock}</p>
                             <p class="box-content-subheader">${dto2.class_Item}</p>
-                            <a href="${dto2.url_Now}">
-                            <img src="${dto2.img}" style="width: 320px; border-radius: 30px;"/>
+                            <a href="/userNews">
+                            <img class="newsImg" src="${dto2.img}"/>
+                            <br>
                             <p class="box-content-subheader">${dto2.head_Now}</p>
                             </a>
 <!--                            <a class="box-content-subheader" >${dto2.url_Now}</a>-->
@@ -210,6 +204,7 @@ $('.button-search').click(function save() {
         data: JSON.stringify(data),
         success: function (result) {
             alert("키워드 저장에 성공하였습니다.")
+            location.reload(true);
         },
         error: function (error) {
             alert(error)
@@ -676,16 +671,17 @@ search3.addEventListener('keydown', function (event) {
     }
 });
 
-//TODO 키워드 추가에 빈값들어오면 alert창과 함께 faile
 // 모달 키워드 추가
 let values = [];
 
 $('#btn-item_class').click(function () {
     let query = document.getElementById("search").value;
     let classfy = document.getElementById("item_class").value;
-    if (values.includes(query)||query==null) {
+    if (values.includes(query)) {
         alert("이미 있는 키워드 입니다.");
-    } else {
+    } else if(query==null) {
+        alert("키워드를 선택해주세요.");
+    }else {
         // code to add the value to the table goes here
         values.push(query);
         document.getElementById("keyword-table").innerHTML += `
@@ -705,9 +701,11 @@ $('#btn-stock_class').click(function () {
     let query = document.getElementById("search2").value;
     let classfy = document.getElementById("stock_class").value;
 
-    if (values.includes(query)||query==null) {
+    if (values.includes(query)) {
         alert("이미 있는 키워드 입니다.");
-    } else {
+    } else if(query==null) {
+        alert("키워드를 선택해주세요.");
+    }else {
         // code to add the value to the table goes here
         values.push(query);
         document.getElementById("keyword-table").innerHTML += `
@@ -727,9 +725,11 @@ $('#btn-country_class').click(function () {
     let query = document.getElementById("search3").value;
     let classfy = document.getElementById("country_class").value;
 
-    if (values.includes(query)||query==null) {
+    if (values.includes(query)) {
         alert("이미 있는 키워드 입니다.");
-    } else {
+    } else if(query==null) {
+        alert("키워드를 선택해주세요.");
+    }else {
         // code to add the value to the table goes here
         values.push(query);
         document.getElementById("keyword-table").innerHTML += `
