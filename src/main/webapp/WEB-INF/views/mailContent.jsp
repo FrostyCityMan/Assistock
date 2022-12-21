@@ -25,7 +25,10 @@
     <title>당신의 투자를 위한
         의사결정 지원 플랫폼, 어시스톡</title>
     <link rel="icon" type="image/x-icon" href="../images/Favi4.png"/>
-    <link rel="stylesheet" href="../css/mailContent.css">
+
+
+
+    <link rel="stylesheet" href="../css/mailContetnt.css">
 
 </head>
 <body>
@@ -104,3 +107,5 @@
 <script src="../js/mailContent.js"></script>
 </body>
 </html>
+
+
