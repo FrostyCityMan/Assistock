@@ -1,12 +1,19 @@
+$(document).ready(function keywordate(){
+    let url = window.location.href;
+    let date = url.substring(url.length - 10);
+    console.log(date);
+    keywordNews(date);
+});
 
-
-$(document).ready(async function keywordNews() {
+async function keywordNews(date) {
     try {
         // Send HTTP POST request to /dashboard/keywordNews
         const response = await $.ajax({
             type: 'post',
             url: '/dashboard/keywordNews',
-            dataType: 'json'
+            data: date,
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
         });
 
         // Process response array
@@ -49,5 +56,5 @@ $(document).ready(async function keywordNews() {
     } catch (error) {
         console.error(error);
     }
-});
+};
 

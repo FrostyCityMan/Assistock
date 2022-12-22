@@ -14,15 +14,16 @@ public class DashboardDTO {
         Class1 = class1;
     }
 
-    private String ID;
 
     public DashboardDTO(String keywords, String class1) {
         Keywords = keywords;
         Class1 = class1;
     }
 
+
+
+    private String ID;
     private String Keywords;
     private String Class1;
-
 
 } //end of DashboardDTO class

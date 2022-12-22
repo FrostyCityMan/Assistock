@@ -212,16 +212,18 @@
                     찾기</a>
 
             </section>
-            <section class="et-slide" id="tab-flexbox">
+            <section class="et-slide" id="tab-flexbox" >
                 <h1>주가 분석</h1>
-                <h3>국내 뉴스를 분석하여 주가 등락을 예측해드려요.</h3>
-                <h3>TO-DO : 주가 분석 사용방법 넣고 구독페이지 연결하기</h3>
+                <h3>국내 뉴스를 분석하여 점수를 분석해드려요.</h3>
+                <div id="keywordMax">
+                </div>
+
             </section>
             <section class="et-slide" id="tab-react">
                 <h1>국가 분석</h1>
-                <h3>국제 이슈를 분석하여 원자재 가격 등락을 예측해드려요.</h3>
-<%--                TODO 절대값 최고점 두개 넣기--%>
-                <h3>TO-DO : 원자재 사용방법 넣고 구독페이지 연결하기</h3>
+                <h3>국제 이슈를 분석하여 점수를 분석해드려요.</h3>
+            <div id="keywordMax2">
+            </div>
             </section>
             <section class="et-slide" id="tab-angular">
                 <h1>대쉬보드</h1>
@@ -232,8 +234,7 @@
             <section class="et-slide" id="tab-other">
                 <h1>뉴스레터</h1>
                 <h3>장 시작전에 설정하신 키워드에 맞는 주식의 가격을 메일로 만나보세요.</h3>
-                <img src="../images/mailing.png" style="width:500px;">
-                <h3>TO-DO : 키워드 설정하는 모습 모여주기.</h3>
+                <img src="../images/mailing2.png" style="width:500px;">
             </section>
         </main>
 

@@ -32,6 +32,16 @@
 
 </head>
 <body>
+<%
+
+    request.setCharacterEncoding("utf-8");
+
+    String pagefile = request.getParameter("page");
+
+//리퀘스트로 위에 넘긴 Get방식의 파라미터명을 써서 내용을 받는다.
+
+%>
+
 <%--<img src="../images/logo.png"/>--%>
 <c:if test="${empty sessionScope.ID}">
     <script>
@@ -96,7 +106,7 @@
         <%--        TODO 호스팅되면 링크 바꾸기--%>
         <div class="issue"><a href="/">www.assistock.com</a></div>
         <div class="edition"><c:out value="${sessionScope.ID}"/>'s News</div>
-        <div class="date"><c:out value="${today}"/></div>
+        <div class="date"><%out.print(pagefile);%></div>
     </div>
 </div>
 <div class="content">

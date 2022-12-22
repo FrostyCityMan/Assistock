@@ -8,10 +8,11 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CrwalingNowDTO2 {
-    public CrwalingNowDTO2(String name_Stock, String class_Item, String name_Country) {
+    public CrwalingNowDTO2(String name_Stock, String class_Item, String name_Country, String date) {
         Name_Stock = name_Stock;
         Class_Item = class_Item;
         Name_Country = name_Country;
+        Date = date;
     }
 
     private String Name_News;
@@ -23,7 +24,7 @@ public class CrwalingNowDTO2 {
     private int Score;
 
     private String Img;
-
+    private String Date;
     public CrwalingNowDTO2(String name_News, String name_Stock, String class_Item, String URL_Now,  String head_Now, int score, String name_Country,String img) {
         Name_News = name_News;
         Name_Stock = name_Stock;

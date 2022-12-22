@@ -12,7 +12,7 @@ public class CrwalingNowDTO {
     @Builder
     public CrwalingNowDTO(String name_News, String name_Stock, String class_Item, String name_Country,
                           String URL_Now, String date_Now,
-                          String head_Now, String entire_Now, String word,
+                          String head_Now, String entire_Now,
                           int score, String img) {
         this.Name_News = name_News;
         this.Name_Stock = name_Stock;
@@ -22,7 +22,6 @@ public class CrwalingNowDTO {
         this.Date_Now = date_Now;
         this.Head_Now = head_Now;
         this.Entire_Now = entire_Now;
-        this.Word = word;
         this.Score = score;
         this.Img = img;
     }

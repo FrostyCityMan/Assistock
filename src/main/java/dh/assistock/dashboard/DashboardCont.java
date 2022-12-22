@@ -17,9 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @RequestMapping("/dashboard")
 @Controller
@@ -135,6 +133,15 @@ public class DashboardCont {
                                              HttpServletResponse response) {
         HttpSession session = request.getSession();
         String ID = session.getAttribute("ID").toString();
+        String date = request.getParameter("date");
+
+        Map<String, String[]> parameters = request.getParameterMap();
+        String parameterName = null;
+        for (Map.Entry<String, String[]> entry : parameters.entrySet()) {
+            parameterName = entry.getKey();
+            System.out.println("날짜: " + parameterName);
+        }
+
         List<CrwalingNowDTO2> list = new ArrayList<>();
         try {
             List<DashboardDTO> dashboardDTO = dashboardDAO.userKeywords(ID);
@@ -144,11 +151,11 @@ public class DashboardCont {
                     String Class = dashboardDTO.get(i).getClass1();
                     CrwalingNowDTO2 dto2 = null;
                     if (Class.equals("업종")) {
-                        dto2 = new CrwalingNowDTO2("", keywords, "");
+                        dto2 = new CrwalingNowDTO2("", keywords, "",parameterName);
                     } else if (Class.equals("종목")) {
-                        dto2 = new CrwalingNowDTO2(keywords, "", "");
+                        dto2 = new CrwalingNowDTO2(keywords, "", "",parameterName);
                     } else if (Class.equals("국가")) {
-                        dto2 = new CrwalingNowDTO2("", "", keywords);
+                        dto2 = new CrwalingNowDTO2("", "", keywords,parameterName);
                     }
                     // Add the elements of the list returned by dashboardDAO.keywordNews to the list object
 //                    System.out.println(dashboardDAO.keywordNews(dto2).get(1).getURL_Now());
@@ -182,5 +189,22 @@ public class DashboardCont {
         String content = contentElement != null ? contentElement.html() : null;
 
         return content;
+    }
+
+    @RequestMapping(value = "/maxNews", method = RequestMethod.POST)
+    @ResponseBody
+    public List<CrwalingNowDTO2> maxNews(HttpServletRequest request,
+                                             HttpServletResponse response) {
+
+        List<CrwalingNowDTO2> list = dashboardDAO.maxNews();
+        return list;
+    }
+    @RequestMapping(value = "/maxNews2", method = RequestMethod.POST)
+    @ResponseBody
+    public List<CrwalingNowDTO2> maxNews2(HttpServletRequest request,
+                                         HttpServletResponse response) {
+
+        List<CrwalingNowDTO2> list = dashboardDAO.maxNews2();
+        return list;
     }
 } //end of DashboardCont class

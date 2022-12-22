@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 public class CrawlingNowDAO {
 
     public void main() {
@@ -39,26 +40,26 @@ public class CrawlingNowDAO {
                 CrwalingNowDTO dto = list_Word.get(a);
                 map_word.put(dto.getWord(), dto.getScore());
             }
+                System.out.println("주식 목록 불러오는중 --------------");
             for (int b = 0; b < list_Stock.size(); b++) {
                 CrwalingCacheDTO dto = list_Stock.get(b);
                 map_Stock.put(dto.getName_Stock(), dto.getClass_Item());
             }
+                System.out.println("국가 목록 불러오는중---------------");
             for (int c = 0; c < list_Material.size(); c++) {
                 CrwalingNowDTO dto = list_Material.get(c);
                 map_Material.put(dto.getName_Country(), dto.getClass_Item());
             }
             outerloop:
             for (int i = 0; i < list.size(); i++) {
-                System.out.println(list.size()+"작업개수");
                 CrwalingCacheDTO dto = list.get(i);
                 KomoranResult analyzeResultList = komoran.analyze(dto.getEntire_Now());
                 List<String> nounList = analyzeResultList.getNouns(); //전체분석
 
-
                 // 뉴스 점수 매기기
                 int score = 0;
                 try {
-                    for (int c = 0; c < list_Word.size(); c++) {
+                    for (int c = 0; c < nounList.size(); c++) {
                         if (map_word.get(nounList.get(c)) == null) {
                             score = score + 0;
                         } else {
@@ -66,7 +67,8 @@ public class CrawlingNowDAO {
                         }
                     }//end of scoring for
                 } catch (Exception e) {
-                    System.out.println(e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
+                    System.out.println("뉴스 점수 매기기 실패"+e);
+
                 }// end of Scoring try-catch
                 String stock = " ";
                 String item = " ";
@@ -75,29 +77,26 @@ public class CrawlingNowDAO {
 //               단어 걸러내기
                 try {
                     for (int c = 0; c < nounList.size(); c++) {
-                        if (nounList.contains("월드컵") || nounList.contains("축구")
-                                || nounList.contains("카타르")) {
-                            break;
-                        }
                         if (Objects.equals(dto.getClass_News(), "경제")
                                 && map_Stock.get(nounList.get(c)) != null
                                 && !Objects.equals(nounList.get(c), "대상")) {
                             stock = nounList.get(c);
                             item = map_Stock.get(nounList.get(c));
                             System.out.println(stock + "========================경제====================");
-                            System.out.println(item + "=========================경제===================");
                             break;
                         }
                         if (Objects.equals(dto.getClass_News(), "세계")
                                 && map_Material.get(nounList.get(c)) != null) {
                             Country = nounList.get(c);
                             item = map_Material.get(nounList.get(c));
-                            System.out.println(stock + "========================세계====================");
-                            System.out.println(item + "=========================세계===================");
+                            System.out.println(Country + "========================세계====================");
                             break;
                         }
+
                     }//end of stock search for
+
                     try {
+
                         // 뉴스점수 기록
                         CrwalingNowDTO Word = CrwalingNowDTO.builder()
                                 .name_News(dto.getName_News())
@@ -111,9 +110,10 @@ public class CrawlingNowDAO {
                                 .score(score)
                                 .img(dto.getImg())
                                 .build();
+                        System.out.println(Word);
                         sql.insert("Word.Word(Analysis)Insert", Word);
                     } catch (Exception e) {
-                        System.out.println("INSERT 실패"+e.getClass().getName() + " 예외가"+ e.getMessage());
+                        System.out.println("INSERT 실패" + e.getClass().getName() + " 예외가" + e.getMessage());
                         if (e.getClass().getName() == "org.apache.ibatis.exceptions.PersistenceException") {
                             break outerloop;
                         }
@@ -225,7 +225,7 @@ public class CrawlingNowDAO {
             }//end of 단어개수세기----------------
         } catch (Exception e) {
             System.out.println(e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
-            if(e.getClass().getName() == "org.apache.ibatis.exceptions.PersistenceException") {
+            if (e.getClass().getName() == "org.apache.ibatis.exceptions.PersistenceException") {
                 String resource = "config/CrwalingNowConfig.xml";
                 InputStream is = null;
                 try {
@@ -268,8 +268,8 @@ public class CrawlingNowDAO {
                     Collections.sort(listKeySet, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
                     for (int d = 0; d < 80; d++) {
                         sql.update("Word.Word(dayAnalysis)Update",
-                                new WordCloudDTO(strNowDate,listKeySet.get(d),
-                                        map.get(listKeySet.get(d)),class_News));
+                                new WordCloudDTO(strNowDate, listKeySet.get(d),
+                                        map.get(listKeySet.get(d)), class_News));
 
                     }
 
@@ -297,8 +297,8 @@ public class CrawlingNowDAO {
                     Collections.sort(listKeySet, (value1, value2) -> (map2.get(value2).compareTo(map2.get(value1))));
                     for (int d = 0; d < 80; d++) {
                         sql.update("Word.Word(dayAnalysis)Update",
-                                new WordCloudDTO(strNowDate,listKeySet.get(d),
-                                        map2.get(listKeySet.get(d)),class_News));
+                                new WordCloudDTO(strNowDate, listKeySet.get(d),
+                                        map2.get(listKeySet.get(d)), class_News));
 
                     }
                     //----------------------------end of 세계

@@ -51,7 +51,7 @@ public class CrwalingCacheDAO {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                     Calendar cal = Calendar.getInstance();     //날짜 계산을 위해 Calendar 추상클래스 선언 getInstance()메소드 사용
                     cal.setTime(now);
-                    cal.add(Calendar.DATE, -A);    //6개월 더하기
+                    cal.add(Calendar.DATE, -A);
                     String datecal = sdf.format(cal.getTime());
 
                     outerLoop:

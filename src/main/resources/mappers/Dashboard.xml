@@ -52,16 +52,180 @@
     </delete>
 
     <select id="keywordNews" resultType="Crwaling.Now.CrwalingNowDTO2" parameterType="Crwaling.Now.CrwalingNowDTO2">
-        Select "Name(News)", "Name(Stock)", "Class(Item)", "URL(Now)", "Head(Now)", "Score", "Name(Country)","Img"
-        From (Select "Name(News)", "Name(Stock)", "Class(Item)", "URL(Now)", "Head(Now)", "Score", "Name(Country)","Img"
+        Select "Name(News)",
+               "Name(Stock)",
+               "Class(Item)",
+               "URL(Now)",
+               "Head(Now)",
+               "Score",
+               "Name(Country)",
+               "Img"
+        From (Select "Name(News)",
+                     "Name(Stock)",
+                     "Class(Item)",
+                     "URL(Now)",
+                     "Head(Now)",
+                     "Score",
+                     "Name(Country)",
+                     "Img"
               from "Word(Analysis)"
-              WHERE (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) = TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
-                  and ("Name(Stock)" = #{Name_Stock}
-                 or "Class(Item)" = #{Class_Item}
-                 or "Name(Country)" = #{Name_Country})
+              WHERE (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) = #{Date}
+                and ("Name(Stock)" = #{Name_Stock}
+                  or "Class(Item)" = #{Class_Item}
+                  or "Name(Country)" = #{Name_Country})
               order by ABS("Score") desc) A
         where ROWNUM = 1
     </select>
+
+
+    <select id="maxNews" resultType="Crwaling.Now.CrwalingNowDTO2">
+        SELECT "Name(News)",
+               "Name(Stock)",
+               "Class(Item)",
+               "URL(Now)",
+               "Head(Now)",
+               "Score",
+               "Name(Country)",
+               "Img"
+        FROM (SELECT "Name(News)",
+                     "Name(Stock)",
+                     "Class(Item)",
+                     "URL(Now)",
+                     "Head(Now)",
+                     "Score",
+                     "Name(Country)",
+                     "Img"
+              FROM (SELECT "Name(News)",
+                           "Name(Stock)",
+                           "Class(Item)",
+                           "URL(Now)",
+                           "Head(Now)",
+                           "Score",
+                           "Name(Country)",
+                           "Img"
+                    FROM "Word(Analysis)"
+                    WHERE "Score" = (SELECT MAX("Score")
+                                     FROM "Word(Analysis)"
+                                     WHERE Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) =
+                                           TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
+                                       AND "Name(Stock)" != ' '
+                                       And "Name(Country)" = ' ')
+                      AND "Name(Stock)" != ' '
+                      And "Name(Country)" = ' '
+                    ORDER BY "Date(Now)" DESC)
+              WHERE ROWNUM = 1)
+        UNION ALL
+        SELECT "Name(News)",
+               "Name(Stock)",
+               "Class(Item)",
+               "URL(Now)",
+               "Head(Now)",
+               "Score",
+               "Name(Country)",
+               "Img"
+        FROM (SELECT "Name(News)",
+                     "Name(Stock)",
+                     "Class(Item)",
+                     "URL(Now)",
+                     "Head(Now)",
+                     "Score",
+                     "Name(Country)",
+                     "Img"
+              FROM (SELECT "Name(News)",
+                           "Name(Stock)",
+                           "Class(Item)",
+                           "URL(Now)",
+                           "Head(Now)",
+                           "Score",
+                           "Name(Country)",
+                           "Img"
+                    FROM "Word(Analysis)"
+                    WHERE "Score" = (SELECT MIN("Score")
+                                     FROM "Word(Analysis)"
+                                     WHERE Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) =
+                                           TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
+                                       AND "Name(Stock)" != ' '
+                                       And "Name(Country)" = ' ')
+                      AND "Name(Stock)" != ' '
+                      And "Name(Country)" = ' '
+                    ORDER BY "Date(Now)" DESC)
+              WHERE ROWNUM = 1)
+    </select>
+
+    <select id="maxNews2" resultType="Crwaling.Now.CrwalingNowDTO2">
+        SELECT "Name(News)",
+               "Name(Stock)",
+               "Class(Item)",
+               "URL(Now)",
+               "Head(Now)",
+               "Score",
+               "Name(Country)",
+               "Img"
+        FROM (SELECT "Name(News)",
+                     "Name(Stock)",
+                     "Class(Item)",
+                     "URL(Now)",
+                     "Head(Now)",
+                     "Score",
+                     "Name(Country)",
+                     "Img"
+              FROM (SELECT "Name(News)",
+                           "Name(Stock)",
+                           "Class(Item)",
+                           "URL(Now)",
+                           "Head(Now)",
+                           "Score",
+                           "Name(Country)",
+                           "Img"
+                    FROM "Word(Analysis)"
+                    WHERE "Score" = (SELECT MAX("Score")
+                                     FROM "Word(Analysis)"
+                                     WHERE Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) =
+                                           TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
+                                       AND "Name(Stock)" = ' '
+                                       And "Name(Country)" != ' ')
+                      AND "Name(Stock)" = ' '
+                      And "Name(Country)" != ' '
+                    ORDER BY "Date(Now)" DESC)
+              WHERE ROWNUM = 1)
+        UNION ALL
+        SELECT "Name(News)",
+               "Name(Stock)",
+               "Class(Item)",
+               "URL(Now)",
+               "Head(Now)",
+               "Score",
+               "Name(Country)",
+               "Img"
+        FROM (SELECT "Name(News)",
+                     "Name(Stock)",
+                     "Class(Item)",
+                     "URL(Now)",
+                     "Head(Now)",
+                     "Score",
+                     "Name(Country)",
+                     "Img"
+              FROM (SELECT "Name(News)",
+                           "Name(Stock)",
+                           "Class(Item)",
+                           "URL(Now)",
+                           "Head(Now)",
+                           "Score",
+                           "Name(Country)",
+                           "Img"
+                    FROM "Word(Analysis)"
+                    WHERE "Score" = (SELECT MIN("Score")
+                                     FROM "Word(Analysis)"
+                                     WHERE Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS')) =
+                                           TO_CHAR(CURRENT_DATE, 'yyyy-MM-dd')
+                                       AND "Name(Stock)" = ' '
+                                       And "Name(Country)" != ' ')
+                      AND "Name(Stock)" = ' '
+                      And "Name(Country)" != ' '
+                    ORDER BY "Date(Now)" DESC)
+              WHERE ROWNUM = 1)
+    </select>
+
 
     <select id="imgURL" resultType="string" parameterType="string">
         Select "Img"

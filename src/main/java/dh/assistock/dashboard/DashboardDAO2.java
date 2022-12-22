@@ -50,6 +50,14 @@ public class DashboardDAO2 {
     public List<CrwalingNowDTO2> keywordNews(CrwalingNowDTO2 dto2){
         return sqlSession.selectList("Dashboard.keywordNews", dto2);
     }
+
+    public List<CrwalingNowDTO2> maxNews(){
+        return sqlSession.selectList("Dashboard.maxNews");
+    }
+
+    public List<CrwalingNowDTO2> maxNews2(){
+        return sqlSession.selectList("Dashboard.maxNews2");
+    }
     
     public String imgUrl(String URL_Now){
         return sqlSession.selectOne("Dashboard.imgURL",URL_Now);

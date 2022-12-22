@@ -27,12 +27,8 @@
 <body>
 
 
-
 <%--ID=null이면 login페이지로 이동--%>
 <%@ include file="./jstlRepository.jsp" %>
-
-
-
 
 
 <%--Modal--%>
@@ -239,55 +235,7 @@
         <%--        프로젝트 섹션--%>
 
 
-
         <div class="projects-section" id="project-section">
-
-            <div class="container-fluid timeline-container">
-                <div class="row">
-                    <div class="col-sm-1 d-none d-sm-block">
-                        <div class="row">
-                            <div class="col-12 prev-btn">
-                                <span class="fa fa-angle-left"><</span>
-                            </div>
-                        </div>
-                    </div>
-<%--    TODO 뉴스도 금일 뉴스만 아니라 선택한 날짜의 뉴스로 볼수 있게 하기! 크롤링다시하자.--%>
-                    <div class="col-12 col-sm-10">
-                        <div>
-                            <div class="row timeline-list">
-                                <c:forEach var="datelist" items="${rs.rows}">
-                                    <c:forEach items="${datelist}" var="map" varStatus="status">
-                                        <%--                                            실제 반복할 div--%>
-                                        <div class="col-3 col-sm-2 col-lg-1 timeline-item"
-                                             id="datenum+${map.value}">
-
-                                            <a href="javascript:void(0)" class="datebutton"
-                                               onclick="document.getElementById('datelist').value='<fmt:formatDate
-                                                       value='${map.value}' pattern='yyyy-MM-dd'/>'">
-
-                                                               <span class="d-block"><strong><fmt:formatDate value="${map.value}"
-                                                                                                             pattern="E"/></strong></span>
-                                                <span class="d-block"><fmt:formatDate value="${map.value}"
-                                                                                      pattern="MM-dd"/></span>
-                                            </a>
-                                        </div>
-                                        <%--                                            <li> <fmt:formatDate value="${map.value}" pattern="yyyy-MM-dd(E)"/></li>--%>
-
-                                    </c:forEach>
-                                </c:forEach>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-1 d-none d-sm-block">
-                        <div class="row">
-                            <div class="col-12 next-btn">
-                                <span class="fa fa-angle-right">></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
             <div class="projects-section-header">
@@ -342,13 +290,61 @@
                     </button>
                 </div>
             </div>
+            <div class="container-fluid timeline-container">
+                <div class="row">
+                    <div class="col-sm-1 d-none d-sm-block">
+                        <div class="row">
+                            <div class="col-12 prev-btn">
+                                <span class="fa fa-angle-left"><</span>
+                            </div>
+                        </div>
+                    </div>
+                    <%--                time picker--%>
 
-<%--            WordCloud--%>
-            <div class="project-boxes jsGridView" id="keywordNews">
+                    <div class="col-12 col-sm-10">
+                        <div>
+                            <div class="row timeline-list">
+                                <c:forEach var="datelist" items="${rs.rows}">
+                                    <c:forEach items="${datelist}" var="map" varStatus="status">
+                                        <%--                                            실제 반복할 div--%>
+                                        <div class="col-3 col-sm-2 col-lg-1 timeline-item"
+                                             id="datenum+${map.value}">
+
+                                            <a href="javascript:void(0)" class="datebutton"
+                                               onclick="document.getElementById('datelist').value='<fmt:formatDate
+                                                       value='${map.value}' pattern='yyyy-MM-dd'/>'">
+
+                                                               <span class="d-block"><strong><fmt:formatDate
+                                                                       value="${map.value}"
+                                                                       pattern="E"/></strong></span>
+                                                <span class="d-block"><fmt:formatDate value="${map.value}"
+                                                                                      pattern="MM-dd"/></span>
+                                            </a>
+                                        </div>
+                                        <%--                                            <li> <fmt:formatDate value="${map.value}" pattern="yyyy-MM-dd(E)"/></li>--%>
+
+                                    </c:forEach>
+                                </c:forEach>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 d-none d-sm-block">
+                        <div class="row">
+                            <div class="col-12 next-btn">
+                                <span class="fa fa-angle-right">></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%--            WordCloud--%>
+            <div class="project-boxes jsGridView">
                 <div class="project-box-wrapper" style="width: 100%">
                     <div class="project-box" style="background-color: #fee4cb;">
                         <div class="project-box-header">
-                            <span><c:out value="${today}"/></span>
+                            <span id="worddate"></span>
                             <div class="more-wrapper">
                                 <button class="project-btn-more">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -361,21 +357,15 @@
                                 </button>
                             </div>
                         </div>
-
                         <div class="project-box-content-header" style="position: center">
-                            <p class="box-content-header" style="font-size: 18px;">오늘의 키워드</p>
+                            <p class="box-content-header" style="font-size: 18px;">키워드 클라우드</p>
                             <div id="loader-wrapper">
                                 <div id="loader"></div>
-
                                 <div class="loader-section section-left"></div>
                                 <div class="loader-section section-right"></div>
-
                             </div>
                             <div id="wordCloud">
                             </div>
-
-                            <%--                time picker--%>
-
 
                             <form id="keywordFrm">
                                 <input type="hidden" id="datelist" name="datelist">
@@ -392,14 +382,16 @@
                     </div>
                 </div>
 
+                <%--키워드 별 뉴스 -------------------------------------%>
+                <div id="keywordNews" class="project-boxes jsGridView">
 
-                <%--                키워드 별 뉴스 --%>
+                </div>
 
             </div>
+            <%--            섹션 종료--%>
         </div>
     </div>
 </div>
-
 
 <%-- 워드 클라우드--%>
 <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>

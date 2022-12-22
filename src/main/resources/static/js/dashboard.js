@@ -33,7 +33,7 @@ function search1() {
     console.log(insetData);
     $("#loader-wrapper").fadeIn(150)
 
-    $(".timeline-container").hide();
+    // $(".timeline-container").hide();
     $('#keywordFrm').hide();
     $('#wordCloud')
         .empty()
@@ -102,20 +102,41 @@ $(document).ready(function dashboard1() {
         }
     })
 })
+
+
 //금일 키워드별 뉴스 점수
-$(document).ready(function keywordNews() {
+$(document).ready(function keywordate(){
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = String(today.getMonth() + 1).padStart(2, '0');
+    var day = String(today.getDate()).padStart(2, '0');
+    var date= year + '-' + month + '-' + day
+    document.getElementById("worddate").innerText=date;
+    keywordNews(date);
+});
 
 
+function keywordNews(date) {
+console.log(date);
     $.ajax({
         type: "post",
         url: "/dashboard/keywordNews",
+        data: date,
         dataType: "json",
+        contentType: "application/x-www-form-urlencoded;charset=utf-8",
         success: function (response) {
             if (response != null) {
                 var today = new Date();
                 var year = today.getFullYear();
                 var month = String(today.getMonth() + 1).padStart(2, '0');
                 var day = String(today.getDate()).padStart(2, '0');
+                var date = '';
+                if ($('#datelist').val()==''){
+                    console.log($('#datelist').val());
+                    date =year + '-' + month + '-' + day;
+                }else{
+                    date=$('#datelist').val();
+                }
                 for (var i = 0; i < response.length; i++) {
                     var dto = JSON.stringify(response[i]);
                     var dto2 = JSON.parse(dto);
@@ -126,7 +147,7 @@ $(document).ready(function keywordNews() {
                 <div class="project-box-wrapper" >
                      <div class="project-box" style="background-color: #eee;">
                         <div class="project-box-header">
-                            <span>${year + '-' + month + '-' + day}</span>
+                            <span>${date}</span>
                             <div class="more-wrapper">
                                 <button class="project-btn-more">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -142,7 +163,7 @@ $(document).ready(function keywordNews() {
                         <div class="project-box-content-header">
                             <p class="box-content-header" style="font-size:18px">${dto2.name_Country}${dto2.name_Stock}</p>
                             <p class="box-content-subheader">${dto2.class_Item}</p>
-                            <a href="/userNews">
+                            <a href="/userNews?page=${date}">
                             <img class="newsImg" src="${dto2.img}"/>
                             <br>
                             <p class="box-content-subheader">${dto2.head_Now}</p>
@@ -150,7 +171,7 @@ $(document).ready(function keywordNews() {
 <!--                            <a class="box-content-subheader" >${dto2.url_Now}</a>-->
                         </div>
                         <div class="box-progress-wrapper">
-                            <p class="box-progress-header" id="s">Score ${dto2.score}</p>
+                            <p class="box-progress-header">Score ${dto2.score}</p>
                             <div class="box-progress-bar">
                                 <span class="box-progress" style="width: ${per}%; background-color: #4f3ff0"></span>
                             </div>
@@ -169,7 +190,7 @@ $(document).ready(function keywordNews() {
             }
         }
     });
-});
+};
 
 // $(document).ready(function keywordNews() {
 //
@@ -245,8 +266,13 @@ $(document).ready(function () {
     });
 });
 
-
+// 날짜 버튼 클릭시 이벤트
 $("body").on("click", "[id^=datenum]", function (event) {
+    console.log(this.id);
+    var date=$('#datelist').val()
+    document.getElementById("keywordNews").innerHTML ="";
+    document.getElementById("worddate").innerText=date;
+    keywordNews(date);
     var vId = this.id;
     let A = document.getElementById(vId);
     if (A.style.backgroundColor === 'rgb(226, 227, 229)') {
