@@ -67,7 +67,6 @@ public class DashboardCont {
     @PostMapping("/save")
     public ResponseEntity<?> save(HttpServletRequest request, @RequestBody HashMap<Object, Object> data) {
         HttpSession session = request.getSession();
-//        System.out.println(session.getAttribute("ID"));
         String ID = session.getAttribute("ID").toString();
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
@@ -81,9 +80,7 @@ public class DashboardCont {
                             value.toString(),
                             key.toString()
                     );
-                    System.out.println(dto);
                     dashboardDAO.Keywords(dto);
-                    System.out.println("key: " + key + ", value: " + value + " ID: " + ID);
                 } catch (Exception b) {
                     System.out.println(b.getClass().getName() + " 예외가" + b.getMessage() + " 때문에 발생");
 
@@ -112,9 +109,7 @@ public class DashboardCont {
                         value.toString(),
                         key.toString()
                 );
-                System.out.println(dto);
                 dashboardDAO.deleteKeywords(dto);
-                System.out.println("key: " + key + ", value: " + value + " ID: " + ID);
 
             });
         } catch (JsonProcessingException e) {
@@ -139,7 +134,6 @@ public class DashboardCont {
         String parameterName = null;
         for (Map.Entry<String, String[]> entry : parameters.entrySet()) {
             parameterName = entry.getKey();
-            System.out.println("날짜: " + parameterName);
         }
 
         List<CrwalingNowDTO2> list = new ArrayList<>();
@@ -151,21 +145,19 @@ public class DashboardCont {
                     String Class = dashboardDTO.get(i).getClass1();
                     CrwalingNowDTO2 dto2 = null;
                     if (Class.equals("업종")) {
-                        dto2 = new CrwalingNowDTO2("", keywords, "",parameterName);
+                        dto2 = new CrwalingNowDTO2("", keywords, "", parameterName);
                     } else if (Class.equals("종목")) {
-                        dto2 = new CrwalingNowDTO2(keywords, "", "",parameterName);
+                        dto2 = new CrwalingNowDTO2(keywords, "", "", parameterName);
                     } else if (Class.equals("국가")) {
-                        dto2 = new CrwalingNowDTO2("", "", keywords,parameterName);
+                        dto2 = new CrwalingNowDTO2("", "", keywords, parameterName);
                     }
                     // Add the elements of the list returned by dashboardDAO.keywordNews to the list object
-//                    System.out.println(dashboardDAO.keywordNews(dto2).get(1).getURL_Now());
                     list.addAll(dashboardDAO.keywordNews(dto2));
                 }
             }
         } catch (Exception e) {
             System.out.println(e.getClass().getName() + " 예외가" + e.getMessage() + " 때문에 발생");
         }
-        System.out.println(list);
         return list;
     }
 
@@ -194,17 +186,37 @@ public class DashboardCont {
     @RequestMapping(value = "/maxNews", method = RequestMethod.POST)
     @ResponseBody
     public List<CrwalingNowDTO2> maxNews(HttpServletRequest request,
-                                             HttpServletResponse response) {
+                                         HttpServletResponse response) {
 
         List<CrwalingNowDTO2> list = dashboardDAO.maxNews();
         return list;
     }
+
     @RequestMapping(value = "/maxNews2", method = RequestMethod.POST)
     @ResponseBody
     public List<CrwalingNowDTO2> maxNews2(HttpServletRequest request,
-                                         HttpServletResponse response) {
+                                          HttpServletResponse response) {
 
         List<CrwalingNowDTO2> list = dashboardDAO.maxNews2();
         return list;
     }
+
+    //    mailsave
+    @RequestMapping(value = "/mailsave", method = RequestMethod.POST)
+    @ResponseBody
+    public void mail(HttpServletRequest request,
+                     HttpServletResponse response
+    ) {
+        HttpSession session = request.getSession();
+        String ID =  "'"+session.getAttribute("ID").toString()+"'";
+        Map<String, String[]> parameters = request.getParameterMap();
+        String parameterName = null;
+        for (Map.Entry<String, String[]> entry : parameters.entrySet()) {
+            parameterName ="'"+ entry.getKey()+"'";
+        }
+        DashboardDTO dto= new DashboardDTO(ID,parameterName);
+        dashboardDAO.mailcheck(dto);
+    }
+
+
 } //end of DashboardCont class

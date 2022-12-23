@@ -13,7 +13,8 @@
 <%@ include file="auth.jsp" %>
 
 <%--<%@ include file="auth.jsp" %>--%>
-<html>
+<html lang="ko">
+
 <head>
     <script src="../js/jquery-3.6.1.min.js"></script>
     <script src="../js/jquery.cookie.js"></script>
@@ -48,7 +49,7 @@
         <div class="login">
             <div class="title">
 
-                <a href="/">
+                <a href="/home">
                     <img src="../images/Favi2.png">
                 </a>
                 <a href="/dashboard" class="dashlink">
@@ -91,7 +92,7 @@
 
         <div class="signup">
             <div class="title">
-                <a href="/">
+                <a href="/home">
                     <img src="../images/Favi2.png">
                 </a>
                 <span>Sign Up</span>
@@ -130,7 +131,7 @@
 
         <div class="recover-password">
             <div class="title">
-                <a href="/">
+                <a href="/home">
                     <img src="../images/Favi2.png">
                 </a>
                 <span>아이디 및 비밀번호 찾기</span>

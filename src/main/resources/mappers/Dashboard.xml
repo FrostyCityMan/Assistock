@@ -232,6 +232,12 @@
         From "Crwaling(Now)"
         where "URL(Now)" = #{URL_Now}
     </select>
+    <update id="mailcheck" parameterType="dh.assistock.dashboard.DashboardDTO">
+        update "Member"
+        set "MailOK" =${Class1}
+        WHERE "ID" = ${Keywords}
+    </update>
+
 </mapper>
 
 

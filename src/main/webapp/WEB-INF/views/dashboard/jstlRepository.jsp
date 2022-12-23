@@ -37,6 +37,15 @@
     <sql:param value="${sessionScope.ID}"/>
 </sql:query>
 
+<sql:query var="mailLoad" dataSource="${DS}">
+    Select "MailOK"
+    from "Member"
+    where "ID" = ?
+    <sql:param value="${sessionScope.ID}"/>
+</sql:query>
+
+
+
 <c:set var="now" value="<%=new java.util.Date()%>">
 
 </c:set>

@@ -31,6 +31,8 @@
 <%@ include file="./jstlRepository.jsp" %>
 
 
+
+
 <%--Modal--%>
 <div id="my_modal">
     <div class="modal-header">
@@ -43,13 +45,25 @@
                 알림 설정을 하시면 관심키워드가 포함된 뉴스가 등록될 때 회원가입시 입력하신 메일주소로 알림을 보내드립니다. <br>
                 관심 키워드는 최대 10개까지 등록 가능합니다. <br>
                 메일은 평일 8시, 장 시작전에 발송됩니다. </p>
+
+
+
+            <c:forEach var="row2" items="${mailLoad.rows}">
+                <!-- Display the value of the "MailOK" column in the current row -->
+                <c:set value="${row2.MailOK}"  var="mailcheck"/>
+            </c:forEach>
         </div>
         <form>
             <input type="hidden" value="${sessionScope.ID}">
             <div class="modal-mail">
                 <p>메일 알람 설정</p>
+
                 <li class="tg-list-item">
-                    <input class="tgl tgl-flat" id="cb4" type="checkbox"/>
+                    <input class="tgl tgl-flat" id="cb4" type="checkbox" value="true"
+                            <c:choose>
+                                <c:when test="${mailcheck == 'O'}">checked</c:when>
+                                <c:otherwise>unchecked</c:otherwise>
+                            </c:choose> />
                     <label class="tgl-btn" for="cb4"></label>
                 </li>
 
@@ -64,8 +78,6 @@
                     <input class="search-input" type="text" placeholder="검색어를 입력하세요" id="search" name="search">
                     <a class="btn-search" id="btn-item_class">+ 키워드 추가</a>
                 </div>
-
-
                 <div id="suggestions">
                     <ul class="suggestions">
                         <!-- The list of suggestions will go here -->
@@ -78,7 +90,6 @@
                     <input class="search-input" type="text" placeholder="검색어를 입력하세요" id="search2" name="search">
                     <a class="btn-search" id="btn-stock_class">+ 키워드 추가</a>
                 </div>
-
                 <div id="suggestions2">
                     <ul class="suggestions2">
                         <!-- The list of suggestions will go here -->
@@ -151,7 +162,7 @@
     <div class="app-header">
         <div class="app-header-left">
             <span class="app-icon"></span>
-            <a href="/"><p class="app-name">Assistock</p></a>
+            <a href="/home"><p class="app-name">Assistock</p></a>
         </div>
         <div class="app-header-right">
             <button class="mode-switch" title="Switch Theme">
@@ -383,7 +394,7 @@
                 </div>
 
                 <%--키워드 별 뉴스 -------------------------------------%>
-                <div id="keywordNews" class="project-boxes jsGridView">
+                <div id="keywordNews" class="project-boxes jsGridView" style="width:100%">
 
                 </div>
 

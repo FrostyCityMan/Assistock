@@ -13,7 +13,7 @@
 <%@ include file="../member/auth.jsp" %>
 
 <%--<%@ include file="auth.jsp" %>--%>
-<html>
+<html lang="ko">
 <head>
     <script src="../js/jquery-3.6.1.min.js"></script>
     <script src="../js/jquery.cookie.js"></script>

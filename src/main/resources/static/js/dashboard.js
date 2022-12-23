@@ -105,19 +105,19 @@ $(document).ready(function dashboard1() {
 
 
 //금일 키워드별 뉴스 점수
-$(document).ready(function keywordate(){
+$(document).ready(function keywordate() {
     var today = new Date();
     var year = today.getFullYear();
     var month = String(today.getMonth() + 1).padStart(2, '0');
     var day = String(today.getDate()).padStart(2, '0');
-    var date= year + '-' + month + '-' + day
-    document.getElementById("worddate").innerText=date;
+    var date = year + '-' + month + '-' + day
+    document.getElementById("worddate").innerText = date;
     keywordNews(date);
 });
 
 
 function keywordNews(date) {
-console.log(date);
+    console.log(date);
     $.ajax({
         type: "post",
         url: "/dashboard/keywordNews",
@@ -131,11 +131,11 @@ console.log(date);
                 var month = String(today.getMonth() + 1).padStart(2, '0');
                 var day = String(today.getDate()).padStart(2, '0');
                 var date = '';
-                if ($('#datelist').val()==''){
+                if ($('#datelist').val() == '') {
                     console.log($('#datelist').val());
-                    date =year + '-' + month + '-' + day;
-                }else{
-                    date=$('#datelist').val();
+                    date = year + '-' + month + '-' + day;
+                } else {
+                    date = $('#datelist').val();
                 }
                 for (var i = 0; i < response.length; i++) {
                     var dto = JSON.stringify(response[i]);
@@ -215,8 +215,6 @@ $('.button-search').click(function save() {
         let valueInput = $(this).find('input[name="value"]').val();
         data[classInput] = valueInput;
     });
-    console.log(data)
-
 
     $.ajax({
         type: "POST",
@@ -233,7 +231,22 @@ $('.button-search').click(function save() {
         }
     })//end of ajax
 })//end of function
-
+document.querySelector("#cb4").addEventListener("click", function () {
+    var checked =$('#cb4');
+    var check =null;
+    console.log(checked.is(':checked'));
+    if(checked.is(':checked')){
+        check='O';
+    }else{
+        check='X';
+    }
+    $.ajax({
+        type: "POST",
+        url: "/dashboard/mailsave",
+//    Send check box check status to mailsave
+        data: check
+    })
+})
 
 // /*time picker ---------------------------------*/
 // BBC/Sport/football/Scores&Fixtures
@@ -269,9 +282,9 @@ $(document).ready(function () {
 // 날짜 버튼 클릭시 이벤트
 $("body").on("click", "[id^=datenum]", function (event) {
     console.log(this.id);
-    var date=$('#datelist').val()
-    document.getElementById("keywordNews").innerHTML ="";
-    document.getElementById("worddate").innerText=date;
+    var date = $('#datelist').val()
+    document.getElementById("keywordNews").innerHTML = "";
+    document.getElementById("worddate").innerText = date;
     keywordNews(date);
     var vId = this.id;
     let A = document.getElementById(vId);
@@ -370,6 +383,8 @@ search.addEventListener('click', function () {
 
     // Display the suggestions list
     suggestionsList.style.display = 'block';
+    suggestionsList2.style.display = 'block';
+    suggestionsList3.style.display = 'block';
 
     // Add all the words in the words array to the suggestions list
     for (const word of words) {
@@ -475,6 +490,18 @@ $(document).ready(function dashboard2() {
         }
     })
 })
+// document.addEventListener('click', function (event, suggestionsList, suggestionsList2, suggestionsList3) {
+//     if (document.querySelector('.suggestions3').style.display === 'block') {
+//         suggestionsList3.style.display = 'none';
+//     }
+//     if (document.querySelector('.suggestions2').style.display === 'block') {
+//         suggestionsList2.style.display = 'none';
+//     }
+//     if (document.querySelector('.suggestions').style.display === 'block') {
+//         suggestionsList.style.display = 'none';
+//     }
+// }.bind(null, suggestionsList, suggestionsList2, suggestionsList3));
+
 
 const search2 = document.getElementById('search2');
 const suggestionsList2 = document.querySelector('.suggestions2');
@@ -486,6 +513,8 @@ search2.addEventListener('click', function () {
 
     // Display the suggestions list
     suggestionsList2.style.display = 'block';
+    suggestionsList3.style.display = 'none';
+    suggestionsList.style.display = 'none';
 
     // Add all the words2 in the words2 array to the suggestions list
     for (const word of words2) {
@@ -593,7 +622,9 @@ $(document).ready(function dashboard3() {
 })
 
 const search3 = document.getElementById('search3');
-const suggestionsList3 = document.querySelector('.suggestions2');
+const suggestionsList3 = document.querySelector('.suggestions3');
+
+
 
 // Add an event listener to the search input field that listens for click events
 search3.addEventListener('click', function () {
@@ -602,6 +633,9 @@ search3.addEventListener('click', function () {
 
     // Display the suggestions list
     suggestionsList3.style.display = 'block';
+    suggestionsList2.style.display = 'none';
+    suggestionsList.style.display = 'none';
+
 
     // Add all the words3 in the words3 array to the suggestions list
     for (const word of words3) {
@@ -622,6 +656,7 @@ search3.addEventListener('click', function () {
 search3.addEventListener('input', function () {
     // Get the value of the search field
     const searchValue = this.value.toLowerCase();
+
 
     // Clear the suggestions list
     suggestionsList3.innerHTML = '';
@@ -702,9 +737,9 @@ $('#btn-item_class').click(function () {
     let classfy = document.getElementById("item_class").value;
     if (values.includes(query)) {
         alert("이미 있는 키워드 입니다.");
-    } else if(query==null) {
+    } else if (query == null) {
         alert("키워드를 선택해주세요.");
-    }else {
+    } else {
         // code to add the value to the table goes here
         values.push(query);
         document.getElementById("keyword-table").innerHTML += `
@@ -726,9 +761,9 @@ $('#btn-stock_class').click(function () {
 
     if (values.includes(query)) {
         alert("이미 있는 키워드 입니다.");
-    } else if(query==null) {
+    } else if (query == null) {
         alert("키워드를 선택해주세요.");
-    }else {
+    } else {
         // code to add the value to the table goes here
         values.push(query);
         document.getElementById("keyword-table").innerHTML += `
@@ -750,9 +785,9 @@ $('#btn-country_class').click(function () {
 
     if (values.includes(query)) {
         alert("이미 있는 키워드 입니다.");
-    } else if(query==null) {
+    } else if (query == null) {
         alert("키워드를 선택해주세요.");
-    }else {
+    } else {
         // code to add the value to the table goes here
         values.push(query);
         document.getElementById("keyword-table").innerHTML += `

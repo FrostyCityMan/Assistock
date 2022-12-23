@@ -63,4 +63,8 @@ public class DashboardDAO2 {
         return sqlSession.selectOne("Dashboard.imgURL",URL_Now);
     }
 
+    public void mailcheck(DashboardDTO dto){
+        sqlSession.update("Dashboard.mailcheck",dto);
+    }
+
 } //end of DashboardDAO2 class

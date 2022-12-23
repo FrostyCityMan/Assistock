@@ -243,6 +243,7 @@ $(document).ready(function keywordNews() {
                 var year = today.getFullYear();
                 var month = String(today.getMonth() + 1).padStart(2, '0');
                 var day = String(today.getDate()).padStart(2, '0');
+                var title = ["최고점 뉴스", "최저점 뉴스"];
                 for (var i = 0; i < response.length; i++) {
                     var dto = JSON.stringify(response[i]);
                     var dto2 = JSON.parse(dto);
@@ -254,22 +255,12 @@ $(document).ready(function keywordNews() {
                      <div class="project-box" style="background-color: #eee;">
                         <div class="project-box-header">
                             <span>${year + '-' + month + '-' + day}</span>
-                            <div class="more-wrapper">
-                                <button class="project-btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="feather feather-more-vertical">
-                                        <circle cx="12" cy="12" r="1"/>
-                                        <circle cx="12" cy="5" r="1"/>
-                                        <circle cx="12" cy="19" r="1"/>
-                                    </svg>
-                                </button>
-                            </div>
+                        <span>${title[i]}</span>
                         </div>
                         <div class="project-box-content-header">
                             <p class="box-content-header" style="font-size:18px">${dto2.name_Country}${dto2.name_Stock}</p>
                             <p class="box-content-subheader">${dto2.class_Item}</p>
-                            <a href="/userNews">
+                            <a href="/Pricing">
                             <img class="newsImg" src="${dto2.img}"/>
                             <br>
                             <p class="box-content-subheader">${dto2.head_Now}</p>
@@ -311,6 +302,7 @@ $(document).ready(function keywordNews() {
                 var year = today.getFullYear();
                 var month = String(today.getMonth() + 1).padStart(2, '0');
                 var day = String(today.getDate()).padStart(2, '0');
+                var title = ["최고점 뉴스", "최저점 뉴스"];
                 for (var i = 0; i < response.length; i++) {
                     var dto = JSON.stringify(response[i]);
                     var dto2 = JSON.parse(dto);
@@ -322,22 +314,12 @@ $(document).ready(function keywordNews() {
                      <div class="project-box" style="background-color: #eee;">
                         <div class="project-box-header">
                             <span>${year + '-' + month + '-' + day}</span>
-                            <div class="more-wrapper">
-                                <button class="project-btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="feather feather-more-vertical">
-                                        <circle cx="12" cy="12" r="1"/>
-                                        <circle cx="12" cy="5" r="1"/>
-                                        <circle cx="12" cy="19" r="1"/>
-                                    </svg>
-                                </button>
-                            </div>
+                            <span>${title[i]}</span>
                         </div>
                         <div class="project-box-content-header">
                             <p class="box-content-header" style="font-size:18px">${dto2.name_Country}${dto2.name_Stock}</p>
                             <p class="box-content-subheader">${dto2.class_Item}</p>
-                            <a href="/userNews">
+                            <a href="/Pricing">
                             <img class="newsImg" src="${dto2.img}"/>
                             <br>
                             <p class="box-content-subheader">${dto2.head_Now}</p>
