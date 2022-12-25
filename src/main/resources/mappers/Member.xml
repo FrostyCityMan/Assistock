@@ -35,6 +35,12 @@
         SET PW = #{ID}
         WHERE "Email" = #{PW}
     </update>
+
+    <select id="mailList" resultType="dh.assistock.member.MemberDTO">
+        Select ID, "Email"
+        From "Member"
+        WHERE "MailOK" = 'O'
+    </select>
 </mapper>
 
 

@@ -26,7 +26,6 @@ $("#wordCloud").hide()
 $("#loader-wrapper").hide()
 $("#btn-research").hide()
 
-// keywordDate.max = new Date().toISOString().split("T")[0];
 
 function search1() {
     let insetData = $('#keywordFrm').serialize();

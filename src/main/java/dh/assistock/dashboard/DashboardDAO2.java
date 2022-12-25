@@ -9,9 +9,9 @@ import java.util.List;
 
 @Repository
 public class DashboardDAO2 {
+
     @Autowired
     SqlSession sqlSession;
-
     public int todayNewsCount() {
         return sqlSession.selectOne("Dashboard.todayNewsCount");
     }

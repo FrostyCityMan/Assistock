@@ -3,6 +3,9 @@ package dh.assistock.member;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 @Repository
 public class MemberDAO {
 
@@ -26,6 +29,8 @@ SqlSession sqlSession;
         return sqlSession.update("Member.updatePW",dto);
     }
 
-
+    public List<MemberDTO>mailList(){
+        return sqlSession.selectList("Member.mailList");
+    }
 
 } //end of MemberDAO class
