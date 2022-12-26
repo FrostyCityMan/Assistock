@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Mailing">
+    <select id="selectMail" resultType="dh.assistock.mail.MailDTO">
+        Select "Email", ID
+        from "Member"
+        where "MailOK"= 'O'
+    </select>
+
+    <select id="test" resultType="string">
+        select "Continent"
+        from "Continent"
+    </select>
+
+    <select id="userKeywords" parameterType="string" resultType="dh.assistock.dashboard.DashboardDTO">
+        Select *
+        from "CustumKeywords"
+        where "ID" = #{ID}
+    </select>
+
+    <select id="keywordNews" resultType="Crwaling.Now.CrwalingNowDTO2" parameterType="Crwaling.Now.CrwalingNowDTO2">
+        Select "Name(News)",
+               "Name(Stock)",
+               "Class(Item)",
+               "URL(Now)",
+               "Head(Now)",
+               "Score",
+               "Name(Country)",
+               "Img"
+        From (Select "Name(News)",
+                     "Name(Stock)",
+                     "Class(Item)",
+                     "URL(Now)",
+                     "Head(Now)",
+                     "Score",
+                     "Name(Country)",
+                     "Img"
+              from "Word(Analysis)"
+              WHERE (Trunc(TO_DATE("Date(Now)", 'YYYY-MM-DD HH24:MI:SS'))) = #{Date}
+                and ("Name(Stock)" = #{Name_Stock}
+                  or "Class(Item)" = #{Class_Item}
+                  or "Name(Country)" = #{Name_Country})
+              order by ABS("Score") desc) A
+        where ROWNUM = 1
+    </select>
+
+</mapper>
+
+
+
+

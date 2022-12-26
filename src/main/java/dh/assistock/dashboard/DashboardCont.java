@@ -166,7 +166,6 @@ public class DashboardCont {
     public String Newstext(HttpServletRequest request,
                            HttpServletResponse response)
             throws ServletException, IOException {
-        String NewsText = null;
         // Get the text sent through the AJAX request
         String text = request.getParameter("text");
 

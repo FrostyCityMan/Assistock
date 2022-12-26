@@ -70,7 +70,8 @@
         <ul>
             <li><a href="/home">Home</a></li>
             <li><a href="/Pricing">Pricing</a></li>
-            <li><a href="/about">About</a></li>
+<%--            TODO about완성시 채워넣기--%>
+            <li><a href="/">About</a></li>
             <%
                 if (session.getAttribute("ID") == null) {
             %>
@@ -128,8 +129,8 @@
             </div>
             <div class="et-hero-tabs-container">
                 <a class="et-hero-tab" href="#tab-es6">오늘의 키워드</a>
-                <a class="et-hero-tab" href="#tab-flexbox">주가 분석</a>
-                <a class="et-hero-tab" href="#tab-react">원자재 분석</a>
+                <a class="et-hero-tab" href="#tab-flexbox">스코어 분석</a>
+<%--                <a class="et-hero-tab" href="#tab-react">원자재 분석</a>--%>
                 <a class="et-hero-tab" href="#tab-angular">대쉬보드</a>
                 <a class="et-hero-tab" href="#tab-other">뉴스레터</a>
                 <span class="et-hero-tab-slider"></span>
@@ -313,7 +314,7 @@ color:black">
                      font-weight: 600;
                      line-height: 1.5;
                      color: #333d4b;">
-                        주가와 원자재의 공통점은 잘 사서, 잘 관리하고, 잘 파야 한다는 것.<br>
+                        주가와 원자재의 공통점은 잘 사서, 잘 관리하고, 잘 팔아야 한다는 것.<br>
                         관심 있는 기업뉴스와 글로벌 뉴스 까지 <br>
                         모두 어시스톡 뉴스레터로 받아보세요.</p>
                 </div>

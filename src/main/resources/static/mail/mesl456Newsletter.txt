@@ -1,0 +1,140 @@
+<body style="box-sizing: border-box;margin: 0;font-family: 'Droid Serif', serif;font-size: 14px;font-weight: 400;line-height: 1.5;color: #2f2f2f;background-color: #f9f7f1;-webkit-text-size-adjust: 100%;-webkit-tap-highlight-color: transparent;">
+
+<div class="head" style="box-sizing: border-box;text-align: center;position: relative;">
+    <div class="headerobjectswrapper" style="box-sizing: border-box;">
+
+        <header style="box-sizing: border-box;font-family: 'Playfair Display', serif;font-weight: 900;font-size: 80px;text-transform: uppercase;display: inline-block;line-height: 72px;margin-bottom: 20px;">
+            The assistock
+        </header>
+    </div>
+    <div class="subhead" style="box-sizing: border-box;text-transform: uppercase;letter-spacing: 1px;border-bottom: 2px solid #2f2f2f;border-top: 2px solid #2f2f2f;padding: 12px 0 12px 0;">
+
+        <div class="issue" style="box-sizing: border-box;flex: 1;padding: 8px;width: 25%;display: inline-grid !important;"><a href="/" style="box-sizing: border-box;color: inherit;text-decoration: none;">www.assistock.com</a></div>
+        <div class="edition" style="box-sizing: border-box;flex: 1;padding: 8px;width: 25%;display: inline-grid !important;">
+            mesl456's News
+        </div>
+        <div class="date" style="box-sizing: border-box;flex: 1;padding: 8px;width: 25%;display: inline-grid !important;">
+            2022-12-26        </div>
+    </div>
+</div>
+<div class="content" style="box-sizing: border-box;font-size: 0;line-height: 0;word-spacing: -.31em;display: inline-block;margin: 30px 2% 0 2%;"> <div class="collumn" style="box-sizing: border-box;font-size: 14px;line-height: 20px;width: 33.3%;display: inline-block;padding: 0 1% 0 1%;vertical-align: top;margin-bottom: 50px;transition: all .7s;">
+            <div class="head" style="box-sizing: border-box;text-align: center;position: relative;">
+              <span class="headline hl5" style="box-sizing: border-box;text-align: center;line-height: normal;font-family: 'Playfair Display', serif;display: block;margin: 0 auto;font-weight: 400;font-size: 42px;text-transform: uppercase;font-style: italic;padding: 10px 0 10px 0;overflow: hidden;white-space: normal;text-overflow: ellipsis;height: 18%;">호주 워킹홀리데이 체류자 12만명...팬데믹 이전 70% 회복</span>
+              <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 20px;"><span class="headline hl6" style="box-sizing: border-box;text-align: center;line-height: normal;font-family: 'Playfair Display', serif;display: block;margin: 0 auto;font-weight: 400;font-size: 18px;padding: 10px 0 10px 0;">호주 "<br>
+              </span></p>
+            </div>
+            <p style="font-size: 20px;font-weight: bold;box-sizing: border-box;margin-top: 0;margin-bottom: 20px;">1차 금속 제조업</p>
+            <figure class="figure" style="box-sizing: border-box;margin: 0 0 20px;display: inline-block;">
+              <img style="box-sizing: border-box;vertical-align: middle;-webkit-filter: sepia(80%) contrast(1) opacity(0.8);filter: sepia(80%) grayscale(1) contrast(1) opacity(0.8);mix-blend-mode: multiply;width: 100%;" class="media" src="https://imgnews.pstatic.net/image/origin/366/2022/12/26/865075.jpg?type=nf" alt="">
+              <figcaption class="figcaption" style="box-sizing: border-box;font-style: italic;font-size: 12px;">조선비즈 사진자료</figcaption>
+            </figure>
+            <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 20px;">호주에서 워킹홀리데이 비자를 받아 체류하는 사람의 수가 신종 코로나바이러스 감염증(코로나19) 대유행 이전의 70% 수준까지 회복됐다고 호주 일간 디오스트레일리안이 26일(현지 시각) 보도했다. 디오스트레일리안에 따르면 현재 워킹홀리데이 비자를 받아 호주에서 지내는 사람의 수가 12만명에 달한다.<br><br><span class="end_photo_org">
+ <div class="nbd_im_w _LAZY_LOADING_WRAP ">
+  <div class="nbd_a _LAZY_LOADING_ERROR_HIDE" id="img_a1"><img id="img1" data-src="https://imgnews.pstatic.net/image/366/2022/12/26/0000865075_001_20221226152901427.jpeg?type=w647" class="_LAZY_LOADING">
+  </div>
+ </div><em class="img_desc">오페라하우스가 보이는 호주 시드니 풍경. /로이터 연합뉴스</em></span><br> 코로나19 팬데믹(전염병의 세계적인 대유행) 이전에는 호주에서 워킹홀리데이 비자로 생활하는 사람의 수가 평균 15만∼20만명으로, 경제 규모로 환산하면 매년 30억 호주달러(약 2조 6000억원) 수준이었다. 하지만 팬데믹 기간에는 2만명 수준까지 떨어져 호주 경제의 인력난을 초래하기도 했다.<br><br>이처럼 워킹홀리데이 입국자가 늘었지만, 호주 내에서는 노동자 부족 현상은 계속되고 있다. 이 때문에 워킹홀리데이 비자 관련 규제를 완화해야 한다는 목소리도 커졌다.<br><br>이와 관련해 마기 오즈먼드 호주 관광교통포럼 회장은 “많은 국가가 비자 수수료를 줄이거나 없애면서 기업들이 여전히 인력을 확보하는 데 어려움을 겪고 있다” 비자 수수료를 절반으로 줄이고 워킹홀리데이 비자 연령 제한도 35세에서 50세로 늘려야 한다고 강조했다.<br><br>호주 상공회의소의 앤드루 맥켈러 회장은 특히 관광 서비스업의 인력이 부족하다며 이 분야에서 3개월 이상 일하는 사람은 비자 기간을 연장해야 한다고 주장했다. 지금은 농업이나 건설업, 광업, 산불복구 등에서 3개월 이상 종사하면 비자를 1년 연장할 수 있다.<br><br>이에 대해 앤드루 자일스 이민 장관은 호주가 인재를 유치하려면 다른 나라와 경쟁을 벌여야 한다며 비자 발급 기간을 단축하는 등 워킹홀리데이 입국자 확대를 위해 노력 중이라고 설명했다. 다만 그는 코로나19 대유행 기간에 완화했던 학생 비자의 노동 시간 제한 조치는 내년 6월에는 원상 복귀할 것이라고 설명했다.<br><br>호주는 학생 비자로 입국한 사람은 주 20시간까지만 일할 수 있었지만 지난해 특정 분야에서는 근무시간 상한을 없앴고 올해 들어서는 모든 분야로 확대했다.<br><br></p>
+          </div> <div class="collumn" style="box-sizing: border-box;font-size: 14px;line-height: 20px;width: 33.3%;display: inline-block;padding: 0 1% 0 1%;vertical-align: top;margin-bottom: 50px;transition: all .7s;">
+            <div class="head" style="box-sizing: border-box;text-align: center;position: relative;">
+              <span class="headline hl5" style="box-sizing: border-box;text-align: center;line-height: normal;font-family: 'Playfair Display', serif;display: block;margin: 0 auto;font-weight: 400;font-size: 42px;text-transform: uppercase;font-style: italic;padding: 10px 0 10px 0;overflow: hidden;white-space: normal;text-overflow: ellipsis;height: 18%;">[스프] '몸통' 트럼프를 기소해야 한다는 조사 결과, 다음은?</span>
+              <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 20px;"><span class="headline hl6" style="box-sizing: border-box;text-align: center;line-height: normal;font-family: 'Playfair Display', serif;display: block;margin: 0 auto;font-weight: 400;font-size: 18px;padding: 10px 0 10px 0;">미국 "<br>
+              </span></p>
+            </div>
+            <p style="font-size: 20px;font-weight: bold;box-sizing: border-box;margin-top: 0;margin-bottom: 20px;">코크스, 연탄 및 석유정제품 제조업</p>
+            <figure class="figure" style="box-sizing: border-box;margin: 0 0 20px;display: inline-block;">
+              <img style="box-sizing: border-box;vertical-align: middle;-webkit-filter: sepia(80%) contrast(1) opacity(0.8);filter: sepia(80%) grayscale(1) contrast(1) opacity(0.8);mix-blend-mode: multiply;width: 100%;" class="media" src="https://imgnews.pstatic.net/image/origin/055/2022/12/26/1023331.jpg?type=nf" alt="">
+              <figcaption class="figcaption" style="box-sizing: border-box;font-style: italic;font-size: 12px;">SBS 사진자료</figcaption>
+            </figure>
+            <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 20px;"><strong class="media_end_summary">'역사적인' 미국 하원 특별조사위원회의 마지막 발표</strong><span style="color:#ffffff"><strong><span style="background-color:#60c9b8">뉴스페퍼민트 NewsPeppermint</span></strong></span><span style="color:#ffffff"><strong><span style="background-color:#60c9b8"> </span></strong></span><br><br><em style="font-style: italic;">"한국에는 없지만, 한국인에게 필요한 뉴스"를 엄선해 전하는 외신 큐레이션 매체 '뉴스페퍼민트'입니다. 뉴스페퍼민트는 스프에서 뉴욕타임스 칼럼을 번역하고, 그 배경과 맥락에 관한 자세한 해설을 함께 제공합니다. 그동안 미국을 비롯해 한국 밖의 사건, 소식, 논의를 열심히 읽고 풀어 전달해 온 경험을 살려, 먼 곳에서 일어난 일이라도 쉽고 재밌게 읽을 수 있도록 부지런히 글을 쓰겠습니다.</em>
+<hr><span class="end_photo_org">
+ <div class="nbd_im_w _LAZY_LOADING_WRAP ">
+  <div class="nbd_a _LAZY_LOADING_ERROR_HIDE" id="img_a1"><img id="img1" data-src="https://imgnews.pstatic.net/image/055/2022/12/26/0001023331_002_20221226100203886.jpg?type=w647" class="_LAZY_LOADING">
+  </div>
+ </div></span>지난 19일 미국 하원에서 열린 특별조사위원회(이하 특조위)의 마지막 발표는 여러모로 특별했습니다. 가장 큰 이유는 역시 조사 대상인 사건과 사람이 특별했기 때문입니다. 특별함을 넘어 ‘역사적인’ 특조위라고 쓴 미국 언론도 많습니다.<br><br>미국 하원은 임기가 2년인데, <span style="color:#0093d1">1월 6일 의사당 테러 특조위</span>는 2021년 7월 1일에 꾸려졌으니, 위원 아홉 명은 자신의 임기 대부분을 2021년 1월 6일에 일어났던 일을 조사하는 데 쓴 셈입니다.<br><span>[ https://january6th.house.gov/about/membership ]</span><br><br>의회가 필요에 따라 조사권을 발동해 청문회를 열고 사실관계를 파악하는 경우는 종종 있지만, 이번 특조위는 전례 없는 임무를 맡았습니다. 자신이 패배한 선거 결과를 인정하지 않으며, 2024년 대선에 다시 출마하겠다고 선언한 전직 대통령을 겨냥한 조사인 만큼 그 어떤 의회 조사위원회보다 세간의 관심이 쏠렸습니다. 특조위는 19일 1년 6개월의 대장정을 마치며, 트럼프 전 대통령을 형사 기소해야 한다고 법무부에 권고했습니다.<br>&nbsp;
+<div class="sbs_sub_heading" style="border-bottom:1px solid #ebebeb; border-top:1px solid #444446; color:#3e3e40; line-height:1.5; margin-bottom:16px; margin-top:17px; padding-bottom:14px; padding-top:15px; position:relative">
+ <h4 class="sbs_sub_headingline"><strong><span style="font-size:20px">의회 조사위원회 발표 영상 조회 수가 수백만</span></strong></h4>
+</div>오늘은 마지막 발표의 하이라이트를 짚어보겠습니다. 미국 국회방송인 씨스팬(C-Span)을 포함해 여러 방송사가 발표 전체를 실황으로 중계했고, 요약본도 여러 개 올렸지만, 1월 6일 특조위 유튜브 채널이 올린 <span style="color:#0093d1">영상</span>만 해도 조회 수가 12만 회가 넘습니다. 특조위를 향한 세상의 관심을 짐작할 수 있습니다.<br><span>[ https://www.youtube.com/watch?v=5olnF549kNE ]</span><br><br>아홉 명의 위원 가운데 위원장 베니 톰슨(미시시피) 의원을 포함해 민주당 의원이 7명, 부위원장 리즈 체니(와이오밍) 의원을 포함해 공화당 의원이 2명입니다.<br><br>베니 톰슨 위원장은 모두 발언에서 1월 6일 테러는 미국 민주주의와 법치를 송두리째 뒤흔든 비극이었다고 말했습니다. 이어 이러한 비극이 다시 일어나지 않으려면 가장 중요한 것은 책임 있는 사람이 응당한 책임을 지고 필요하면 처벌받는 일이라고 강조했습니다.<br><br>중간선거를 앞두고 트럼프 전 대통령이 공당인 <span style="color:#0093d1">공화당을 사당화</span>하면서 당에는 트럼프를 열성적으로 지지하는 이들만 남았다고 설명해 드렸죠. 그런 공화당 의원 중에 용감하게 트럼프를 겨냥한 특조위원으로 참여한 두 명은 누굴까요? 딕 체니 전 부통령의 딸이기도 한 리즈 체니 의원과 애덤 킨징거(일리노이) 의원은 둘 다 일찌감치 트럼프와 거리를 둔 인물입니다. 1월 6일 테러 이후 하원은 곧바로 트럼프 대통령을 임기 중 두 번째로 탄핵했는데, 이때 <br><span>[ https://premium.sbs.co.kr/article/-jDNP7c-_U ]</span><span style="color:#0093d1">탄핵에 찬성한 공화당 의원 10명</span> 가운데 둘의 이름이 있습니다.<br><span>[ https://www.npr.org/2021/01/14/956621191/these-are-the-10-republicans-who-voted-to-impeach-trump ]</span><br><br>특히 <span style="color:#0093d1">리즈 체니</span> 의원은 트럼프와 척을 진 대가로 공화당 당내 서열 3위에 해당하는 의원총회 의장직에서 축출됐고, 이번 중간선거를 앞두고는 당내 경선에서 트럼프가 지지한 해리엇 헤이지만 후보에게 완패해 이번 의회 임기가 끝나면 야인이 됩니다. 톰슨 위원장의 모두 발언에 이어 마이크를 잡은 체니 의원은 마찬가지로 1월 6일 의사당 테러를 미국을 향한 중대한 위협이라고 규정하며, 자신의 고조할아버지(great-great grandfather)를 언급했습니다.<br><span>[ https://newspeppermint.com/2022/10/27/npc_lizcheney/ ]</span><br>&nbsp;
+<div class="sbs_textbox" style="margin-bottom:auto; margin-left:auto; margin-right:auto; margin-top:auto; width:100%">
+ <div class="text_box" style="background-color:#efefef; border:1px solid #efefef; margin-bottom:auto; margin-left:auto; margin-right:auto; margin-top:auto; padding:35px 35px 35px 35px">
+  <blockquote style="margin:0px;padding:0px;width:100%;word-break: break-all;border: 0px;">
+   1861년 4월, 링컨 대통령이 북부군(Union Army)을 소집했을 때 제 고조할아버지께서는 지체 없이 입대하셨습니다. 그리고 남북전쟁에서 4년간 용감히 싸우셨죠. 미국 시민은 자유로운 의사를 모아 구성한 정부를 지키고자, 민주주의 제도를 지키기 위해 싸웠습니다.<br><br>미국 의회에서 일하는 사람은 누구나 매일 출퇴근 길에 의사당 건물 중앙 로툰다 홀에 있는 그림을 보면서 자유롭게 구성한 정부, 이를 보장하는 평화로운 권력 이양의 중요성을 떠올리게 됩니다. 선조들이 피 흘려 이뤄낸 소중한 민주주의를 어느덧 당연한 것으로 여기던 우리에게 1월 6일 의사당 테러는 엄청난 충격이었습니다. 그래서 저는 이번 특별조사위원회에서 활동하는 내내 고조할아버지를 비롯해 우리나라의 자유와 민주주의를 위해 싸워온 수많은 사람의 희생을 생각했습니다.
+  </blockquote>
+ </div>
+</div><br>킨징거 의원은 선거구 개편 이후 자신의 지역구가 동료 공화당 의원의 지역구와 합쳐지자, 지난해 일찌감치 중간선거에 출마하지 않겠다고 밝혔습니다. 체니와 킨징거 의원은 자리를 보전할 걱정을 안 해도 됐기에 트럼프 지지자들이 보낸 온갖 협박과 비난에 굴하지 않고 특조위 업무를 끝마칠 수 있던 겁니다.<br>&nbsp;
+<div class="sbs_sub_heading" style="border-bottom:1px solid #ebebeb; border-top:1px solid #444446; color:#3e3e40; line-height:1.5; margin-bottom:16px; margin-top:17px; padding-bottom:14px; padding-top:15px; position:relative">
+ <h4 class="sbs_sub_headingline"><strong><span style="font-size:20px">하원, 트럼프 대통령을 기소해야 한다고 권고</span></strong></h4>
+</div>하원은 특조위원 9명 가운데 4명을 변호사 출신으로 꾸렸습니다. 1시간 반에 걸친 마지막 발표는 트럼프의 범죄 혐의를 입증하는 데 핵심적인 자료와 증언으로 채워졌습니다. 이 밖에도 인상적인 발언이 많았지만, 다 소개하기 어려우니 가장 중요한 결론 부분으로 넘어가겠습니다.<br><br>특조위는 1년 6개월 동안 최선을 다해 의사당 테러의 전모를 밝혀냈습니다. 그러나 의회에는 범죄자나 범죄 용의자를 법정에 세울 권한이 없습니다. 이는 법무부와 검찰이 할 수 있는 일이죠. 대신 특조위는 형사 기소를 권고(criminal referral)하며, 그 근거를 자세히 나열했습니다. 형사 기소 권고란 의회가 법무부에 “우리가 자체적으로 조사한 결과 다음 사람이 다음의 범죄를 저지른 것으로 보인다. 법무부도 필요한 수사를 진행해 이들의 범죄 혐의가 밝혀지면 이들을 기소해달라.”라고 요청하는 겁니다.<br><br><strong>특조위 마지막 발표의 하이라이트라 할 수 있는 결론 부분 발표는 제이미 라스킨(메릴랜드) 의원이 맡았습니다. 라스킨 의원이 정리한 혐의는 크게 네 가지입니다.</strong><br>&nbsp;
+<div class="sbs_textbox" style="margin-bottom:auto; margin-left:auto; margin-right:auto; margin-top:auto; width:100%">
+ <div class="text_box" style="background-color:#efefef; border:1px solid #efefef; margin-bottom:auto; margin-left:auto; margin-right:auto; margin-top:auto; padding:35px 35px 35px 35px">
+  <blockquote style="margin:0px;padding:0px;width:100%;word-break: break-all;border: 0px;">
+   1. 18조 1512절 (c)항: 누구도 미국 정부가 수행하는 공적인 업무 절차를 방해하거나 오도하거나 훼방해선 안 된다. 트럼프 전 대통령과 그의 변호사 존 이스트만을 비롯해 의사당 테러를 기획한 핵심 세력들은 선거 결과에 따라 평화롭게 권력을 이양하도록 한 미국 제도의 핵심 절차를 방해하려 했으므로, 이 조항을 위반했다.<br><br>2. 18조 371절: 누구도 미국을 상대로 사취 음모를 꾸며선 안 된다. 미국 정부가 법에 따라 수행하는 기능을 방해하거나 지연하거나 가로막는 행위가 사취에 해당하는데, 트럼프와 이스트만을 비롯한 핵심 세력들이 부정선거를 주장하는 등 거짓말을 일삼으며, 사취를 음모했다.<br><br>3. 18조 1001절: 누구도 일부러 연방 정부를 속이거나 다른 목적을 위해 고의로 거짓말을 해서는 안 된다. 트럼프와 이스트만을 비롯한 핵심 세력은 부정선거를 주장하는 동시에 실제 미국 유권자가 던진 표가 아닌 표를 만들어내거나 선거인단을 겁박하거나 선거인단의 의사를 인정하지 않는 방식으로 선거 결과를 부정하게 뒤바꾸려 했다.<br><br>4. 18조 2383절: 누구도 미국을 전복하려는 내란을 기획하거나 선동하거나 가담해선 안 된다. 내란죄는 미국 헌법이 직접 금지하는 중대 범죄로, 내란죄로 유죄를 선고받은 사람은 피선거권을 박탈당해 연방정부나 주정부 선출직을 맡을 수 없게 된다.
+  </blockquote>
+ </div>
+</div><br>미국 법전(U.S.C.,United States Code) 18조가 형법과 형사소송법인데, 라스킨 의원에 따르면 네 가지 혐의 모두 18조 형법 위반으로 기소될 수 있습니다.<br><br>라스킨 의원은 형사 기소 권고의 근거가 될 구체적인 혐의 네 가지를 말하기 전에 공정성의 원칙을 언급했습니다.<br>&nbsp;
+<div class="sbs_textbox" style="margin-bottom:auto; margin-left:auto; margin-right:auto; margin-top:auto; width:100%">
+ <div class="text_box" style="background-color:#efefef; border:1px solid #efefef; margin-bottom:auto; margin-left:auto; margin-right:auto; margin-top:auto; padding:35px 35px 35px 35px">
+  <blockquote style="margin:0px;padding:0px;width:100%;word-break: break-all;border: 0px;">
+   2021년 1월 6일 의사당 테러는 미국 헌법과 제도를 향한 심각한 위협이었습니다. 미국 법무부는 그 과정에 참여한 수많은 개인의 범죄 혐의에 관해 이미 수사를 마치고 대부분 피의자를 기소해 재판에 넘겼습니다. 이번 일은 단순한 일회성 폭동이 아닙니다. 미국 시민이 선거를 통해 표시한 의사를 무시하고 선거 결과를 마음대로 뒤집으려는 계획을 처음부터 세우고, 공격을 부추긴 세력이 분명히 있습니다. 지시를 따른 보병은 감옥에 가는데, 공격을 지시한 장군과 우두머리는 아무런 처벌을 받지 않는다면 이게 과연 옳은 일일까요? 적어도 우리의 사법제도는 그렇지 않다는 것을 분명히 말씀드립니다.
+  </blockquote>
+ </div>
+</div>&nbsp;<br>의사당에 쳐들어간 폭도들은 대다수 단순 가담자인 보병이고, 책임져야 할 장군은 따로 있다는 말입니다. 처음부터 부정 선거를 주장하며 지지자들을 워싱턴 D.C.로 불러 모았고, 폭력을 부추기는 연설을 했으며, 의사당 건물이 난장판이 되는 모습을 몇 시간째 백악관 집무실에서 TV로 지켜보고는 별일 아니었다는 듯 <span style="color:#0093d1">트윗</span>을 올린 트럼프 대통령이 몸통이란 거죠.<br><span>[ https://www.presidency.ucsb.edu/documents/tweets-january-6-2021 ]</span><br><br>이제 공은 법무부로 넘어왔습니다. 마침 지난달 법무부가 임명한 잭 스미스 특별검사가 1월 6일 의사당 테러와 트럼프 전 대통령의 관계를 수사하고 있습니다. 법무부가 의회 특조위의 보고서를 채택하거나 권고를 받아들여야 할 의무는 없지만, 의사당 테러를 방조하고 부추긴 몸통이 트럼프였다는 증거와 논리를 이렇게 자세히 모아둔 보고서를 무시하기는 쉽지 않아 보입니다.<br><br><span class="end_photo_org">
+ <div class="nbd_im_w _LAZY_LOADING_WRAP ">
+  <div class="nbd_a _LAZY_LOADING_ERROR_HIDE" id="img_a2"><img id="img2" data-src="https://imgnews.pstatic.net/image/055/2022/12/26/0001023331_003_20221226100203921.jpg?type=w647" class="_LAZY_LOADING">
+  </div>
+ </div></span>
+<div style="text-align:center">
+ <span style="font-size:20px"><strong><span style="color:#0093d1">▶뉴욕타임스 칼럼: 역사는 1월 6일 의사당 테러를 어떻게 기억할까?</span></strong></span><br><span>[ https://premium.sbs.co.kr/article/gbRLPesDII ]</span>
+</div>&nbsp;
+<div class="sbs_sub_heading" style="border-bottom:1px solid #ebebeb; border-top:1px solid #444446; color:#3e3e40; line-height:1.5; margin-bottom:16px; margin-top:17px; padding-bottom:14px; padding-top:15px; position:relative">
+ <h4 class="sbs_sub_headingline"><strong><span style="font-size:20px">음모론도 수출이 될까?</span></strong></h4>
+</div>1월 6일 의사당 테러 특별조사위원회의 마지막 발표는 미국에서도 많은 관심이 쏠린 사안이었지만, 이번 칼럼이 특히 더 눈에 들어온 이유는 글의 도입부 때문이었습니다. 민주주의의 근본을 어기면서까지 선거 결과를 뒤집으려던 트럼프와 트럼프주의는 폴그린이 칼럼에서 묘사한 1930년대 나치의 모습과 닮은 꼴이기 때문이죠.<br><br>물론 폴그린도, 폴그린이 강력히 추천한 레이첼 매도우의 팟캐스트 울트라도 트럼프나 트럼프 지지자들을 곧바로 나치와 비교하지는 않습니다. 그러나 이달 초 독일에서 쿠데타를 모의하다 대거 검거된 극우단체 회원들이 트럼프를 지지하는 극우 음모론자들과 꽤 많은 것을 공유한다는 사실은 분명 우려스러운 지점입니다.<br><br><span class="end_photo_org">
+ <div class="nbd_im_w _LAZY_LOADING_WRAP is_small">
+  <div class="nbd_a _LAZY_LOADING_ERROR_HIDE" id="img_a3"><img id="img3" data-src="https://imgnews.pstatic.net/image/055/2022/12/26/0001023331_004_20221226100203950.png?type=w647" class="_LAZY_LOADING">
+  </div>
+ </div></span> **'보러가기' 버튼이 눌리지 않으면 해당 주소를 주소창에 옮겨 붙여서 보세요.<br><span>[ https://premium.sbs.co.kr/article/e-l_YkLdO8 ]</span></p>
+          </div> <div class="collumn" style="box-sizing: border-box;font-size: 14px;line-height: 20px;width: 33.3%;display: inline-block;padding: 0 1% 0 1%;vertical-align: top;margin-bottom: 50px;transition: all .7s;">
+            <div class="head" style="box-sizing: border-box;text-align: center;position: relative;">
+              <span class="headline hl5" style="box-sizing: border-box;text-align: center;line-height: normal;font-family: 'Playfair Display', serif;display: block;margin: 0 auto;font-weight: 400;font-size: 42px;text-transform: uppercase;font-style: italic;padding: 10px 0 10px 0;overflow: hidden;white-space: normal;text-overflow: ellipsis;height: 18%;">[뉴스'까'페] 아이폰 인기에 '국가기관' 업무폰도 가능하게…갤럭시 '긴장'</span>
+              <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 20px;"><span class="headline hl6" style="box-sizing: border-box;text-align: center;line-height: normal;font-family: 'Playfair Display', serif;display: block;margin: 0 auto;font-weight: 400;font-size: 18px;padding: 10px 0 10px 0;"> 삼성전자"<br>
+              </span></p>
+            </div>
+            <p style="font-size: 20px;font-weight: bold;box-sizing: border-box;margin-top: 0;margin-bottom: 20px;">전자부품, 컴퓨터, 영상, 음향 및 통신장비 제조업</p>
+            <figure class="figure" style="box-sizing: border-box;margin: 0 0 20px;display: inline-block;">
+              <img style="box-sizing: border-box;vertical-align: middle;-webkit-filter: sepia(80%) contrast(1) opacity(0.8);filter: sepia(80%) grayscale(1) contrast(1) opacity(0.8);mix-blend-mode: multiply;width: 100%;" class="media" src="https://imgnews.pstatic.net/image/origin/374/2022/12/26/315864.jpg?type=nf" alt="">
+              <figcaption class="figcaption" style="box-sizing: border-box;font-style: italic;font-size: 12px;">SBS Biz 사진자료</figcaption>
+            </figure>
+            <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 20px;"><strong class="media_end_summary">애플용 'MDM' 수립…"최근 아이폰 니즈 늘어"<br> 아이폰 인기 재확인…선호는 '애플' 판매량은 '삼성</strong>
+<div style="text-align:center">
+ <span class="end_photo_org">
+  <div class="nbd_im_w _LAZY_LOADING_WRAP ">
+   <div class="nbd_a _LAZY_LOADING_ERROR_HIDE" id="img_a1"><img id="img1" data-src="https://imgnews.pstatic.net/image/374/2022/12/26/0000315864_002_20221226151713062.jpg?type=w647" class="_LAZY_LOADING">
+   </div>
+  </div></span>
+</div><br>애플의 아이폰이 국가·공공기관 업무용 스마트폰으로 진입합니다.&nbsp;<br><br>지금까지 삼성 갤럭시 등 구글 안드로이드를 탑재한 스마트폰이 점령했던 시장인데, 아이폰 수요가 높아지면서 '아이폰 보안용 요구사항'을 새로 만들기로 했습니다.&nbsp;<br><br><strong style="padding-top: 10px;padding-bottom: 10px;display: block;border-top: 1px solid #444466;border-bottom: 1px solid #B2B2B2;">국가·공공기관에 '아이폰' 진입 연다</strong><br>국가정보원은 애플 아이폰용 '모바일 기기 관리(MDM)' 솔루션에 대한 국가용 보안요구 사항 수립에 나섰습니다.&nbsp;<br><br>MDM은 기업 데이터를 안전하게 보관하는 관리하는 프로그램입니다.&nbsp;<br><br>국정원은 국가·공공기관이 IT 보안제품을 도입할 때 준수해야 하는 보안적합성 검증 기준을 세우는데, 최근 애플코리아와 개발업체 등과 협업해 아이폰용 보안요구사항 수립에 나섰습니다.&nbsp;<br><br>국가·공공기관뿐만 아니라 기업들은 보안시설로 진입할 때 MDM 서버와 연동된 앱이 깔려 있는 스마트폰은 몇몇 기능을 차단할 수 있도록 합니다. &nbsp;<br><br>예를 들어 삼성 갤럭시폰의 경우 보안시설에 들어갈 때 MDM이 깔려 있다면 사진촬영과 녹음하는 기능 등을 자동으로 차단합니다.&nbsp;<br><br>그동안 아이폰은 국가·공공기관 업무용 폰으로 활용할 수 없었습니다. 최근 아이폰 수요가 지속적으로 늘어나자 국가·공공기관과 기업(법인용) 에서 아이폰을 활용할 수 있도록 바꿀 방침입니다.&nbsp;<br><br>국정원이 수립한 초안에 따르면 아이폰용 MDM도 안드로이드와 마찬가지로 보안요구 사항을 준수해 CC인증 또는 보안기능확인서 발급받아야 검증필 제품목록에 등재됩니다. 이후 국가·공공기관에 도입할 수 있습니다.&nbsp;<br><br>국정원은 이달 중 의견수렴을 마치고 확정 내용을 발표할 예정입니다.&nbsp;<br><br>그렇게 되면 새해부터 CC인증 또는 MDM을 탑재한 아이폰을 공공기관에서도 업무용으로 사용할 수 있을 전망입니다.&nbsp;<br><br>다만 개인이 구입한 아이폰은 공공기관에서 업무용으로 사용할 수 없습니다.&nbsp;<br><br>국정원 관계자는 "개인이 쓰는 스마트폰에는 안되고 법인이나 단체명으로 돼 있는 스마트폰에 활용이 가능하다"고 말했습니다.&nbsp;<br>&nbsp;
+<div style="text-align:center">
+ <span class="end_photo_org">
+  <div class="nbd_im_w _LAZY_LOADING_WRAP ">
+   <div class="nbd_a _LAZY_LOADING_ERROR_HIDE" id="img_a2"><img id="img2" data-src="https://imgnews.pstatic.net/image/374/2022/12/26/0000315864_001_20221226151713040.jpg?type=w647" class="_LAZY_LOADING">
+   </div>
+  </div></span>
+</div><br><strong style="padding-top: 10px;padding-bottom: 10px;display: block;border-top: 1px solid #444466;border-bottom: 1px solid #B2B2B2;">애플 '새 시장' 진입…판매량 '1위' 바뀌나</strong><br>이번 조치는 아이폰의 인기를 다시 한번 확인하게 합니다.&nbsp;<br><br>국정원 관계자는 "최근 들어서 국가기관 근무자들 사이에서 아이폰에 대한 니즈(필요)가 많아졌다"며 "지금까지 아이폰에는 MDM 기준이 없었지만 아이폰을 많이 쓰고 있어 예비적으로 만들어 놓는 것"이라고 설명했습니다.&nbsp;<br><br>삼성과 애플은 스마트폰 시장에서 1·2위를 다투고 있습니다.<br><br>스마트폰 선호도에서는 애플 아이폰이 절대적이지만, 전세계 판매량만큼은 삼성이 아직 1위자리를 지키고 있습니다.&nbsp;<br><br>시장조사업체 트렌드포스에 따르면 올 3분기 글로벌 스마트폰 시장 점유율은 삼성전자 22.2%, 애플 17.6% 입니다.&nbsp;&nbsp;<br><br>하지만 4분기에는 순위가 뒤바뀔 것이라는 전망도 나옵니다. 애플이 24.6%로 뛰어오르고, 삼성이 20.2%로 떨어질 것으로 보입니다.&nbsp;<br><br>특히 국내 기업·공공기관에서는 삼성의 영향력이 절대적입니다.&nbsp;삼성은 정부기관과 기업고객관련 전문 인력을 대거 영입하는 등 시장 개척에 적극 나서고 있기도 합니다.&nbsp;<br><br>전체 스마트폰 판매량에서 기업·공공기관에서 차지하는 비율은 제한적이지만, 경쟁자 '아이폰'이 새시장에 진입한다는 점에서 스마트폰 시장의 판도 변화가 예상됩니다.&nbsp;<br><br>다수&nbsp;MDM&nbsp;개발업체가 아이폰용&nbsp;MDM&nbsp;개발에 착수할 것으로 보입니다.</p>
+          </div> <div class="collumn" style="box-sizing: border-box;font-size: 14px;line-height: 20px;width: 33.3%;display: inline-block;padding: 0 1% 0 1%;vertical-align: top;margin-bottom: 50px;transition: all .7s;">
+            <div class="head" style="box-sizing: border-box;text-align: center;position: relative;">
+              <span class="headline hl5" style="box-sizing: border-box;text-align: center;line-height: normal;font-family: 'Playfair Display', serif;display: block;margin: 0 auto;font-weight: 400;font-size: 42px;text-transform: uppercase;font-style: italic;padding: 10px 0 10px 0;overflow: hidden;white-space: normal;text-overflow: ellipsis;height: 18%;">공공기관 정원 1만 2000명 줄인다… 안전인력은 증원</span>
+              <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 20px;"><span class="headline hl6" style="box-sizing: border-box;text-align: center;line-height: normal;font-family: 'Playfair Display', serif;display: block;margin: 0 auto;font-weight: 400;font-size: 18px;padding: 10px 0 10px 0;"> 한국전력"<br>
+              </span></p>
+            </div>
+            <p style="font-size: 20px;font-weight: bold;box-sizing: border-box;margin-top: 0;margin-bottom: 20px;">전기, 가스, 증기 및 공기조절 공급업</p>
+            <figure class="figure" style="box-sizing: border-box;margin: 0 0 20px;display: inline-block;">
+              <img style="box-sizing: border-box;vertical-align: middle;-webkit-filter: sepia(80%) contrast(1) opacity(0.8);filter: sepia(80%) grayscale(1) contrast(1) opacity(0.8);mix-blend-mode: multiply;width: 100%;" class="media" src="https://imgnews.pstatic.net/image/origin/081/2022/12/26/3327753.jpg?type=nf" alt="">
+              <figcaption class="figcaption" style="box-sizing: border-box;font-style: italic;font-size: 12px;">서울신문 사진자료</figcaption>
+            </figure>
+            <p style="box-sizing: border-box;margin-top: 0;margin-bottom: 20px;"><strong class="media_end_summary">14년만의 정원 감축…年7600억원 절감 기대</strong><span class="end_photo_org">
+ <div class="nbd_im_w _LAZY_LOADING_WRAP ">
+  <div class="nbd_a _LAZY_LOADING_ERROR_HIDE" id="img_a1"><img id="img1" data-src="https://imgnews.pstatic.net/image/081/2022/12/26/0003327753_001_20221226140601201.jpg?type=w647" class="_LAZY_LOADING">
+  </div>
+ </div><em class="img_desc">최상대 기획재정부 2차관이 26일 정부서울청사 브리핑실에서 공공기관 기능조정 및 조직, 인력 효율화 계획을 확정 발표하고 있다. 2022.12.26 연합뉴스</em></span>정부가 공공기관 정원을 1만 2000명 이상 구조조정한다. 안전을 담당하는 인력은 600명 이상 늘린다.<br><br>기획재정부는 26일 최상대 기획재정부 제2차관 주재로 연 공공기관운영위원회에서 이같은 내용 등을 담은 공공기관 기능조정 및 조직·인력 효율화 계획을 상정·의결했다.<br><br>정부는 지난 7월 새 정부 공공기관 혁신가이드라인을 발표하고 기능, 조직·인력, 예산, 자산, 복리후생 등 5대 분야에 대한 효율화 작업을 진행해왔다. 기능조정 및 조직·인력 효율화 계획은 이중 마지막이다.<br><br><!-- MobileAdNew center -->정부는 공공기관 정원 44만 9000명 중 1만 2442명(2.8%)을 구조조정하기로 했다. 2009년 이후 14년 만의 정원 감축으로, 이로써 공공기관 정원은 43만 8000명으로 줄어들게 된다.<br><br>내년 1만 1081명, 2024년 738명, 2025년 623명 순으로 구조조정이 진행된다. 이를 통해 연간 7600억원 수준의 인건비 절감이 이뤄질 것으로 정부는 기대하고 있다.<br><br>정부는 일단 정원 1만 7230명을 감축한 후 이중 4788명을 국정과제 이행, 안전 등 분야에 재배치하기로 했다.<br><br>감축 분야는 크게 기능조정(7231명)과 조직·인력 효율화(4867명), 정·현원차 축소(5132명)다.<br><br><span class="end_photo_org">
+ <div class="nbd_im_w _LAZY_LOADING_WRAP ">
+  <div class="nbd_a _LAZY_LOADING_ERROR_HIDE" id="img_a2"><img id="img2" data-src="https://imgnews.pstatic.net/image/081/2022/12/26/0003327753_002_20221226140601234.jpg?type=w647" class="_LAZY_LOADING">
+  </div>
+ </div><em class="img_desc">최상대 기획재정부 2차관이 26일 정부서울청사 브리핑실에서 공공기관 기능조정 및 조직, 인력 효율화 계획을 확정 발표하고 있다. 2022.12.26 연합뉴스</em></span>기능 조정은 민간·지자체와 경합하거나 비핵심 업무, 수요 감소 또는 사업종료 업무, 기관간 유사·중복 기능을 조정하는 것이다. 고유 목적 사업과 관련 없는 한국전력의 청원경찰, 검침 등 현장 인력, 석탄 생산량 감소에 따른 대한석탄공사의 현장 인력 등이 대상이다.<br><br>조직·인력 효율화는 조직통합·대부서화, 지방·해외조직 효율화, 지원인력 조정, 업무 프로세스 개선 등을 의미한다.<br><br>기능 조정은 민간·지자체와 경합하거나 비핵심 업무, 수요 감소 또는 사업종료 업무, 기관간 유사·중복 기능을 조정하는 것이다. 이에 따라 한국관광공사는 튀르키예 이스탄불, 중국 시안·우한 등 해외지사 3곳을 폐쇄한다. 근로복지공단은 고용·산재보험 미가입 사업장에 대한 가입 상담·지원 업무를 일부 비대면으로 전환한다.<br><br><!-- MobileAdNew center -->대신 핵심 국정과제 수행하고 안전을 강화하는 차원의 정원은 4788명 늘리기로 했다. 한수원의 신한울 3·4호 건설, 철도공사의 중대재해 예방 인력 등 안전 대응 인력 등이 이에 해당한다.<br><br>공공기관 중 정원 구조조정 규모가 가장 큰 기관은 철도공사(722명), 감축률(21.2%)이 가장 높은 기관은 대한석탄공사(21.2%)다.<br><br>이밖에 한국전력공사 496명, 한국마사회 373명, 한국수자원공사 221명, 한국토지주택공사 220명 등이 조정된다.<br><br>정부는 이번 감축안에 따른 신규 채용에 미치는 영향을 최소화하겠다는 방침이다. 이를 위해 올해 1만 9000명인 공공기관 청년 인턴 채용 규모를 내년 2만 1000명으로 늘리고 현재 3·6개월인 인턴 기간을 확대하는 방안을 검토 중이다.<br><br>최 차관은 이날 브리핑에서 “(인력 감축이)단번에 조정하는 것이 아니라 2~3년에 걸쳐서 단계적으로 정원, 현원을 퇴직이나 이직 등 자연감소를 감안해 감축하는 것이라서 실제 청년을 채용하는 신규 채용의 감소는 최소화했다”고 설명했다.<br><br>이어 “필수안전인력은 조정대상에서 제외했으며, 일부 기관의 필수안전 관련해서 재배치 요구는 모두 수용했다”라고 덧붙였다.</p>
+          </div></div>
