@@ -72,7 +72,7 @@
                 <p>키워드 등록</p>
 
 
-                <label for="search">업종 검색</label><br>
+                <label for="search">테마 검색</label><br>
                 <div class="search-wrapper">
                     <input class="input-class" type="hidden" id="item_class" value="업종">
                     <input class="search-input" type="text" placeholder="검색어를 입력하세요" id="search" name="search">
