@@ -11,7 +11,7 @@
 
         <div class="issue" style="box-sizing: border-box;flex: 1;padding: 8px;width: 25%;display: inline-grid !important;"><a href="/" style="box-sizing: border-box;color: inherit;text-decoration: none;">www.assistock.com</a></div>
         <div class="edition" style="box-sizing: border-box;flex: 1;padding: 8px;width: 25%;display: inline-grid !important;">
-            mesl456's News
+            gpgp910's News
         </div>
         <div class="date" style="box-sizing: border-box;flex: 1;padding: 8px;width: 25%;display: inline-grid !important;">
             2022-12-26        </div>
