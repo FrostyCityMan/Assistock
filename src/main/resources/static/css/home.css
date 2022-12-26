@@ -443,7 +443,7 @@ header .top-nav ul a:hover {
     align-items: center;
     height: 100vh;
     position: relative;
-    background: #eee;
+    background: #fff;
     text-align: center;
     padding: 0 2em;
 }
@@ -525,58 +525,73 @@ header .top-nav ul a:hover {
 
 #top-nv {
     opacity: 0;
-    transition: 2s;
+    transition: 3s;
 }
 
 #first-intro {
     opacity: 0;
-    transition: 2s;
+    transition: 3s;
+    margin-bottom: 100px;
 }
 
 #second-intro {
     opacity: 0;
-    transition: 2s;
+    transition: 3s;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
 }
 
 #tab-es6 {
     opacity: 0;
-    transition: 2s;
+    transition: 3s;
+    text-align: left;
+    align-items: normal;
+
 }
 
 #tab-flexbox {
     opacity: 0;
-    transition: 2s;
+    transition: 3s;
+    text-align: right !important;
+    align-items: normal;
 }
 
 #tab-react {
     opacity: 0;
-    transition: 2s;
+    transition: 3s;
 }
 
 #tab-angular {
     opacity: 0;
-    transition: 2s;
+    transition: 3s;
+    text-align: left;
+    margin-top: 10vh;
+    height: 130vh;
+
 }
 
 #tab-other {
+    text-align: left;
     opacity: 0;
-    transition: 2s;
+    transition: 3s;
+    height: 150vh;
 }
 
 /*-----------------------워드 클라우드-------------*/
 #wordCloud {
     width: 80%;
-    height: 50%;
+    height: 160%;
     position: relative;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', AppleGothic, sans-serif;
-    background: #eee;
+    background: #fff;
 
 }
 
 path {
-    fill: #eee;
+    fill: #fff;
 }
 
 /* ------------------------The Loader */
@@ -679,7 +694,7 @@ path {
     width: 100%;
     top: 0;
     height: 100%;
-    background: #eee;
+    background: #fff;
     z-index: 10;
 }
 
@@ -817,7 +832,7 @@ Loaded styles
     color: #252525;
     cursor: pointer;
     font-size: 2rem;
-    background-color: #eee;
+    background-color: #fff;
     padding: 0;
     height: 54px;
 }
@@ -1093,7 +1108,51 @@ Loaded styles
     font-weight: 700;
 }
 
-#keywordMax,#keywordMax2{
+#keywordMax{
     flex-direction: row !important;
     display: flex;
+    margin-left: 45%;
+}
+
+#keywordMax2 {
+    flex-direction: row !important;
+    display: flex;
+    margin-right: 30%;
+
+}
+
+.css-i198f4{
+    position: relative;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+    background: url(https://images.pexels.com/photos/3760368/pexels-photo-3760368.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-repeat: no-repeat;
+    -webkit-background-position: center;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.css-os8tek {
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #f9fafb;
+    text-align: center;
 }

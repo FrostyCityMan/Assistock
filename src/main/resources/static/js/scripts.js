@@ -231,6 +231,9 @@ $("body").on("click", "[id^=datenum]", function (event) {
 
 });
 
+
+
+
 //금일 최고점 뉴스 (종목)
 $(document).ready(function keywordNews() {
     $.ajax({
@@ -249,6 +252,7 @@ $(document).ready(function keywordNews() {
                     var dto2 = JSON.parse(dto);
                     var per = ((30 + dto2.score) / 60) * 100
                     var head = null;
+                    var maxmin="";
 
                     document.getElementById("keywordMax").innerHTML += `
                 <div class="project-box-wrapper" style="overflow:hidden;max-width:368px;">
