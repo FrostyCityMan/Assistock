@@ -130,7 +130,6 @@
             <div class="et-hero-tabs-container">
                 <a class="et-hero-tab" href="#tab-es6">오늘의 키워드</a>
                 <a class="et-hero-tab" href="#tab-flexbox">스코어 분석</a>
-<%--                <a class="et-hero-tab" href="#tab-react">원자재 분석</a>--%>
                 <a class="et-hero-tab" href="#tab-angular">대쉬보드</a>
                 <a class="et-hero-tab" href="#tab-other">뉴스레터</a>
                 <span class="et-hero-tab-slider"></span>
@@ -208,8 +207,6 @@ color:black">
                                                                                               pattern="MM-dd"/></span>
                                                     </a>
                                                 </div>
-                                                <%--                                            <li> <fmt:formatDate value="${map.value}" pattern="yyyy-MM-dd(E)"/></li>--%>
-
                                             </c:forEach>
                                         </c:forEach>
 

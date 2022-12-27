@@ -34,9 +34,10 @@ import java.util.concurrent.TimeUnit;
 public class MailCont {
 
     public static void main(String[] args) {
+//        시간설정
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 23);
-        calendar.set(Calendar.MINUTE, 49);
+        calendar.set(Calendar.HOUR_OF_DAY, 12);
+        calendar.set(Calendar.MINUTE, 12);
         calendar.set(Calendar.SECOND, 0);
 
         Timer timer = new Timer();

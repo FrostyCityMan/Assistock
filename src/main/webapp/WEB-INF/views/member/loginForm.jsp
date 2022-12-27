@@ -56,6 +56,7 @@
                     <img src="../images/Favi2.png">
                 </a>
 
+
                 <span>Sign In</span>
                 <p>어시스톡에 다시 오신 것을 환영해요! <br>
                     페이스북이나 네이버로도 로그인 할 수 있어요.</p>
