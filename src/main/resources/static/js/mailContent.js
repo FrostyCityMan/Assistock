@@ -34,7 +34,6 @@ async function keywordNews(date) {
                     data: 'text=' + dto2.url_Now,
                     dataType: 'text'
                 });
-
                 // Append HTML string to element with id of keywordNews
                 document.getElementById('keywordNews').innerHTML += `
           <div class="collumn">

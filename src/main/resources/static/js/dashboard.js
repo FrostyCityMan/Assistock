@@ -191,21 +191,6 @@ function keywordNews(date) {
     });
 };
 
-// $(document).ready(function keywordNews() {
-//
-//     $.ajax({
-//         type: "post",
-//         url: "/dashboard/keywordNews",
-//         dataType:"text",
-//         success: function (response) {
-//             if (response != null) {
-//                 alert(response.URL_Now);
-//             }
-//         }
-//     });
-// });
-
-
 //모달창 서버 전송-------------
 $('.button-search').click(function save() {
     let data = {};
@@ -489,18 +474,6 @@ $(document).ready(function dashboard2() {
         }
     })
 })
-// document.addEventListener('click', function (event, suggestionsList, suggestionsList2, suggestionsList3) {
-//     if (document.querySelector('.suggestions3').style.display === 'block') {
-//         suggestionsList3.style.display = 'none';
-//     }
-//     if (document.querySelector('.suggestions2').style.display === 'block') {
-//         suggestionsList2.style.display = 'none';
-//     }
-//     if (document.querySelector('.suggestions').style.display === 'block') {
-//         suggestionsList.style.display = 'none';
-//     }
-// }.bind(null, suggestionsList, suggestionsList2, suggestionsList3));
-
 
 const search2 = document.getElementById('search2');
 const suggestionsList2 = document.querySelector('.suggestions2');
